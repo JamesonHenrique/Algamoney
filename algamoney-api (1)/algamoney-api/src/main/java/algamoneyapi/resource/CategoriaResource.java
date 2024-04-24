@@ -38,4 +38,25 @@ public class CategoriaResource {
         response.setHeader("Location", uri.toASCIIString());
         return ResponseEntity.status(
                 HttpStatus.CREATED).body(categoriaSalva);
-}}
+}
+    @GetMapping("/{codigo}")
+    public ResponseEntity<Categoria> buscarPeloCodigo(@PathVariable Long codigo) {
+        Categoria categoria = categoriaRepository.findById(codigo).orElseThrow( () -> new RuntimeException("Categoria não encontrada"));
+        return categoria != null ? ResponseEntity.ok(categoria) : ResponseEntity.notFound().build();
+    }
+    @DeleteMapping("/{codigo}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void remover(@PathVariable Long codigo) {
+        categoriaRepository.deleteById(codigo);
+    }
+    @PutMapping("/{codigo}")
+    public ResponseEntity<Categoria> atualizar(@PathVariable Long codigo, @RequestBody Categoria categoria) {
+        Categoria categoriaSalva = categoriaRepository.findById(codigo).orElseThrow( () -> new RuntimeException("Categoria não encontrada"));
+        if (categoriaSalva == null) {
+            return ResponseEntity.notFound().build();
+        }
+        categoriaSalva.setNome(categoria.getNome());
+        categoriaRepository.save(categoriaSalva);
+        return ResponseEntity.ok(categoriaSalva);
+    }
+}

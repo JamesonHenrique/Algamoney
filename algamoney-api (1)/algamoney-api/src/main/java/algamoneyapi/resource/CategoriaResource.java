@@ -1,9 +1,12 @@
 package algamoneyapi.resource;
 
+import algamoneyapi.event.RecursoCriadoEvent;
 import algamoneyapi.model.Categoria;
 import algamoneyapi.repository.CategoriaRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +18,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/categorias")
-@AllArgsConstructor
+
 public class CategoriaResource {
+    @Autowired
+    private ApplicationEventPublisher publisher;
+    @Autowired
     private CategoriaRepository
             categoriaRepository;
 
@@ -34,9 +40,8 @@ public class CategoriaResource {
     @PostMapping
     public ResponseEntity<Categoria> criar(@Valid  @RequestBody Categoria categoria, HttpServletResponse response) {
         Categoria categoriaSalva = categoriaRepository.save(categoria);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{codigo}")
-                .buildAndExpand(categoriaSalva.getCodigo()).toUri();
-        response.setHeader("Location", uri.toASCIIString());
+        publisher.publishEvent(new RecursoCriadoEvent(this, response, categoriaSalva.getCodigo()));
+
         return ResponseEntity.status(
                 HttpStatus.CREATED).body(categoriaSalva);
 }

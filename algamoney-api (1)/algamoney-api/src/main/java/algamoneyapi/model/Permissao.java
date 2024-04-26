@@ -7,18 +7,15 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 
-@Entity
 @Data
 @AllArgsConstructor
-@Table
 @NoArgsConstructor
-public class Pessoa {
+@Entity
+@Table
+public class Permissao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
     @NotNull
-    private String nome;
-    @Embedded
-    private Endereco endereco;
-    private Boolean ativo;
+    private String descricao;
 }

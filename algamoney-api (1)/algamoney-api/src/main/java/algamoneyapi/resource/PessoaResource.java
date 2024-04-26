@@ -34,6 +34,17 @@ public class PessoaResource {
     private ApplicationEventPublisher
             publisher;
 
+    @GetMapping
+    public List<Pessoa> listar() {
+        List<Pessoa>
+                pessoas =
+                pessoaRepository.findAll();
+        return pessoas;
+
+
+
+
+    }
     @PostMapping
     public ResponseEntity<Pessoa> criar(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response) {
         Pessoa pessoaSalva = pessoaRepository.save(pessoa);
@@ -71,6 +82,15 @@ public class PessoaResource {
        pessoaRepository.save(pessoaSalva);
         return ResponseEntity.ok(pessoaSalva);
     }
-
+    @PutMapping("/{codigo}/ativo")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void atualizarPropriedadeAtivo(@PathVariable Long codigo, @RequestBody Boolean ativo) {
+        Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
+        pessoaSalva.setAtivo(ativo);
+        pessoaRepository.save(pessoaSalva);
+    }
+    private Pessoa buscarPessoaPeloCodigo(Long codigo) {
+        return pessoaRepository.findById(codigo).orElseThrow( () -> new RuntimeException("Pessoa não encontrada"));
+    }
 
 }

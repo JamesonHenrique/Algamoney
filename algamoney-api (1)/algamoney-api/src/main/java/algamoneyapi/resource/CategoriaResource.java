@@ -56,12 +56,13 @@ public class CategoriaResource {
         categoriaRepository.deleteById(codigo);
     }
     @PutMapping("/{codigo}")
-    public ResponseEntity<Categoria> atualizar(@PathVariable Long codigo, @RequestBody Categoria categoria) {
+    public ResponseEntity<Categoria> atualizar(@PathVariable Long codigo, @Valid @RequestBody Categoria categoria) {
         Categoria categoriaSalva = categoriaRepository.findById(codigo).orElseThrow( () -> new RuntimeException("Categoria não encontrada"));
         if (categoriaSalva == null) {
             return ResponseEntity.notFound().build();
         }
         categoriaSalva.setNome(categoria.getNome());
+
         categoriaRepository.save(categoriaSalva);
         return ResponseEntity.ok(categoriaSalva);
     }

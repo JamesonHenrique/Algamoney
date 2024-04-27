@@ -4,6 +4,7 @@ import algamoneyapi.event.RecursoCriadoEvent;
 import algamoneyapi.model.Categoria;
 import algamoneyapi.model.Pessoa;
 import algamoneyapi.repository.PessoaRepository;
+import algamoneyapi.service.PessoaService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -31,20 +32,12 @@ public class PessoaResource {
     private PessoaRepository pessoaRepository;
 
     @Autowired
-    private ApplicationEventPublisher
-            publisher;
+    private PessoaService
+            pessoaService;
 
-    @GetMapping
-    public List<Pessoa> listar() {
-        List<Pessoa>
-                pessoas =
-                pessoaRepository.findAll();
-        return pessoas;
+    @Autowired
+    private ApplicationEventPublisher publisher;
 
-
-
-
-    }
     @PostMapping
     public ResponseEntity<Pessoa> criar(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response) {
         Pessoa pessoaSalva = pessoaRepository.save(pessoa);
@@ -56,8 +49,7 @@ public class PessoaResource {
 
     @GetMapping("/{codigo}")
     public ResponseEntity<Pessoa> buscarPeloCodigo(@PathVariable Long codigo) {
-        Optional<Pessoa>
-                pessoa = pessoaRepository.findById(codigo);
+        Optional<Pessoa> pessoa = pessoaRepository.findById(codigo);
         return pessoa.isPresent() ? ResponseEntity.ok(pessoa.get()) : ResponseEntity.notFound().build();
     }
 
@@ -67,30 +59,16 @@ public class PessoaResource {
         this.pessoaRepository.deleteById(codigo);
     }
 
-
     @PutMapping("/{codigo}")
     public ResponseEntity<Pessoa> atualizar(@PathVariable Long codigo, @Valid @RequestBody Pessoa pessoa) {
-        Pessoa
-                pessoaSalva = pessoaRepository.findById(codigo).orElseThrow( () -> new RuntimeException("Categoria não encontrada"));
-        if (pessoaSalva == null) {
-            return ResponseEntity.notFound().build();
-        }
-        pessoaSalva.setNome(pessoa.getNome());
-        pessoaSalva.setAtivo(pessoa.getAtivo());
-        pessoaSalva.setEndereco(pessoa.getEndereco());
-
-       pessoaRepository.save(pessoaSalva);
+        Pessoa pessoaSalva = pessoaService.atualizar(codigo, pessoa);
         return ResponseEntity.ok(pessoaSalva);
     }
+
     @PutMapping("/{codigo}/ativo")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void atualizarPropriedadeAtivo(@PathVariable Long codigo, @RequestBody Boolean ativo) {
-        Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
-        pessoaSalva.setAtivo(ativo);
-        pessoaRepository.save(pessoaSalva);
-    }
-    private Pessoa buscarPessoaPeloCodigo(Long codigo) {
-        return pessoaRepository.findById(codigo).orElseThrow( () -> new RuntimeException("Pessoa não encontrada"));
+        pessoaService.atualizarPropriedadeAtivo(codigo, ativo);
     }
 
 }

@@ -8,27 +8,39 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
 @Entity
+@Table(name = "lancamento")
 public class Lancamento {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
+
     @NotNull
     private String descricao;
+
     @NotNull
-    private String dataVencimento;
+    @Column(name = "data_vencimento")
+    private LocalDate
+            dataVencimento;
+
+    @Column(name = "data_pagamento")
+    private LocalDate dataPagamento;
+
     @NotNull
-    private String dataPagamento;
-    @NotNull
-    private BigDecimal
-            valor;
-    @NotNull
+    private BigDecimal valor;
+
     private String observacao;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private TipoLancamento tipo;
+
     @NotNull
     @ManyToOne
     @JoinColumn(name = "codigo_categoria")
@@ -39,8 +51,6 @@ public class Lancamento {
     @ManyToOne
     @JoinColumn(name = "codigo_pessoa")
     private Pessoa pessoa;
-@NotNull
-@Embedded
-    private TipoLançamento tipoLançamento;
+
 
 }

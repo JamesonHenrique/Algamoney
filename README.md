@@ -1,6 +1,6 @@
 
 
-# 🚀 Algamoney API
+# 💸 Algamoney API
 
 Este é um projeto incrível chamado Algamoney API. Ele foi desenvolvido para fornecer uma solução completa para gerenciamento financeiro pessoal.
 

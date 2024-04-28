@@ -1,5 +1,5 @@
 
-```markdown
+
 # 🚀 Algamoney API
 
 Este é um projeto incrível chamado Algamoney API. Ele foi desenvolvido para fornecer uma solução completa para gerenciamento financeiro pessoal.
@@ -23,7 +23,7 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 - Gerenciamento de lançamentos financeiros
 - Autenticação e autorização com OAuth 2.0
 - Armazenamento de arquivos na Amazon S3
-
+```markdown
 ## 📚 Como Usar
 
 Para clonar e executar este aplicativo, você precisará do Git, Java JDK e Maven instalados em seu computador.

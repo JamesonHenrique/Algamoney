@@ -23,6 +23,10 @@ public class BasicSecurityConfig {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+		auth.inMemoryAuthentication()
+				.withUser("root")
+				.password(passwordEncoder().encode("root"))
+				.roles("ADMIN");
 	}
 
 	@Bean

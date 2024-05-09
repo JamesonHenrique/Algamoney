@@ -1,78 +1,59 @@
 package algamoneyapi.config;
 
-import java.util.Arrays;
-
-import algamoneyapi.config.token.CustomTokenEnhancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
-import org.springframework.security.oauth2.provider.token.TokenEnhancer;
-import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
-
-
+import org.springframework.security.web.SecurityFilterChain;
 
 @Profile("oauth-security")
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+public class AuthorizationServerConfig {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	
-	@Override
-	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory()
-				.withClient("angular")
-				.secret("@ngul@r0")
-				.scopes("read", "write")
-				.authorizedGrantTypes("password", "refresh_token")
-				.accessTokenValiditySeconds(1800)
-				.refreshTokenValiditySeconds(3600 * 24)
-			.and()
-				.withClient("mobile")
-				.secret("m0b1l30")
-				.scopes("read")
-				.authorizedGrantTypes("password", "refresh_token")
-				.accessTokenValiditySeconds(1800)
-				.refreshTokenValiditySeconds(3600 * 24);
-	}
-	
-	@Override
-	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
-		tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tokenEnhancer(), accessTokenConverter()));
-		
-		endpoints
-			.tokenStore(tokenStore())
-			.tokenEnhancer(tokenEnhancerChain)
-			.reuseRefreshTokens(false)
-			.authenticationManager(authenticationManager);
-	}
-	
-	@Bean
-	public JwtAccessTokenConverter accessTokenConverter() {
-		JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
-		accessTokenConverter.setSigningKey("algaworks");
-		return accessTokenConverter;
-	}
+
+	@Autowired
+	private UserDetailsService userDetailsService;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Bean
 	public TokenStore tokenStore() {
 		return new JwtTokenStore(accessTokenConverter());
 	}
-	
+
 	@Bean
-	public TokenEnhancer tokenEnhancer() {
-	    return new CustomTokenEnhancer();
+	public JwtAccessTokenConverter accessTokenConverter() {
+		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+		converter.setSigningKey("algamoney");
+		return converter;
 	}
-	
+
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http
+				.authorizeRequests(authorizeRequests -> authorizeRequests
+						.anyRequest().authenticated())
+				.httpBasic(
+						Customizer.withDefaults())
+				.sessionManagement(sessionManagement -> sessionManagement
+						.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				.csrf(csrf -> csrf.disable());
+		return http.build();
+	}
 }

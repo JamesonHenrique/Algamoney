@@ -1,6 +1,5 @@
 package algamoneyapi.config.property;
 
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("algamoney")

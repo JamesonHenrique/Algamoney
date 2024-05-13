@@ -11,9 +11,9 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 - Java
 - Spring Boot
 - Spring Security
-- Hibernate
+- JWT
+- JPA
 - MySQL
-- Amazon S3
 - Maven
 
 ## 💻 Funcionalidades

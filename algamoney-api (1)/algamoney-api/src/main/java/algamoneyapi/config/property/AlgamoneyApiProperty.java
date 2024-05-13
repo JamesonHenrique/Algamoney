@@ -1,8 +1,14 @@
 package algamoneyapi.config.property;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
 
+
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@Data
 @ConfigurationProperties("algamoney")
+@Component
 public class AlgamoneyApiProperty {
 
 	private String originPermitida = "http://localhost:8000";
@@ -17,10 +23,8 @@ public class AlgamoneyApiProperty {
 		return originPermitida;
 	}
 
-	public void setOriginPermitida(String originPermitida) {
-		this.originPermitida = originPermitida;
-	}
 
+@Data
 	public static class Seguranca {
 
 		private boolean enableHttps;

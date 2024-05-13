@@ -21,7 +21,7 @@ import algamoneyapi.config.property.AlgamoneyApiProperty;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class CorsFilter implements Filter {
+public class CustomCorsFilter implements Filter {
 
     @Autowired
     private AlgamoneyApiProperty algamoneyApiProperty;

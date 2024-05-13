@@ -7,6 +7,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,34 +16,35 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Profile("basic-security")
 @EnableWebSecurity
-public class BasicSecurityConfig {
+public class BasicSecurityConfig  {
 
-	@Autowired
-	private UserDetailsService userDetailsService;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-		auth.inMemoryAuthentication()
-				.withUser("root")
-				.password(passwordEncoder().encode("root"))
-				.roles("ADMIN");
-	}
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.inMemoryAuthentication()
+                .withUser("root")
+                .password(passwordEncoder().encode("root"))
+                .roles("ADMIN");
+    }
 
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
-				.authorizeRequests(authorizeRequests -> authorizeRequests
-						.anyRequest().authenticated())
-				.httpBasic(
-						Customizer.withDefaults())
-				.sessionManagement(sessionManagement -> sessionManagement
-						.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.csrf(csrf -> csrf.disable());
-		return http.build();
-	}
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests(authorizeRequests -> authorizeRequests
+                        .anyRequest().authenticated())
+                .httpBasic(
+                        Customizer.withDefaults())
+                .sessionManagement(sessionManagement -> sessionManagement
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .csrf(csrf -> csrf.disable());
+        return http.build();
+    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
 }

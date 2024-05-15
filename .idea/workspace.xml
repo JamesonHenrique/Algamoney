@@ -5,77 +5,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/.idea/algamoney-api (1).iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/Procfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/AlgamoneyApiApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/config/AuthorizationServerConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/config/BasicSecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/config/ResourceServerConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/config/property/AlgamoneyApiProperty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/config/token/CustomTokenEnhancer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/cors/CustomCorsFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/event/RecursoCriadoEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/event/listener/RecursoCriadoListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/exceptionHandler/AlgamoneyExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/model/Categoria.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/model/Categoria_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/model/Endereco.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/model/Lancamento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/model/Lancamento_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/model/Permissao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/model/Permissao_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/model/Pessoa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/model/Pessoa_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/model/TipoLancamento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/model/Usuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/model/Usuario_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/repository/CategoriaRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/repository/LancamentoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/repository/PessoaRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/repository/UsuarioRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/repository/filter/LancamentoFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/repository/filter/lancamento/LancamentoRepositoryImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/repository/filter/lancamento/LancamentoRepositoryQuery.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/repository/projection/ResumoLancamento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/resource/CategoriaResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/resource/LancamentoResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/resource/PessoaResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/resource/TokenResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/security/AppUserDetailsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/security/UsuarioSistema.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/service/LancamentoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/service/PessoaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/service/exception/PessoaInexistenteOuInativaException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/token/RefreshTokenCookiePreProcessorFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/java/algamoneyapi/token/RefreshTokenPostProcessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/resources/ValidationMessages.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/resources/application-prod.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/resources/db/migration/V01__criar-e-registrar-categorias.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/resources/db/migration/V02__criar_e_registrar_pessoas.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/resources/db/migration/V03__criar_tabela_e_registrar_lancamentos.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/resources/db/migration/V04__criar_e_registrar_usuarios_e_permissoes.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/resources/db/migration/V05__criar_tabela_contato.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/resources/db/migration/V06__coluna_anexo_tb_lancamento.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/resources/db/migration/V07__criar_e_registrar_cidade_estado.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/main/resources/messages.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-api (1)/algamoney-api/src/test/java/algamoneyapi/AlgamoneyApiApplicationTests.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/AlgamoneyApiApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/config/AuthorizationServerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/config/BasicSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/config/ResourceServerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/config/property/AlgamoneyApiProperty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/config/token/CustomTokenEnhancer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/cors/CustomCorsFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/event/RecursoCriadoEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/event/listener/RecursoCriadoListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/exceptionHandler/AlgamoneyExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Categoria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Categoria_.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Endereco.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Lancamento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Lancamento_.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Permissao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Permissao_.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Pessoa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Pessoa_.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/TipoLancamento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Usuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Usuario_.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/CategoriaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/LancamentoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/PessoaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/UsuarioRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/filter/LancamentoFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/filter/lancamento/LancamentoRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/filter/lancamento/LancamentoRepositoryQuery.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/projection/ResumoLancamento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/CategoriaResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/LancamentoResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/PessoaResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/TokenResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/security/AppUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/security/UsuarioSistema.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/service/LancamentoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/service/PessoaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/service/exception/PessoaInexistenteOuInativaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/token/RefreshTokenCookiePreProcessorFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/token/RefreshTokenPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ValidationMessages.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-prod.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V01__criar-e-registrar-categorias.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V02__criar_e_registrar_pessoas.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V03__criar_tabela_e_registrar_lancamentos.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V04__criar_e_registrar_usuarios_e_permissoes.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V05__criar_tabela_contato.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V06__coluna_anexo_tb_lancamento.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V07__criar_e_registrar_cidade_estado.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/algamoneyapi/AlgamoneyApiApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +115,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Pichau/Documents/GitHub/Algamoney",
+    "last_opened_file_path": "C:/Users/Pichau/Documents/GitHub/algamoney-api",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>

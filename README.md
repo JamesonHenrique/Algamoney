@@ -22,7 +22,7 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 - Gerenciamento de pessoas
 - Gerenciamento de lançamentos financeiros
 - Autenticação e autorização com OAuth 2.0
-- Armazenamento de arquivos na Amazon S3
+
 ```markdown
 ## 📚 Como Usar
 

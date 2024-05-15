@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -21,49 +22,29 @@ import java.util.List;
 
 public class CategoriaResource {
     @Autowired
-    private ApplicationEventPublisher publisher;
+    private CategoriaRepository categoriaRepository;
+
     @Autowired
-    private CategoriaRepository
-            categoriaRepository;
+    private ApplicationEventPublisher publisher;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')")
     public List<Categoria> listar() {
-        List<Categoria>
-                categorias =
-                categoriaRepository.findAll();
-        return categorias;
-
-
-
-
+        return categoriaRepository.findAll();
     }
+
     @PostMapping
-    public ResponseEntity<Categoria> criar(@Valid  @RequestBody Categoria categoria, HttpServletResponse response) {
+    @PreAuthorize("hasAuthority('ROLE_CADASTRAR_CATEGORIA') and #oauth2.hasScope('write')")
+    public ResponseEntity<Categoria> criar(@Valid @RequestBody Categoria categoria, HttpServletResponse response) {
         Categoria categoriaSalva = categoriaRepository.save(categoria);
         publisher.publishEvent(new RecursoCriadoEvent(this, response, categoriaSalva.getCodigo()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoriaSalva);
+    }
 
-        return ResponseEntity.status(
-                HttpStatus.CREATED).body(categoriaSalva);
-}
     @GetMapping("/{codigo}")
+    @PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')")
     public ResponseEntity<Categoria> buscarPeloCodigo(@PathVariable Long codigo) {
-        Categoria categoria = categoriaRepository.findById(codigo).orElseThrow( () -> new RuntimeException("Categoria não encontrada"));
+        Categoria categoria = categoriaRepository.findById(codigo).get();
         return categoria != null ? ResponseEntity.ok(categoria) : ResponseEntity.notFound().build();
-    }
-    @DeleteMapping("/{codigo}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void remover(@PathVariable Long codigo) {
-        categoriaRepository.deleteById(codigo);
-    }
-    @PutMapping("/{codigo}")
-    public ResponseEntity<Categoria> atualizar(@PathVariable Long codigo, @Valid @RequestBody Categoria categoria) {
-        Categoria categoriaSalva = categoriaRepository.findById(codigo).orElseThrow( () -> new RuntimeException("Categoria não encontrada"));
-        if (categoriaSalva == null) {
-            return ResponseEntity.notFound().build();
-        }
-        categoriaSalva.setNome(categoria.getNome());
-
-        categoriaRepository.save(categoriaSalva);
-        return ResponseEntity.ok(categoriaSalva);
     }
 }

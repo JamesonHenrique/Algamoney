@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="Atualizar Servers Config para que funcione no SpringSecurity">
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/config/AdminUserConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/PermissaoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/RoleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/LoginResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/dto/LoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/dto/LoginResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/config/ResourceServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/config/ResourceServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/UsuarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/CategoriaResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/CategoriaResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/LancamentoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/LancamentoResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/PessoaResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/PessoaResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V04__criar_e_registrar_usuarios_e_permissoes.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V04__criar_e_registrar_usuarios_e_permissoes.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V05__criar_tabela_contato.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V06__coluna_anexo_tb_lancamento.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V07__criar_e_registrar_cidade_estado.sql" beforeDir="false" />
-    </list>
+    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="Remover coisas desnecessarios&#10;Refatorar codigo para que funcione com o heroku e usar o User Admin corretamente" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -209,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715820983578</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Remover coisas desnecessarios&#10;Refatorar codigo para que funcione com o heroku e usar o User Admin corretamente">
+      <option name="closed" value="true" />
+      <created>1715833262766</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715833262766</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -220,7 +208,8 @@
     <MESSAGE value="Alterar arquivos para que o deply seja feito corretamente" />
     <MESSAGE value="Refatorar ServerConfig para que funcione corretamente no heroku" />
     <MESSAGE value="Atualizar Servers Config para que funcione no SpringSecurity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Atualizar Servers Config para que funcione no SpringSecurity" />
+    <MESSAGE value="Remover coisas desnecessarios&#10;Refatorar codigo para que funcione com o heroku e usar o User Admin corretamente" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remover coisas desnecessarios&#10;Refatorar codigo para que funcione com o heroku e usar o User Admin corretamente" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

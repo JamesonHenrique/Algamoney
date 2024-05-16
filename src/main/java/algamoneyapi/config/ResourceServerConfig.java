@@ -42,7 +42,7 @@ public class ResourceServerConfig {
 		http
 				.authorizeHttpRequests(authorize -> authorize
 						.requestMatchers(
-								HttpMethod.POST, "/users").permitAll()
+								HttpMethod.POST, "/categorias").permitAll()
 						.requestMatchers(HttpMethod.POST, "/login").permitAll()
 						.anyRequest().authenticated())
 				.csrf(csrf -> csrf.disable())

@@ -40,7 +40,9 @@ $ mvn install
 
 # Execute o aplicativo
 $ mvn spring-boot:run
+
 # Heroku
 https://algamoney-api-jh-7265697442cb.herokuapp.com/
+
 ```
 

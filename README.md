@@ -1,4 +1,3 @@
-![image](https://github.com/JamesonHenrique/Algamoney/assets/122840154/d4daea0b-30d4-4275-a2f5-855a05aa0860)
 
 # 💸 Algamoney API
 

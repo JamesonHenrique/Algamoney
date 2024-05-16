@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="TESTs: Testes para compilar o projeto no heroku, todos esses anteriores eram testes para isso">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="TESTs: Testes para compilar o projeto no heroku, todos esses anteriores eram testes para isso" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715816059680</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="TESTs: Testes para compilar o projeto no heroku, todos esses anteriores eram testes para isso">
+      <option name="closed" value="true" />
+      <created>1715817788324</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715817788324</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

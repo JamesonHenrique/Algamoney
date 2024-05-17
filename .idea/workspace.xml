@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="Remover coisas desnecessarios&#10;Refatorar codigo para que funcione com o heroku e usar o User Admin corretamente" />
+    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="Nao Permitir uso de categorias">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/PessoaResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/PessoaResource.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,21 +57,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.AlgamoneyApiApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.algamoney-api [clean,compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.algamoney-api [clean,validate,compile...].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.algamoney-api [validate,compile,package].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pichau/Documents/GitHub/algamoney-api/src/main/java/algamoneyapi/model&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.AlgamoneyApiApplication.executor": "Run",
+    "Maven.algamoney-api [clean,compile].executor": "Run",
+    "Maven.algamoney-api [clean,validate,compile...].executor": "Run",
+    "Maven.algamoney-api [validate,compile,package].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Pichau/Documents/GitHub/Testes-Junit-API/junit-project-api",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Pichau\Documents\GitHub\algamoney-api\src\main\java\algamoneyapi\model" />
@@ -197,7 +200,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715833262766</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Permitir uso de categorias">
+      <option name="closed" value="true" />
+      <created>1715833376218</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715833376218</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Nao Permitir uso de categorias">
+      <option name="closed" value="true" />
+      <created>1715833524958</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715833524958</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -209,7 +228,9 @@
     <MESSAGE value="Refatorar ServerConfig para que funcione corretamente no heroku" />
     <MESSAGE value="Atualizar Servers Config para que funcione no SpringSecurity" />
     <MESSAGE value="Remover coisas desnecessarios&#10;Refatorar codigo para que funcione com o heroku e usar o User Admin corretamente" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remover coisas desnecessarios&#10;Refatorar codigo para que funcione com o heroku e usar o User Admin corretamente" />
+    <MESSAGE value="Permitir uso de categorias" />
+    <MESSAGE value="Nao Permitir uso de categorias" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nao Permitir uso de categorias" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

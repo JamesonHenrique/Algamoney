@@ -78,7 +78,6 @@ public class PessoaResource {
     }
 
     @GetMapping
-
     public Page<Pessoa> pesquisar(@RequestParam(required = false, defaultValue = "%") String nome, Pageable pageable) {
         return pessoaRepository.findByNomeContaining(
                 nome,

@@ -1,0 +1,97 @@
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9fafb;
+}
+
+.header-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-money {
+  background-color: #22c55e;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-money:hover {
+  background-color: #16a34a;
+}
+
+.btn-type {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.btn-type.active {
+  border-color: currentColor;
+}
+
+.btn-receita {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.btn-receita:hover, .btn-receita.active {
+  background-color: #bbf7d0;
+}
+
+.btn-despesa {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.btn-despesa:hover, .btn-despesa.active {
+  background-color: #fecaca;
+}
+.toggle-radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Style for the income button when checked */
+#receita:checked + label {
+  background-color: #dcfce7;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+}
+
+#receita:checked + label svg {
+  color: #15803d;
+}
+
+#receita:checked + label span {
+  color: #15803d;
+}
+
+/* Style for the expense button when checked */
+#despesa:checked + label {
+  background-color: #fee2e2;
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3);
+}
+
+#despesa:checked + label svg {
+  color: #b91c1c;
+}
+
+#despesa:checked + label span {
+  color: #b91c1c;
+}
+
+/* Focus styles for accessibility */
+.toggle-radio:focus + label {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}

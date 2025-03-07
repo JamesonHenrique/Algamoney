@@ -5,7 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="Altear app profile">
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/.postcssrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/assets/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/tsconfig.app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/tsconfig.spec.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/tsconfig.spec.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +59,13 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -56,21 +80,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.AlgamoneyApiApplication.executor": "Run",
-    "Maven.algamoney-api [clean,compile].executor": "Run",
-    "Maven.algamoney-api [clean,validate,compile...].executor": "Run",
-    "Maven.algamoney-api [validate,compile,package].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Pichau/Documents/GitHub/Data-Structures",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.AlgamoneyApiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.algamoney-api [clean,compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.algamoney-api [clean,validate,compile...].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.algamoney-api [validate,compile,package].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/James/Documents/GitHub/Algamoney&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Pichau\Documents\GitHub\algamoney-api\src\main\java\algamoneyapi\model" />
@@ -79,12 +104,13 @@
       <recent name="C:\Users\Pichau\Documents\GitHub\algamoney-api" />
     </key>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-22-openjdk-22-3183f394aec4-bad0321e" />
-      </set>
-    </attachedChunks>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Algamoney" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

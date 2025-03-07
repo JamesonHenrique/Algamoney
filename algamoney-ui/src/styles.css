@@ -1,1 +1,119 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+:root {
+    --money-50: #f0fdf4;
+    --money-100: #dcfce7;
+    --money-200: #bbf7d0;
+    --money-300: #86efac;
+    --money-400: #4ade80;
+    --money-500: #22c55e;
+    --money-600: #16a34a;
+    --money-700: #15803d;
+    --money-800: #166534;
+    --money-900: #14532d;
+}  
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9fafb;
+}
+
+.header-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-money {
+    background-color: #22c55e;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-money:hover {
+    background-color: #16a34a;
+}
+
+.table-row:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.table-row:hover {
+    background-color: #f0fdf4;
+}
+
+.status-paid {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.status-pending {
+    background-color: #fff7ed;
+    color: #9a3412;
+}
+
+.status-late {
+    background-color: #fef2f2;
+    color: #b91c1c;
+}
+
+/* Classes para cor de texto */
+.text-money-50 { color: var(--money-50); }
+.text-money-100 { color: var(--money-100); }
+.text-money-200 { color: var(--money-200); }
+.text-money-300 { color: var(--money-300); }
+.text-money-400 { color: var(--money-400); }
+.text-money-500 { color: var(--money-500); }
+.text-money-600 { color: var(--money-600); }
+.text-money-700 { color: var(--money-700); }
+.text-money-800 { color: var(--money-800); }
+.text-money-900 { color: var(--money-900); }
+
+/* Classes para cor de fundo */
+.bg-money-50 { background-color: var(--money-50); }
+.bg-money-100 { background-color: var(--money-100); }
+.bg-money-200 { background-color: var(--money-200); }
+.bg-money-300 { background-color: var(--money-300); }
+.bg-money-400 { background-color: var(--money-400); }
+.bg-money-500 { background-color: var(--money-500); }
+.bg-money-600 { background-color: var(--money-600); }
+.bg-money-700 { background-color: var(--money-700); }
+.bg-money-800 { background-color: var(--money-800); }
+.bg-money-900 { background-color: var(--money-900); }
+
+/* Classes para hover de texto */
+.hover\:text-money-50:hover { color: var(--money-50); }
+.hover\:text-money-100:hover { color: var(--money-100); }
+.hover\:text-money-200:hover { color: var(--money-200); }
+.hover\:text-money-300:hover { color: var(--money-300); }
+.hover\:text-money-400:hover { color: var(--money-400); }
+.hover\:text-money-500:hover { color: var(--money-500); }
+.hover\:text-money-600:hover { color: var(--money-600); }
+.hover\:text-money-700:hover { color: var(--money-700); }
+.hover\:text-money-800:hover { color: var(--money-800); }
+.hover\:text-money-900:hover { color: var(--money-900); }
+
+/* Classes para hover de fundo */
+.hover\:bg-money-50:hover { background-color: var(--money-50); }
+.hover\:bg-money-100:hover { background-color: var(--money-100); }
+.hover\:bg-money-200:hover { background-color: var(--money-200); }
+.hover\:bg-money-300:hover { background-color: var(--money-300); }
+.hover\:bg-money-400:hover { background-color: var(--money-400); }
+.hover\:bg-money-500:hover { background-color: var(--money-500); }
+.hover\:bg-money-600:hover { background-color: var(--money-600); }
+.hover\:bg-money-700:hover { background-color: var(--money-700); }
+.hover\:bg-money-800:hover { background-color: var(--money-800); }
+.hover\:bg-money-900:hover { background-color: var(--money-900); }
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+
+
+@import 'animate.css';

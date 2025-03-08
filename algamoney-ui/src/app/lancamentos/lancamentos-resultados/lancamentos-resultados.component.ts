@@ -1,28 +1,13 @@
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'
-import { MessagesComponent } from '../../shared/messages/messages.component';
 
 @Component({
-  selector: 'app-lancamentos-cadastro',
+  selector: 'app-lancamentos-resultados',
   standalone: false,
-  templateUrl: './lancamentos-cadastro.component.html',
-  styleUrl: './lancamentos-cadastro.component.css'
+  templateUrl: './lancamentos-resultados.component.html',
+  styleUrl: './lancamentos-resultados.component.css'
 })
-export class LancamentosCadastroComponent {
-  lancamentoForm!: FormGroup;
-  constructor(private fb: FormBuilder) {}
-  ngOnInit(): void {
-    this.lancamentoForm = this.fb.group({
-      vencimento: ['', Validators.required],
-      recebimento: ['', Validators.required],
-      descricao: ['', [Validators.required, Validators.minLength(3)]],
-      valor: ['', [Validators.required, Validators.min(0)]],
-      categoria: ['', Validators.required],
-      pessoa: ['', Validators.required],
-      observacao: ['', Validators.required]
-    });
-  }
+export class LancamentosResultadosComponent {
   lancamentos = [
     {
       pessoa: {
@@ -60,35 +45,6 @@ export class LancamentosCadastroComponent {
       valor: -1200.0,
       tipo: 'despesa',
     }, // ... outros lançamentos ...
-  ];
-  categorias = [
-    { label: 'Alimentação', value: '1' },
-    { label: 'Transporte', value: '2' },
-    { label: 'Moradia', value: '3' },
-    { label: 'Lazer', value: '4' },
-    { label: 'Saúde', value: '5' },
-    { label: 'Educação', value: '6' },
-    { label: 'Salário', value: '7' },
-    { label: 'Freelance', value: '8' },
-    { label: 'Investimentos', value: '9' }
-  ];
-  pessoas = [
-    { label: 'João da Silva', value: '1' },
-    { label: 'Maria Costa', value: '2' },
-    { label: 'Pedro Santos', value: '3' },
-    { label: 'Ana Ferreira', value: '4' },
-    { label: 'Roberto Lima', value: '5' },
-  ];
-  labelRecebimentoPagamento = 'Recebimento';
-
-  onTipoChange(tipo: string) {
-
-    console.log('Clicou em:', tipo);
-    this.labelRecebimentoPagamento = tipo === 'receita' ? 'Recebimento' : 'Pagamento';
-  }
-  tipos = [
-    { label: 'Receita', value: 'receita' },
-    { label: 'Despesa', value: 'despesa' },
   ];
   isMobileMenuOpen = false;
   toggleMobileMenu() {
@@ -156,17 +112,5 @@ result = Math.min((this.page + 1) * this.pageSize, this.lancamentos.length);
     return valor >= 0
       ? `R$ ${Math.abs(valor).toFixed(2).replace('.', ',')}`
       : `- R$ ${Math.abs(valor).toFixed(2).replace('.', ',')}`;
-  }
-
-  onSubmit(): void {
-    if (this.lancamentoForm.valid) {
-      console.log(this.lancamentoForm.value);
-      // Submit form data
-    } else {
-      this.lancamentoForm.markAllAsTouched();
-    }
-  }
-  get getErrors() {
-    return this.lancamentoForm.controls;
   }
 }

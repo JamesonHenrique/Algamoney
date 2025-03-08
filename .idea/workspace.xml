@@ -4,25 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="Altear app profile">
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/.postcssrc.json" afterDir="false" />
+    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="feat(core): implementar front end do algamoneu&#10;&#10;Implementa o sistema base de gestão financeira Algamoney com os seguintes recursos:&#10;&#10;feat(pessoas): &#10;- Implementa listagem paginada de pessoas&#10;- Desenvolve formulário de cadastro com validação&#10;&#10;feat(lancamentos):&#10;- Implementar gestão de receitas e despesas&#10;- Adicionar formulário de cadastro com seleção de tipo&#10;- Desenvolver listagem com status e valores&#10;- Criar filtros de pesquisa por data e descrição&#10;&#10;feat(ui):&#10;- Desenvolver interface responsiva com Tailwind&#10;- Integrar ícones FontAwesome&#10;- Implementar componentes reutilizáveis&#10;- Adicionar animações de transição&#10;&#10;feat(arch):&#10;- Configurar estrutura modular do projeto&#10;- Implementar roteamento entre componentes&#10;- Desenvolver template principal responsivo&#10;- Criar formulários reativos com validação">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/assets/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/tsconfig.app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/tsconfig.spec.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/tsconfig.spec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +46,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;JamesonHenrique&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/JamesonHenrique/Algamoney.git&quot;,
+    &quot;accountId&quot;: &quot;11fd2830-8744-4f75-81b8-13d5a0d94a5c&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -249,7 +251,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715925693080</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="feat(core): implementar front end do algamoneu&#10;&#10;Implementa o sistema base de gestão financeira Algamoney com os seguintes recursos:&#10;&#10;feat(pessoas): &#10;- Implementa listagem paginada de pessoas&#10;- Desenvolve formulário de cadastro com validação&#10;&#10;feat(lancamentos):&#10;- Implementar gestão de receitas e despesas&#10;- Adicionar formulário de cadastro com seleção de tipo&#10;- Desenvolver listagem com status e valores&#10;- Criar filtros de pesquisa por data e descrição&#10;&#10;feat(ui):&#10;- Desenvolver interface responsiva com Tailwind&#10;- Integrar ícones FontAwesome&#10;- Implementar componentes reutilizáveis&#10;- Adicionar animações de transição&#10;&#10;feat(arch):&#10;- Configurar estrutura modular do projeto&#10;- Implementar roteamento entre componentes&#10;- Desenvolver template principal responsivo&#10;- Criar formulários reativos com validação">
+      <option name="closed" value="true" />
+      <created>1741354364090</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1741354364090</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat(core): implementar front end do algamoneu&#10;&#10;Implementa o sistema base de gestão financeira Algamoney com os seguintes recursos:&#10;&#10;feat(pessoas): &#10;- Implementa listagem paginada de pessoas&#10;- Desenvolve formulário de cadastro com validação&#10;&#10;feat(lancamentos):&#10;- Implementar gestão de receitas e despesas&#10;- Adicionar formulário de cadastro com seleção de tipo&#10;- Desenvolver listagem com status e valores&#10;- Criar filtros de pesquisa por data e descrição&#10;&#10;feat(ui):&#10;- Desenvolver interface responsiva com Tailwind&#10;- Integrar ícones FontAwesome&#10;- Implementar componentes reutilizáveis&#10;- Adicionar animações de transição&#10;&#10;feat(arch):&#10;- Configurar estrutura modular do projeto&#10;- Implementar roteamento entre componentes&#10;- Desenvolver template principal responsivo&#10;- Criar formulários reativos com validação">
+      <option name="closed" value="true" />
+      <created>1741354391874</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1741354391874</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -264,7 +282,8 @@
     <MESSAGE value="Permitir uso de categorias" />
     <MESSAGE value="Nao Permitir uso de categorias" />
     <MESSAGE value="Altear app profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Altear app profile" />
+    <MESSAGE value="feat(core): implementar front end do algamoneu&#10;&#10;Implementa o sistema base de gestão financeira Algamoney com os seguintes recursos:&#10;&#10;feat(pessoas): &#10;- Implementa listagem paginada de pessoas&#10;- Desenvolve formulário de cadastro com validação&#10;&#10;feat(lancamentos):&#10;- Implementar gestão de receitas e despesas&#10;- Adicionar formulário de cadastro com seleção de tipo&#10;- Desenvolver listagem com status e valores&#10;- Criar filtros de pesquisa por data e descrição&#10;&#10;feat(ui):&#10;- Desenvolver interface responsiva com Tailwind&#10;- Integrar ícones FontAwesome&#10;- Implementar componentes reutilizáveis&#10;- Adicionar animações de transição&#10;&#10;feat(arch):&#10;- Configurar estrutura modular do projeto&#10;- Implementar roteamento entre componentes&#10;- Desenvolver template principal responsivo&#10;- Criar formulários reativos com validação" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(core): implementar front end do algamoneu&#10;&#10;Implementa o sistema base de gestão financeira Algamoney com os seguintes recursos:&#10;&#10;feat(pessoas): &#10;- Implementa listagem paginada de pessoas&#10;- Desenvolve formulário de cadastro com validação&#10;&#10;feat(lancamentos):&#10;- Implementar gestão de receitas e despesas&#10;- Adicionar formulário de cadastro com seleção de tipo&#10;- Desenvolver listagem com status e valores&#10;- Criar filtros de pesquisa por data e descrição&#10;&#10;feat(ui):&#10;- Desenvolver interface responsiva com Tailwind&#10;- Integrar ícones FontAwesome&#10;- Implementar componentes reutilizáveis&#10;- Adicionar animações de transição&#10;&#10;feat(arch):&#10;- Configurar estrutura modular do projeto&#10;- Implementar roteamento entre componentes&#10;- Desenvolver template principal responsivo&#10;- Criar formulários reativos com validação" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,0 +1,195 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.login-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(22, 101, 52, 0.2) 100%);
+}
+
+.login-card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  position: relative;
+}
+
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.25rem;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+.btn-money {
+  background-color: #22c55e;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-money:hover {
+  background-color: #16a34a;
+}
+
+.social-btn {
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.social-btn:hover {
+  background-color: #f3f4f6;
+  transform: translateY(-2px);
+}
+
+.floating-label {
+  position: relative;
+}
+
+.floating-label input {
+  height: 3.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.floating-label label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 1rem 0.75rem;
+  pointer-events: none;
+  transform-origin: 0 0;
+  transition: all 0.2s ease-out;
+}
+
+.floating-label input:focus ~ label,
+.floating-label input:not(:placeholder-shown) ~ label {
+  transform: translateY(-0.5rem) scale(0.85);
+  color: #22c55e;
+}
+
+.coin {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(145deg, #fbbf24, #f59e0b);
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  animation: float 6s ease-in-out infinite;
+}
+
+.coin::before {
+  content: '$';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.coin:nth-child(1) {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.coin:nth-child(2) {
+  top: 20%;
+  right: 15%;
+  animation-delay: 1s;
+}
+
+.coin:nth-child(3) {
+  bottom: 15%;
+  left: 15%;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0% {
+      transform: translateY(0px);
+  }
+  50% {
+      transform: translateY(-20px);
+  }
+  100% {
+      transform: translateY(0px);
+  }
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.blob-1 {
+  top: -100px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  background-color: rgba(34, 197, 94, 0.4);
+}
+
+.blob-2 {
+  bottom: -100px;
+  right: -100px;
+
+  height: 350px;
+  background-color: rgba(22, 101, 52, 0.3);
+}
+
+.login-illustration {
+  background-color: #f0fdf4;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-illustration::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgba(34, 197, 94, 0.1);
+}
+
+.login-illustration::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: rgba(34, 197, 94, 0.15);
+}
+
+.chart-animation {
+  animation: chart 3s ease-in-out infinite;
+}
+
+@keyframes chart {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}

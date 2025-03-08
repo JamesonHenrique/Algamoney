@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-pessoa-pesquisa',
+  selector: 'app-pessoas-resultados',
   standalone: false,
-  templateUrl: './pessoa-pesquisa.component.html',
-  styleUrl: './pessoa-pesquisa.component.css'
+  templateUrl: './pessoas-resultados.component.html',
+  styleUrl: './pessoas-resultados.component.css'
 })
-export class PessoaPesquisaComponent {
+export class PessoasResultadosComponent {
 
   pessoas = [
     {

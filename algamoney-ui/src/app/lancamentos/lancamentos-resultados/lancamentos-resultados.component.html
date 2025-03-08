@@ -1,0 +1,147 @@
+ <!-- Transactions Table -->
+ <div class="bg-white rounded-lg shadow-md overflow-hidden animate__animated animate__fadeInUp animate__delay-1s">
+  <div class="flex justify-between items-center p-6 border-b border-gray-200">
+      <h3 class="text-xl font-semibold text-gray-800">Resultados</h3>
+      <button class="btn-money px-4 py-2 rounded-md font-medium flex items-center">
+          <i class="fas fa-plus mr-2"></i> Novo Lançamento
+      </button>
+  </div>
+
+  <!-- Tabela para desktop -->
+  <div class="hidden md:block">
+      <table class="w-full">
+          <thead class="bg-gray-50 text-left">
+              <tr>
+                  <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Pessoa</th>
+                  <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Descrição</th>
+                  <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Vencimento</th>
+                  <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Pagamento</th>
+                  <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Valor</th>
+                  <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+              </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+              <tr class="table-row" *ngFor="let lancamento of getLancamentosPaginados()">
+                  <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="flex items-center">
+                          <div class="w-8 h-8 rounded-full bg-{{lancamento.pessoa.corFundo}}-100 flex items-center justify-center mr-3">
+                              <span class="text-{{lancamento.pessoa.corFundo}}-600 font-medium">{{lancamento.pessoa.iniciais}}</span>
+                          </div>
+                          <span class="font-medium text-gray-900">{{lancamento.pessoa.nome}}</span>
+                      </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{lancamento.descricao}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{lancamento.vencimento}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                      <span class="px-2 py-1 text-xs rounded-full " [class]="getStatusClass(lancamento.status)">{{lancamento.status}}</span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap font-medium" [class]="getValorClass(lancamento.valor)">{{formatarValor(lancamento.valor)}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                      <button class="text-indigo-600 hover:text-indigo-900 mr-3 group relative">
+                          <i class="fas fa-edit"></i>
+                          <span class="invisible group-hover:visible absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap">
+                              Editar lançamento
+                          </span>
+                      </button>
+                      <button class="text-red-600 hover:text-red-900 group relative">
+                          <i class="fas fa-trash-alt"></i>
+                          <span class="invisible group-hover:visible absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap">
+                              Excluir lançamento
+                          </span>
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+
+  <!-- Cards para mobile -->
+  <div class="md:hidden">
+      <div class="divide-y divide-gray-200">
+          <div *ngFor="let lancamento of getLancamentosPaginados()" class="p-4 space-y-3">
+              <div class="flex items-center justify-between">
+                  <div class="flex items-center">
+                      <div class="w-8 h-8 rounded-full bg-{{lancamento.pessoa.corFundo}}-100 flex items-center justify-center mr-3">
+                          <span class="text-{{lancamento.pessoa.corFundo}}-600 font-medium">{{lancamento.pessoa.iniciais}}</span>
+                      </div>
+                      <span class="font-medium text-gray-900">{{lancamento.pessoa.nome}}</span>
+                  </div>
+                  <div class="flex space-x-2">
+                      <button class="text-indigo-600 hover:text-indigo-900">
+                          <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="text-red-600 hover:text-red-900">
+                          <i class="fas fa-trash-alt"></i>
+                      </button>
+                  </div>
+              </div>
+
+              <div class="space-y-2">
+                  <div>
+                      <span class="text-sm text-gray-500">Descrição:</span>
+                      <p class="text-gray-700">{{lancamento.descricao}}</p>
+                  </div>
+                  <div>
+                      <span class="text-sm text-gray-500">Vencimento:</span>
+                      <p class="text-gray-700">{{lancamento.vencimento}}</p>
+                  </div>
+                  <div class="flex justify-between items-center">
+                      <div>
+                          <span class="text-sm text-gray-500">Status:</span>
+                          <span class="ml-2 px-2 py-1 text-xs rounded-full" [class]="getStatusClass(lancamento.status)">
+                              {{lancamento.status}}
+                          </span>
+                      </div>
+                      <div>
+                          <span class="text-sm text-gray-500">Valor:</span>
+                          <span class="ml-2 font-medium" [class]="getValorClass(lancamento.valor)">
+                              {{formatarValor(lancamento.valor)}}
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="px-6 py-4 border-t border-gray-200 flex items-center justify-center">
+
+      <div class="flex space-x-2">
+          <button
+              (click)="goToFirstPage()"
+              class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+              [disabled]="page === 0">
+              <i class="fa-solid fa-angle-double-left"></i>
+          </button>
+          <button
+              (click)="goToPreviousPage()"
+              class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+              [disabled]="page === 0">
+              <i class="fa-solid fa-angle-left"></i>
+          </button>
+
+          <button
+              *ngFor="let pageIndex of pages"
+              (click)="goToPage(pageIndex)"
+              class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+              [class.bg-money-500]="page === pageIndex"
+              [class.text-white]="page === pageIndex"
+              [class.border-money-500]="page === pageIndex">
+              {{pageIndex + 1}}
+          </button>
+
+          <button
+              (click)="goToNextPage()"
+              class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+              [disabled]="isLastPage">
+              <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <button
+              (click)="goToLastPage()"
+              class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+              [disabled]="isLastPage">
+              <i class="fa-solid fa-angles-right"></i>
+          </button>
+      </div>
+  </div>
+
+</div>

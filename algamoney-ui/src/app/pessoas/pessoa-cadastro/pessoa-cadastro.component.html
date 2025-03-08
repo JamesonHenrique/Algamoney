@@ -1,189 +1,379 @@
-
-
 <!-- Main Content -->
 <main class="container mx-auto px-4 py-8">
-    <!-- Page Title -->
-    <div class="animate__animated animate__fadeIn mb-8">
-        <h1 class="text-3xl font-display font-bold text-gray-800">Nova Pessoa</h1>
-        <p class="text-gray-600 mt-1">Cadastre uma nova pessoa e seus contatos</p>
+  <!-- Page Title -->
+  <div class="animate__animated animate__fadeIn mb-8">
+    <h1 class="text-3xl font-display font-bold text-gray-800">Nova Pessoa</h1>
+    <p class="text-gray-600 mt-1">Cadastre uma nova pessoa e seus contatos</p>
+  </div>
+
+  <!-- Form Panel -->
+  <div
+    class="bg-white rounded-lg shadow-md p-6 mb-8 animate__animated animate__fadeInUp"
+  >
+  <form [formGroup]="pessoaForm" (ngSubmit)="onSubmit()">
+    <!-- Dados Pessoais -->
+    <div class="mb-6">
+
+      <div class="mb-4">
+
+        <label for="nome" class="block text-sm font-medium text-gray-700 mb-1"
+          >Nome</label
+        >
+        <input
+          type="text"
+          id="nome"
+          formControlName="nome"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+          placeholder="Nome completo"
+        />
+
+        <app-messages
+        [control]="getErrors['nome']"
+        fieldName="Nome completo"
+        [customErrors]="{ required: 'Nome é obrigatório.' }">
+      </app-messages>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <div class="md:col-span-3">
+          <label
+            for="logradouro"
+            class="block text-sm font-medium text-gray-700 mb-1"
+            >Logradouro</label
+          >
+          <input
+            type="text"
+            formControlName="logradouro"
+            id="logradouro"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+            placeholder="Rua, Avenida, etc."
+          />
+          <app-messages
+          [control]="getErrors['logradouro']"
+          fieldName="Logradouro"
+          [customErrors]="{ required: 'Logradouro é obrigatório.' }">
+        </app-messages>
+        </div>
+
+        <div>
+          <label
+            for="numero"
+            class="block text-sm font-medium text-gray-700 mb-1"
+            >Número</label
+          >
+          <input
+            type="text"
+            id="numero"
+            formControlName="numero"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+            placeholder="Nº"
+          />
+          <app-messages
+          [control]="getErrors['numero']"
+          fieldName="Número"
+          [customErrors]="{ required: 'Número é obrigatório.' }">
+        </app-messages>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div>
+          <label
+            for="complemento"
+            class="block text-sm font-medium text-gray-700 mb-1"
+            >Complemento</label
+
+          >
+          <input
+            type="text"
+            formControlName="complemento"
+            id="complemento"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+            placeholder="Apto, Bloco, etc."
+          />
+        </div>
+
+
+
+        <div>
+          <label
+            for="bairro"
+            class="block text-sm font-medium text-gray-700 mb-1"
+            >Bairro</label
+          >
+          <input
+            type="text"
+            id="bairro"
+            formControlName="bairro"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+            placeholder="Bairro"
+          />
+          <app-messages
+          [control]="getErrors['bairro']"
+          fieldName="Bairro"
+          [customErrors]="{ required: 'Bairro é obrigatório.' }">
+        </app-messages>
+        </div>
+        <div>
+          <label for="cep" class="block text-sm font-medium text-gray-700 mb-1"
+            >CEP</label
+          >
+          <input
+            name="CEP"
+            id="CEP"
+            required
+            type="text"
+            pattern="\d{5}-\d{3}"
+            maxlength="9"
+            formControlName="cep"
+            onkeypress="if (!/[0-9]/.test(event.key)) { event.preventDefault(); }"
+            oninput="let digits = this.value.replace(/[^0-9]/g, ''); if(digits.length > 8){ digits = digits.slice(0,8); } this.value = digits.replace(/(\d{5})(\d)/, '$1-$2');"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+            placeholder="00000-000"
+          />
+          <app-messages
+          [control]="getErrors['cep']"
+          fieldName="CEP"
+
+          [customErrors]="{
+            required: 'CEP é obrigatório.',
+            pattern: 'Formato do CEP inválido.'
+          }">
+        </app-messages>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label
+            for="cidade"
+            class="block text-sm font-medium text-gray-700 mb-1"
+            >Cidade</label
+          >
+          <input
+            type="text"
+            id="cidade"
+            formControlName="cidade"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+            placeholder="Cidade"
+          />    <app-messages
+          [control]="getErrors['cidade']"
+          fieldName="cidade"
+          [customErrors]="{ required: 'Cidade é obrigatório.' }">
+        </app-messages>
+        </div>
+
+        <div>
+          <label
+            for="estado"
+            class="block text-sm font-medium text-gray-700 mb-1"
+            >Estado</label
+          >
+          <select
+            id="estado"
+            formControlName="estado"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+          >
+          <option value="" disabled selected class="text-gray-400">
+            Selecione um estado
+          </option>
+          <option
+            *ngFor="let estado of estados"
+            value="{{ estado.value }}"
+          >
+            {{ estado.label }}
+          </option>
+          </select>
+          <app-messages
+          [control]="getErrors['estado']"
+          fieldName="Estado"
+          [customErrors]="{
+            'required': 'Estado é obrigatório.',
+
+           }">
+        </app-messages>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Form Panel -->
-    <div class="bg-white rounded-lg shadow-md p-6 mb-8 animate__animated animate__fadeInUp">
-        <!-- Dados Pessoais -->
-        <div class="mb-6">
-            <div class="mb-4">
-                <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
-                <input type="text" id="nome" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors" placeholder="Nome completo">
-            </div>
+    <!-- Tabs -->
+    <div class="mb-6">
+      <div class="tab-header flex mb-4">
+        <div class="tab-item active" data-tab="contatos">
+          <i class="fas fa-address-book mr-2"></i> Contatos
+        </div>
+      </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                <div class="md:col-span-3">
-                    <label for="logradouro" class="block text-sm font-medium text-gray-700 mb-1">Logradouro</label>
-                    <input type="text" id="logradouro" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors" placeholder="Rua, Avenida, etc.">
-                </div>
-
-                <div>
-                    <label for="numero" class="block text-sm font-medium text-gray-700 mb-1">Número</label>
-                    <input type="text" id="numero" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors" placeholder="Nº">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                <div>
-                    <label for="complemento" class="block text-sm font-medium text-gray-700 mb-1">Complemento</label>
-                    <input type="text" id="complemento" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors" placeholder="Apto, Bloco, etc.">
-                </div>
-
-                <div>
-                    <label for="bairro" class="block text-sm font-medium text-gray-700 mb-1">Bairro</label>
-                    <input type="text" id="bairro" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors" placeholder="Bairro">
-                </div>
-
-                <div>
-                    <label for="cep" class="block text-sm font-medium text-gray-700 mb-1">CEP</label>
-                    <input type="text" id="cep" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors" placeholder="00000-000">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label for="cidade" class="block text-sm font-medium text-gray-700 mb-1">Cidade</label>
-                    <input type="text" id="cidade" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors" placeholder="Cidade">
-                </div>
-
-                <div>
-                    <label for="estado" class="block text-sm font-medium text-gray-700 mb-1">Estado</label>
-                    <select id="estado" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors">
-                        <option value="">Selecione um estado</option>
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="PI">Piauí</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
-                        <option value="RR">Roraima</option>
-                        <option value="SC">Santa Catarina</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="SE">Sergipe</option>
-                        <option value="TO">Tocantins</option>
-                    </select>
-                </div>
-            </div>
+      <div id="contatos" class="tab-content active">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold text-gray-800">Lista de Contatos</h3>
+          <button
+            id="btn-novo-contato"
+            class="btn-money px-4 py-2 rounded-md font-medium flex items-center text-sm"
+          >
+            <i class="fas fa-plus mr-2"></i> Novo
+          </button>
         </div>
 
-        <!-- Tabs -->
-        <div class="mb-6">
-            <div class="tab-header flex mb-4">
-                <div class="tab-item active" data-tab="contatos">
-                    <i class="fas fa-address-book mr-2"></i> Contatos
-                </div>
+        <!-- Formulário de Novo Contato (inicialmente oculto) -->
+        <div id="form-contato" class="bg-gray-50 p-4 rounded-md mb-4 hidden">
+          <h4 class="text-md font-semibold text-gray-800 mb-3">
+            Adicionar Contato
+          </h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div>
+              <label
+                for="contato-nome"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Nome</label
+              >
+              <input
+                type="text"
+                id="contato-nome"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+                placeholder="Nome do contato"
+              />
             </div>
 
-            <div id="contatos" class="tab-content active">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-semibold text-gray-800">Lista de Contatos</h3>
-                    <button id="btn-novo-contato" class="btn-money px-4 py-2 rounded-md font-medium flex items-center text-sm">
-                        <i class="fas fa-plus mr-2"></i> Novo
-                    </button>
-                </div>
-
-                <!-- Formulário de Novo Contato (inicialmente oculto) -->
-                <div id="form-contato" class="bg-gray-50 p-4 rounded-md mb-4 hidden">
-                    <h4 class="text-md font-semibold text-gray-800 mb-3">Adicionar Contato</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                        <div>
-                            <label for="contato-nome" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
-                            <input type="text" id="contato-nome" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors" placeholder="Nome do contato">
-                        </div>
-
-                        <div>
-                            <label for="contato-email" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
-                            <input type="email" id="contato-email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors" placeholder="email@exemplo.com">
-                        </div>
-
-                        <div>
-                            <label for="contato-telefone" class="block text-sm font-medium text-gray-700 mb-1">Telefone</label>
-                            <input type="text" id="contato-telefone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors" placeholder="(00) 00000-0000">
-                        </div>
-                    </div>
-
-                    <div class="flex justify-end space-x-2">
-                        <button id="btn-cancelar-contato" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors">
-                            Cancelar
-                        </button>
-                        <button id="btn-adicionar-contato" class="btn-money px-4 py-2 rounded-md font-medium">
-                            Adicionar
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Tabela de Contatos -->
-                <div class="overflow-x-auto bg-white rounded-md border border-gray-200">
-                    <table class="w-full">
-                        <thead class="bg-gray-50 text-left">
-                            <tr>
-                                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
-                                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">E-mail</th>
-                                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Telefone</th>
-                                <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200">
-                            <tr class="table-row">
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">Maria Silva</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">maria.silvaemail.com</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">(11) 98765-4321</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    <button class="text-indigo-600 hover:text-indigo-900 mr-3"><i class="fas fa-edit"></i></button>
-                                    <button class="text-red-600 hover:text-red-900"><i class="fas fa-trash-alt"></i></button>
-                                </td>
-                            </tr>
-                            <tr class="table-row">
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">Carlos Oliveira</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">carlos.oliveiramail.com</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">(11) 91234-5678</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    <button class="text-indigo-600 hover:text-indigo-900 mr-3"><i class="fas fa-edit"></i></button>
-                                    <button class="text-red-600 hover:text-red-900"><i class="fas fa-trash-alt"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div>
+              <label
+                for="contato-email"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >E-mail</label
+              >
+              <input
+                type="email"
+                id="contato-email"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+                placeholder="email@exemplo.com"
+              />
             </div>
+
+            <div>
+              <label
+                for="contato-telefone"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Telefone</label
+              >
+              <input
+                type="text"
+                id="contato-telefone"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+                placeholder="(00) 00000-0000"
+              />
+            </div>
+          </div>
+
+          <div class="flex justify-end space-x-2">
+            <button
+              id="btn-cancelar-contato"
+              class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+            >
+              Cancelar
+            </button>
+            <button
+              id="btn-adicionar-contato"
+              class="btn-money px-4 py-2 rounded-md font-medium"
+            >
+              Adicionar
+            </button>
+          </div>
         </div>
 
-        <!-- Botões -->
-        <div class="flex flex-col sm:flex-row justify-between items-center mt-8">
-            <a href="#" class="text-gray-600 hover:text-money-600 transition-colors mb-4 sm:mb-0">
-                <i class="fas fa-arrow-left mr-1"></i> Voltar para a pesquisa
-            </a>
-
-            <div class="flex space-x-3">
-                <button class="btn-money px-6 py-2 rounded-md font-medium">
-                    <i class="fas fa-save mr-2"></i> Salvar
-                </button>
-                <button class="bg-gray-700 text-white px-6 py-2 rounded-md font-medium hover:bg-gray-600 transition-colors">
-                    <i class="fas fa-plus mr-2"></i> Nova
-                </button>
-            </div>
+        <!-- Tabela de Contatos -->
+        <div class="overflow-x-auto bg-white rounded-md border border-gray-200">
+          <table class="w-full">
+            <thead class="bg-gray-50 text-left">
+              <tr>
+                <th
+                  class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Nome
+                </th>
+                <th
+                  class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  E-mail
+                </th>
+                <th
+                  class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Telefone
+                </th>
+                <th
+                  class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Ações
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr class="table-row">
+                <td class="px-6 py-4 whitespace-nowrap text-gray-700">
+                  Maria Silva
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-gray-700">
+                  maria.silvaemail.com
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-gray-700">
+                  (11) 98765-4321
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                  <button class="text-indigo-600 hover:text-indigo-900 mr-3">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="text-red-600 hover:text-red-900">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="table-row">
+                <td class="px-6 py-4 whitespace-nowrap text-gray-700">
+                  Carlos Oliveira
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-gray-700">
+                  carlos.oliveiramail.com
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-gray-700">
+                  (11) 91234-5678
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                  <button class="text-indigo-600 hover:text-indigo-900 mr-3">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="text-red-600 hover:text-red-900">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
+
+    <!-- Botões -->
+    <div class="flex flex-col sm:flex-row justify-between items-center mt-8">
+      <a
+        href="#"
+        class="text-gray-600 hover:text-money-600 transition-colors mb-4 sm:mb-0"
+      >
+        <i class="fas fa-arrow-left mr-1"></i> Voltar para a pesquisa
+      </a>
+
+      <div class="flex space-x-3">
+        <button class="btn-money px-6 py-2 rounded-md font-medium">
+          <i class="fas fa-save mr-2"></i> Salvar
+        </button>
+        <button
+          class="bg-gray-700 text-white px-6 py-2 rounded-md font-medium hover:bg-gray-600 transition-colors"
+        >
+          <i class="fas fa-plus mr-2"></i> Nova
+        </button>
+      </div>
+    </div>
+  </form>
+  </div>
+
 </main>

@@ -1,16 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  standalone: false
+  selector: 'app-header',
+standalone: false,
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.css'
 })
-export class AppComponent {
-  title = 'algamoney-ui';
+export class HeaderComponent {
   constructor(private router: Router) {}
   isAuthPage(): boolean {
     const currentRoute = this.router.url;

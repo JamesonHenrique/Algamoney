@@ -7,14 +7,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './core/header/header.component';
+import { FooterComponent } from './core/footer/footer.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent
+
   ],
   imports: [
     BrowserModule,
@@ -22,9 +22,9 @@ import { FooterComponent } from './footer/footer.component';
     AppRouteModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule,
     PessoasModule,
     LancamentosModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent],

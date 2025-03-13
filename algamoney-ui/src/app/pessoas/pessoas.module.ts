@@ -5,13 +5,13 @@ import { PessoaPesquisaComponent } from './pessoa-pesquisa/pessoa-pesquisa.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MessagesComponent } from '../shared/messages/messages.component';
 import { SharedModule } from '../shared/shared.module';
-import { PessoasResultadosComponent } from './pessoas-resultados/pessoas-resultados.component';
+
 
 @NgModule({
   declarations: [
     PessoaCadastroComponent,
     PessoaPesquisaComponent,
-    PessoasResultadosComponent,
+
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, SharedModule],
 })

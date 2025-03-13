@@ -8,6 +8,9 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MessagesComponent } from '../../shared/messages/messages.component';
+import { ToastrService } from 'ngx-toastr';
+import { PessoaResourceService } from '../../services/services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pessoa-cadastro',
@@ -18,19 +21,26 @@ import { MessagesComponent } from '../../shared/messages/messages.component';
 export class PessoaCadastroComponent {
   pessoaForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+     private toastr:ToastrService,
+      private pessoaService:PessoaResourceService,
+      private router:Router
+  ) {}
 
   ngOnInit(): void {
     this.pessoaForm = this.fb.group({
       nome: ['', Validators.required],
-      logradouro: ['', Validators.required],
+      ativo: [true, Validators.required],
+      endereco: this.fb.group({
+        logradouro: ['', Validators.required],
       numero: ['', Validators.required],
       complemento: [''],
       bairro: ['', Validators.required],
       cep: ['', [Validators.required, Validators.pattern(/^\d{5}-\d{3}$/)]],
       cidade: ['', Validators.required],
       estado: ['', Validators.required],
-      ativo: [true, Validators.required],
+      }),
     });
   }
   estados = [
@@ -62,6 +72,19 @@ export class PessoaCadastroComponent {
     { label: 'Sergipe', value: 'SE' },
     { label: 'Tocantins', value: 'TO' },
   ];
+  savePessoa() {
+    const lancamento = this.pessoaForm.value;
+    this.pessoaService.criar({ body: lancamento }).subscribe({
+      next: (pessoaId) => {
+        this.router.navigate(['/pessoas']);
+        this.toastr.success('Pessoa salvo com sucesso!');
+      },
+      error: (err) => {
+        console.log(err.error);
+        this.toastr.error('Erro ao salvar pessoa!');
+      },
+    });
+  }
   handleZipCode(event: KeyboardEvent): void {
     const input = event.target as HTMLInputElement;
     input.value = this.zipCodeMask(input.value);
@@ -79,9 +102,10 @@ export class PessoaCadastroComponent {
   onSubmit(): void {
     if (this.pessoaForm.valid) {
       console.log(this.pessoaForm.value);
-      // Implement submission logic here
+      this.savePessoa();
     } else {
       this.pessoaForm.markAllAsTouched();
+      this.toastr.error('Formulário inválido!');
     }
   }
 }

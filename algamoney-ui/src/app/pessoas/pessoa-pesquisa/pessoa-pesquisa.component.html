@@ -1,32 +1,320 @@
-<!-- Main Content -->
 <main class="container mx-auto px-4 py-8">
-  <!-- Page Title -->
   <div class="animate__animated animate__fadeIn mb-8">
-      <h2 class="text-3xl font-display font-bold text-gray-800">Pessoas</h2>
+    <h2 class="text-3xl font-display font-bold text-gray-800">Pessoas</h2>
 
-
-        <p class="text-gray-600 mt-1">Cadastre, visualize e gerencie todas as pessoas do sistema</p>
-
+    <p class="text-gray-600 mt-1">
+      Cadastre, visualize e gerencie todas as pessoas do sistema
+    </p>
   </div>
 
-  <!-- Search Panel -->
-  <div class="bg-white rounded-lg shadow-md p-6 mb-8 animate__animated animate__fadeInUp">
-      <h3 class="text-xl font-semibold text-gray-800 mb-4">Pesquisar Pessoas</h3>
+  <div
+    class="bg-white rounded-lg shadow-md p-6 mb-8 animate__animated animate__fadeInUp"
+  >
+    <h3 class="text-xl font-semibold text-gray-800 mb-4">Pesquisar Pessoas</h3>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-              <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
-              <input type="text" id="nome" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors" placeholder="Digite o nome">
-          </div>
-
-          <div class="flex items-end">
-              <button class="btn-money px-6 py-2 rounded-md font-medium flex items-center">
-                  <i class="fas fa-search mr-2"></i> Pesquisar
-              </button>
-          </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label for="nome" class="block text-sm font-medium text-gray-700 mb-1"
+          >Nome</label
+        >
+        <input
+          type="text"
+          id="nome"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+          placeholder="Digite o nome"
+        />
       </div>
+
+      <div class="flex items-end">
+        <button
+          class="btn-money px-6 py-2 rounded-md font-medium flex items-center"
+        >
+          <i class="fas fa-search mr-2"></i> Pesquisar
+        </button>
+      </div>
+    </div>
   </div>
 
-  <app-pessoas-resultados></app-pessoas-resultados>
-</main>
+  <div
+    class="bg-white rounded-lg shadow-md overflow-hidden animate__animated animate__fadeInUp animate__delay-1s"
+  >
+    <div class="flex justify-between items-center p-6 border-b border-gray-200">
+      <h3 class="text-xl font-semibold text-gray-800">Resultados</h3>
+      <button
+        class="btn-money px-4 py-2 rounded-md font-medium flex items-center"
+      >
+        <i class="fas fa-plus mr-2"></i> Nova Pessoa
+      </button>
+    </div>
 
+    <div class="hidden md:block">
+      <table class="w-full">
+        <thead class="bg-gray-50 text-left">
+          <tr>
+            <th
+              class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Nome
+            </th>
+            <th
+              class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Cidade
+            </th>
+            <th
+              class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Estado
+            </th>
+            <th
+              class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Status
+            </th>
+            <th
+              class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Ações
+            </th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <tr
+            class="table-row"
+            *ngFor="let pessoa of pessoaResponse.content; let i = index"
+          >
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="flex items-center">
+                <div
+                  class="w-8 h-8 rounded-full flex items-center justify-center mr-3"
+                  [ngStyle]="{
+                    'background-color': colorService.getColorPair(i).bgColor
+                  }"
+                >
+                  <span
+                    class="font-medium"
+                    [ngStyle]="{
+                      color: colorService.getColorPair(i).textColor
+                    }"
+                    >{{ getInitials(pessoa?.nome) }}</span
+                  >
+                </div>
+                <span class="font-medium text-gray-900">{{
+                  pessoa?.nome
+                }}</span>
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-gray-700">
+              {{ pessoa.endereco?.cidade }}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-gray-700">
+              {{ pessoa.endereco?.estado }}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <button
+                (click)="changeStatusPessoa(pessoa.codigo)"
+                class="text-indigo-600 hover:text-indigo-900 mr-3 group relative"
+              >
+                <span
+                  class="ml-2 px-2 py-1 text-xs rounded-full"
+                  [ngClass]="getStatusClass(pessoa.ativo)"
+                >
+                  {{ pessoa.ativo ? "Ativo" : "Inativo" }}
+                </span>
+                <span
+                  class="invisible group-hover:visible absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap ml-2 px-2 py-1 text-xs rounded-full"
+                >
+                  {{ pessoa.ativo ? "Desativar" : "Ativar" }}
+                </span>
+              </button>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <button
+                class="text-indigo-600 hover:text-indigo-900 mr-3 group relative"
+              >
+                <i class="fas fa-edit"></i>
+                <span
+                  class="invisible group-hover:visible absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap"
+                >
+                  Editar pessoa
+                </span>
+              </button>
+              <button class="text-red-600 hover:text-red-900 group relative">
+                <label
+                  for="modal-1"
+                  class="text-red-600 hover:text-red-900 cursor-pointer"
+                >
+                  <i
+                    (click)="openModal(pessoa, i)"
+                    class="fas fa-trash-alt"
+                  ></i>
+                </label>
+                <span
+                  class="invisible group-hover:visible absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap"
+                >
+                  Excluir lançamento
+                </span>
+                <app-modal-delete
+                  [modalId]="'modal-1'"
+                  [title]="'Confirmar exclusão'"
+                  [message]="'Você está prestes a excluir a seguinte pessoa:'"
+                  [cancelLabel]="'Cancelar'"
+                  [confirmLabel]="'Excluir'"
+                  (confirm)="deleteById(pessoaSelected.codigo)"
+                  (cancel)="onCancel()"
+                >
+                  <div
+                    class="bg-gray-50 p-4 rounded-md mb-4"
+                    *ngIf="pessoaSelected"
+                  >
+                    <div class="flex items-center justify-center mb-2">
+                      <div
+                        class="w-8 h-8 rounded-full flex items-center justify-center mr-3"
+                        [ngStyle]="{
+                          'background-color':
+                            colorService.getColorPair(selectedIndex).bgColor
+                        }"
+                      >
+                        <span
+                          class="font-medium"
+                          [ngStyle]="{
+                            color:
+                              colorService.getColorPair(selectedIndex).textColor
+                          }"
+                        >
+                          {{ getInitials(pessoaSelected.nome) }}
+                        </span>
+                      </div>
+                      <span class="font-medium text-gray-900">{{
+                        pessoaSelected.nome
+                      }}</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-sm">
+                      <div>
+                        <p class="text-gray-500">Cidade:</p>
+                        <p class="font-medium">
+                          {{ pessoaSelected.endereco?.cidade }}
+                        </p>
+                      </div>
+                      <div>
+                        <p class="text-gray-500">Estado:</p>
+                        <p class="font-medium">
+                          {{ pessoaSelected.endereco?.estado }}
+                        </p>
+                      </div>
+                      <div>
+                        <p class="text-gray-500">Status:</p>
+
+                        <span
+                          class="px-2 py-1 text-xs rounded-full"
+                          [ngClass]="getStatusClass(pessoaSelected.ativo)"
+                        >
+                          {{ pessoaSelected.ativo ? "Ativo" : "Inativo" }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </app-modal-delete>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cards para mobile -->
+    <div class="md:hidden">
+      <div class="divide-y divide-gray-200">
+        <div
+          *ngFor="let pessoa of pessoaResponse.content"
+          class="p-4 space-y-3"
+        >
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <span class="font-medium text-gray-900">{{ pessoa.nome }}</span>
+            </div>
+
+            <div class="flex space-x-2">
+              <button class="text-indigo-600 hover:text-indigo-900">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="text-red-600 hover:text-red-900">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <div>
+              <span class="text-sm text-gray-500">Cidade:</span>
+              <p class="text-gray-700">{{ pessoa.endereco?.cidade }}</p>
+            </div>
+            <div>
+              <span class="text-sm text-gray-500">Estado:</span>
+              <p class="text-gray-700">{{ pessoa.endereco?.estado }}</p>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-sm text-gray-500">Status:</span>
+
+                <span
+                  class="ml-2 px-2 py-1 text-xs rounded-full"
+                  [ngClass]="getStatusClass(pessoa.ativo)"
+                >
+                  {{ pessoa.ativo ? "Ativo" : "Inativo" }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="px-6 py-4 border-t border-gray-200 flex items-center justify-center"
+    >
+      <div class="flex space-x-2">
+        <button
+          (click)="goToFirstPage()"
+          class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+          [disabled]="page === 0"
+        >
+          <i class="fa-solid fa-angle-double-left"></i>
+        </button>
+        <button
+          (click)="goToPreviousPage()"
+          class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+          [disabled]="page === 0"
+        >
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+
+        <button
+          *ngFor="let pageIndex of pages"
+          (click)="goToPage(pageIndex)"
+          class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+          [class.bg-money-500]="page === pageIndex"
+          [class.text-white]="page === pageIndex"
+          [class.border-money-500]="page === pageIndex"
+        >
+          {{ pageIndex + 1 }}
+        </button>
+
+        <button
+          (click)="goToNextPage()"
+          class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+          [disabled]="isLastPage"
+        >
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button
+          (click)="goToLastPage()"
+          class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+          [disabled]="isLastPage"
+        >
+          <i class="fa-solid fa-angles-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</main>

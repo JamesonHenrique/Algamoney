@@ -4,15 +4,155 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="feat(core): implementar front end do algamoneu&#10;&#10;Implementa o sistema base de gestão financeira Algamoney com os seguintes recursos:&#10;&#10;feat(pessoas): &#10;- Implementa listagem paginada de pessoas&#10;- Desenvolve formulário de cadastro com validação&#10;&#10;feat(lancamentos):&#10;- Implementar gestão de receitas e despesas&#10;- Adicionar formulário de cadastro com seleção de tipo&#10;- Desenvolver listagem com status e valores&#10;- Criar filtros de pesquisa por data e descrição&#10;&#10;feat(ui):&#10;- Desenvolver interface responsiva com Tailwind&#10;- Integrar ícones FontAwesome&#10;- Implementar componentes reutilizáveis&#10;- Adicionar animações de transição&#10;&#10;feat(arch):&#10;- Configurar estrutura modular do projeto&#10;- Implementar roteamento entre componentes&#10;- Desenvolver template principal responsivo&#10;- Criar formulários reativos com validação">
+    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="feat(core): reestruturação completa para estrutura modular e melhorias na UI com novas funcionalidaes&#10;&#10;- Migrar a aplicação para estrutura modular, utilizando módulos para encapsular funcionalidades.&#10;- Criar o SharedModule e o componente Messages para reutilização de mensagens de validação e feedback.&#10;- Refatorar Header e Footer, agora implementados como componentes independentes.&#10;- Criar as telas de Login e Register, aprimorando a experiência de autenticação.&#10;- Dividir a exibição dos resultados de pessoas e lançamentos em componentes específicos:&#10;  - PessoasResultadosComponent para a listagem de resultados de pessoas&#10;  - PessoasPesquisaComponent para a pesquisa de pessoas&#10;  - LancamentosResultadosComponent para a listagem dos lançamentos&#10;- Ajustado o roteamento e os formulários reativos com validação para melhor organização e manutenção do código">
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/openapi.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/api-configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/api.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/base-service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/colors/color.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/authentication-controller/authenticate.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/authentication-controller/register.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/categoria-resource/buscar-pelo-codigo-2.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/categoria-resource/criar-2.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/categoria-resource/listar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/lancamento-resource/atualizar-1.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/lancamento-resource/buscar-pelo-codigo-1.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/lancamento-resource/criar-1.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/lancamento-resource/remover-1.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/pessoa-resource/atualizar-propriedade-ativo.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/pessoa-resource/atualizar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/pessoa-resource/buscar-pelo-codigo.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/pessoa-resource/criar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/pessoa-resource/pesquisar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/fn/pessoa-resource/remover.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/authentication-request.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/authentication-response.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/categoria.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/endereco.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/page-resumo-lancamento.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/pageable-object.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/pageable.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/pessoa.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/register-request.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/resumo-lancamento.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/sort-object.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/request-builder.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/services.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/services/authentication-controller.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/services/categoria-resource.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/services/lancamento-resource.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/services/pessoa-resource.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/strict-http-response.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/model-delete/model-delete.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/model-delete/model-delete.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/model-delete/model-delete.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/model-delete/model-delete.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/AuthenticationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/AuthenticationResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/LancamentoRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/LancamentoResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/PageResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/PessoaRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/PessoaResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/RegisterRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/service/AuthenticationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/model/Usuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/config/ApplicationConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/config/BasicSecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/config/OpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/config/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/security/JwtAuthFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/security/JwtService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/AuthenticationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-resultados/lancamentos-resultados.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-resultados/lancamentos-resultados.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-resultados/lancamentos-resultados.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-resultados/lancamentos-resultados.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-pesquisa/pessoa-pesquisa.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-pesquisa/pessoa-pesquisa.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-pesquisa/pessoa-pesquisa.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-pesquisa/pessoa-pesquisa.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoas-resultados/pessoas-resultados.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoas-resultados/pessoas-resultados.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoas-resultados/pessoas-resultados.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoas-resultados/pessoas-resultados.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoas.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoas.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/shared/shared.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/shared.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/AlgamoneyApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/AlgamoneyApiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/config/AdminUserConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/config/BasicSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/config/ResourceServerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/config/property/AlgamoneyApiProperty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/config/token/CustomTokenEnhancer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/cors/CustomCorsFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/event/RecursoCriadoEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/event/RecursoCriadoEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/event/listener/RecursoCriadoListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/event/listener/RecursoCriadoListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/exceptionHandler/AlgamoneyExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/exceptionHandler/AlgamoneyExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/model/Categoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Categoria_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/model/Endereco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Lancamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/model/Lancamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Lancamento_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Permissao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/model/Permissao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Permissao_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/model/Pessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Pessoa_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/TipoLancamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/model/TipoLancamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/model/Usuario_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/CategoriaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/CategoriaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/LancamentoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/LancamentoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/PermissaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/PermissaoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/PessoaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/PessoaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/RoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/filter/LancamentoFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/filter/lancamento/LancamentoRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/filter/lancamento/LancamentoRepositoryQuery.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/repository/projection/ResumoLancamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/projection/ResumoLancamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/CategoriaResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/CategoriaResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/LancamentoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/LancamentoResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/LoginResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/PessoaResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/PessoaResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/TokenResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/dto/LoginRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/resource/dto/LoginResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/security/AppUserDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/security/UsuarioSistema.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/service/LancamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/service/LancamentoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/service/PessoaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/service/PessoaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/service/exception/PessoaInexistenteOuInativaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/service/exception/PessoaInexistenteOuInativaException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/token/RefreshTokenCookiePreProcessorFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/token/RefreshTokenPostProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ValidationMessages.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V01__criar-e-registrar-categorias.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V01__criar-e-registrar-categorias.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V02__criar_e_registrar_pessoas.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V02__criar_e_registrar_pessoas.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V03__criar_tabela_e_registrar_lancamentos.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V03__criar_tabela_e_registrar_lancamentos.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V04__criar_e_registrar_usuarios_e_permissoes.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V04__criar_e_registrar_usuarios_e_permissoes.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +179,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Kotlin Class" />
+        <option value="Record" />
         <option value="Class" />
       </list>
     </option>
@@ -58,6 +200,10 @@
     &quot;accountId&quot;: &quot;11fd2830-8744-4f75-81b8-13d5a0d94a5c&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///JetClient Request Console" root0="SKIP_INSPECTION" />
+    <setting file="mock:///JetClient Request Console" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -95,15 +241,20 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/James/Documents/GitHub/Algamoney&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\James\Documents\GitHub\Algamoney\src\main\java\algamoneyapi\security" />
+      <recent name="C:\Users\James\Documents\GitHub\Algamoney\src\main\java\algamoneyapi\auth" />
       <recent name="C:\Users\Pichau\Documents\GitHub\algamoney-api\src\main\java\algamoneyapi\model" />
       <recent name="C:\Users\Pichau\Documents\GitHub\algamoney-api\src\main\java\algamoneyapi\resource\dto" />
       <recent name="C:\Users\Pichau\Documents\GitHub\algamoney-api\src\main\resources" />
-      <recent name="C:\Users\Pichau\Documents\GitHub\algamoney-api" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\James\Documents\GitHub\Algamoney\src\main\resources\db\migration" />
+      <recent name="C:\Users\James\Documents\GitHub\Algamoney\src\main\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -267,7 +418,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741354391874</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="feat(core): reestruturação completa para estrutura modular e melhorias na UI com novas funcionalidaes&#10;&#10;- Migrar a aplicação para estrutura modular, utilizando módulos para encapsular funcionalidades.&#10;- Criar o SharedModule e o componente Messages para reutilização de mensagens de validação e feedback.&#10;- Refatorar Header e Footer, agora implementados como componentes independentes.&#10;- Criar as telas de Login e Register, aprimorando a experiência de autenticação.&#10;- Dividir a exibição dos resultados de pessoas e lançamentos em componentes específicos:&#10;  - PessoasResultadosComponent para a listagem de resultados de pessoas&#10;  - PessoasPesquisaComponent para a pesquisa de pessoas&#10;  - LancamentosResultadosComponent para a listagem dos lançamentos&#10;- Ajustado o roteamento e os formulários reativos com validação para melhor organização e manutenção do código">
+      <option name="closed" value="true" />
+      <created>1741453871605</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1741453871605</updated>
+    </task>
+    <task id="LOCAL-00020" summary="feat(core): reestruturação completa para estrutura modular e melhorias na UI com novas funcionalidaes&#10;&#10;- Migrar a aplicação para estrutura modular, utilizando módulos para encapsular funcionalidades.&#10;- Criar o SharedModule e o componente Messages para reutilização de mensagens de validação e feedback.&#10;- Refatorar Header e Footer, agora implementados como componentes independentes.&#10;- Criar as telas de Login e Register, aprimorando a experiência de autenticação.&#10;- Dividir a exibição dos resultados de pessoas e lançamentos em componentes específicos:&#10;  - PessoasResultadosComponent para a listagem de resultados de pessoas&#10;  - PessoasPesquisaComponent para a pesquisa de pessoas&#10;  - LancamentosResultadosComponent para a listagem dos lançamentos&#10;- Ajustado o roteamento e os formulários reativos com validação para melhor organização e manutenção do código">
+      <option name="closed" value="true" />
+      <created>1741454634049</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1741454634049</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -283,7 +450,8 @@
     <MESSAGE value="Nao Permitir uso de categorias" />
     <MESSAGE value="Altear app profile" />
     <MESSAGE value="feat(core): implementar front end do algamoneu&#10;&#10;Implementa o sistema base de gestão financeira Algamoney com os seguintes recursos:&#10;&#10;feat(pessoas): &#10;- Implementa listagem paginada de pessoas&#10;- Desenvolve formulário de cadastro com validação&#10;&#10;feat(lancamentos):&#10;- Implementar gestão de receitas e despesas&#10;- Adicionar formulário de cadastro com seleção de tipo&#10;- Desenvolver listagem com status e valores&#10;- Criar filtros de pesquisa por data e descrição&#10;&#10;feat(ui):&#10;- Desenvolver interface responsiva com Tailwind&#10;- Integrar ícones FontAwesome&#10;- Implementar componentes reutilizáveis&#10;- Adicionar animações de transição&#10;&#10;feat(arch):&#10;- Configurar estrutura modular do projeto&#10;- Implementar roteamento entre componentes&#10;- Desenvolver template principal responsivo&#10;- Criar formulários reativos com validação" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(core): implementar front end do algamoneu&#10;&#10;Implementa o sistema base de gestão financeira Algamoney com os seguintes recursos:&#10;&#10;feat(pessoas): &#10;- Implementa listagem paginada de pessoas&#10;- Desenvolve formulário de cadastro com validação&#10;&#10;feat(lancamentos):&#10;- Implementar gestão de receitas e despesas&#10;- Adicionar formulário de cadastro com seleção de tipo&#10;- Desenvolver listagem com status e valores&#10;- Criar filtros de pesquisa por data e descrição&#10;&#10;feat(ui):&#10;- Desenvolver interface responsiva com Tailwind&#10;- Integrar ícones FontAwesome&#10;- Implementar componentes reutilizáveis&#10;- Adicionar animações de transição&#10;&#10;feat(arch):&#10;- Configurar estrutura modular do projeto&#10;- Implementar roteamento entre componentes&#10;- Desenvolver template principal responsivo&#10;- Criar formulários reativos com validação" />
+    <MESSAGE value="feat(core): reestruturação completa para estrutura modular e melhorias na UI com novas funcionalidaes&#10;&#10;- Migrar a aplicação para estrutura modular, utilizando módulos para encapsular funcionalidades.&#10;- Criar o SharedModule e o componente Messages para reutilização de mensagens de validação e feedback.&#10;- Refatorar Header e Footer, agora implementados como componentes independentes.&#10;- Criar as telas de Login e Register, aprimorando a experiência de autenticação.&#10;- Dividir a exibição dos resultados de pessoas e lançamentos em componentes específicos:&#10;  - PessoasResultadosComponent para a listagem de resultados de pessoas&#10;  - PessoasPesquisaComponent para a pesquisa de pessoas&#10;  - LancamentosResultadosComponent para a listagem dos lançamentos&#10;- Ajustado o roteamento e os formulários reativos com validação para melhor organização e manutenção do código" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(core): reestruturação completa para estrutura modular e melhorias na UI com novas funcionalidaes&#10;&#10;- Migrar a aplicação para estrutura modular, utilizando módulos para encapsular funcionalidades.&#10;- Criar o SharedModule e o componente Messages para reutilização de mensagens de validação e feedback.&#10;- Refatorar Header e Footer, agora implementados como componentes independentes.&#10;- Criar as telas de Login e Register, aprimorando a experiência de autenticação.&#10;- Dividir a exibição dos resultados de pessoas e lançamentos em componentes específicos:&#10;  - PessoasResultadosComponent para a listagem de resultados de pessoas&#10;  - PessoasPesquisaComponent para a pesquisa de pessoas&#10;  - LancamentosResultadosComponent para a listagem dos lançamentos&#10;- Ajustado o roteamento e os formulários reativos com validação para melhor organização e manutenção do código" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

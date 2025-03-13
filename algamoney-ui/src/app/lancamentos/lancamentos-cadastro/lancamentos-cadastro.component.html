@@ -28,11 +28,13 @@
               id="receita"
               class="toggle-radio"
               name="tipo"
-              value="receita"
-              (click)="onTipoChange('receita')"
+              value="RECEITA"
+              (click)="onTipoChange('RECEITA')"
+              formControlName="tipo"
             />
             <label
               for="receita"
+
               class="btn-type btn-receita px-6 py-3 rounded-md font-medium flex cursor-pointer hover:border-expense transition-all duration-300 items-center"
             >
               <i class="fas fa-arrow-circle-up mr-2"></i> Receita
@@ -46,8 +48,9 @@
               id="despesa"
               class="toggle-radio"
               name="tipo"
-              value="despesa"
-              (click)="onTipoChange('despesa')"
+              value="DESPESA"
+              (click)="onTipoChange('DESPESA')"
+              formControlName="tipo"
             />
             <label
               for="despesa"
@@ -69,18 +72,19 @@
           >
           <input
             type="date"
-            id="vencimento"
-            formControlName="vencimento"
+            id="dataVencimento"
+            formControlName="dataVencimento"
             [ngClass]="{
               'border-red-500':
-                getErrors['vencimento'].invalid &&
-                getErrors['vencimento'].touched
+                getErrors['dataVencimento'].invalid &&
+                getErrors['dataVencimento'].touched
             }"
-            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm "
+
           />
           <div
             *ngIf="
-              getErrors['vencimento'].touched && getErrors['vencimento'].invalid
+              getErrors['dataVencimento'].touched && getErrors['dataVencimento'].invalid
             "
             class="text-red-600 text-xs"
           >
@@ -96,29 +100,28 @@
           >
           <input
             type="date"
-            id="recebimento"
-            formControlName="recebimento"
+            id="dataPagamento"
+            formControlName="dataPagamento"
             [ngClass]="{
               'border-red-500':
-                getErrors['recebimento'].invalid &&
-                getErrors['recebimento'].touched
+                getErrors['dataPagamento'].invalid &&
+                getErrors['dataPagamento'].touched
             }"
-            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm "
             [ngClass]="{
               'border-red-500':
-                getErrors['observacao'].invalid &&
-                getErrors['observacao'].touched
+                getErrors['dataPagamento'].invalid &&
+                getErrors['dataPagamento'].touched
             }"
           />
           <app-messages
-          [control]="getErrors['recebimento']"
+          [control]="getErrors['dataPagamento']"
           fieldName="{{ labelRecebimentoPagamento }}"
           [customErrors]="{ 'invalid': (labelRecebimentoPagamento.toLowerCase + ' é obrigatório.') }">
         </app-messages>
         </div>
       </div>
 
-      <!-- Descrição e Valor -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <div>
           <label
@@ -185,77 +188,54 @@
         </div>
       </div>
 
-      <!-- Categoria e Pessoa -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <div>
-          <label
-            for="categoria"
-            class="block text-sm font-medium text-gray-700 mb-1"
-            >Categoria</label
-          >
+        <div formGroupName="categoria">
+          <label for="categoria" class="block text-sm font-medium text-gray-700 mb-1">Categoria</label>
           <select
-            id="categoria"
-            formControlName="categoria"
+            formControlName="codigo"
             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
             [ngClass]="{
-              'border-red-500':
-                getErrors['categoria'].invalid && getErrors['categoria'].touched
+              'border-red-500': getErrors['categoria'].get('codigo')?.invalid && getErrors['categoria'].get('codigo')?.touched
             }"
           >
-            <option value="" disabled selected class="text-gray-400">
-              Selecione uma categoria
-            </option>
-            <option
-              *ngFor="let categoria of categorias"
-              value="{{ categoria.value }}"
-            >
-              {{ categoria.label }}
+            <option value="" disabled selected class="text-gray-400">Selecione uma categoria</option>
+            <option *ngFor="let categoria of categoriasTest" [value]="categoria.codigo">
+              {{ categoria.nome }}
             </option>
           </select>
           <app-messages
-          [control]="getErrors['categoria']"
-          fieldName="Categoria"
-          [customErrors]="{
-            'required': 'Categoria é obrigatório.',
-
-           }">
-        </app-messages>
+            [control]="getErrors['categoria']"
+            fieldName="Categoria"
+            [customErrors]="{
+              'required': 'Categoria é obrigatório.'
+            }">
+          </app-messages>
         </div>
 
-        <div>
-          <label
-            for="pessoa"
-            class="block text-sm font-medium text-gray-700 mb-1"
-            >Pessoa</label
-          >
+        <div formGroupName="pessoa">
+          <label for="pessoa" class="block text-sm font-medium text-gray-700 mb-1">Pessoa</label>
           <select
-            id="pessoa"
-            [ngClass]="{
-              'border-red-500':
-                getErrors['pessoa'].invalid && getErrors['pessoa'].touched
-            }"
-            formControlName="pessoa"
+            formControlName="codigo"
             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+            [ngClass]="{
+              'border-red-500': getErrors['pessoa'].get('codigo')?.invalid && getErrors['pessoa'].get('codigo')?.touched
+            }"
           >
-            <option value="" disabled selected class="text-gray-400">
-              Selecione uma pessoa
-            </option>
-            <option *ngFor="let pessoa of pessoas" value="{{ pessoa.value }}">
-              {{ pessoa.label }}
+            <option value="" disabled selected class="text-gray-400">Selecione uma pessoa</option>
+            <option *ngFor="let pessoa of pessoaResponse.content" [value]="pessoa.codigo">
+              {{ pessoa.nome }}
             </option>
           </select>
           <app-messages
-          [control]="getErrors['pessoa']"
-          fieldName="Pessoa"
-          [customErrors]="{
-            'required': 'Pessoa é obrigatório.',
-
-           }">
-        </app-messages>
+            [control]="getErrors['pessoa.codigo']"
+            fieldName="Pessoa"
+            [customErrors]="{
+              'required': 'Pessoa é obrigatório.'
+            }">
+          </app-messages>
         </div>
       </div>
 
-      <!-- Observação -->
       <div class="mb-6">
         <label
           for="observacao"
@@ -281,7 +261,6 @@
         </app-messages>
       </div>
 
-      <!-- Botões -->
       <div class="flex flex-col sm:flex-row justify-between items-center">
         <a
           href="lancamentos.html"

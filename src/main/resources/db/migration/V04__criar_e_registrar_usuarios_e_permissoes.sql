@@ -1,52 +1,69 @@
+-- Tabela de usuários
 CREATE TABLE usuario (
-	codigo BIGINT(20) PRIMARY KEY,
-	nome VARCHAR(50) NOT NULL,
-	email VARCHAR(50) NOT NULL,
-	senha VARCHAR(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    codigo BIGSERIAL PRIMARY KEY,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    nome VARCHAR(50) NOT NULL,
+    password VARCHAR(150) NOT NULL
 
+);
+
+-- Tabela de permissões
 CREATE TABLE permissao (
-	codigo BIGINT(20) PRIMARY KEY,
-	descricao VARCHAR(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    codigo BIGSERIAL PRIMARY KEY,
+    descricao VARCHAR(50) NOT NULL
+);
 
-ALTER TABLE usuario MODIFY codigo BIGINT(20) AUTO_INCREMENT;
+-- Tabela de roles
 CREATE TABLE role (
-    role_id BIGINT(20) PRIMARY KEY,
-    name VARCHAR(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    role_id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- Tabela de relacionamento entre usuários e roles
 CREATE TABLE user_role (
-    user_id BIGINT(20) NOT NULL,
-    role_id BIGINT(20) NOT NULL,
+    user_id BIGINT NOT NULL,
+    role_id BIGINT NOT NULL,
     PRIMARY KEY (user_id, role_id),
     FOREIGN KEY (user_id) REFERENCES usuario(codigo),
     FOREIGN KEY (role_id) REFERENCES role(role_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
+
+-- Tabela de relacionamento entre usuários e permissões
 CREATE TABLE usuario_permissao (
-	codigo_usuario BIGINT(20) NOT NULL,
-	codigo_permissao BIGINT(20) NOT NULL,
-	PRIMARY KEY (codigo_usuario, codigo_permissao),
-	FOREIGN KEY (codigo_usuario) REFERENCES usuario(codigo),
-	FOREIGN KEY (codigo_permissao) REFERENCES permissao(codigo)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-INSERT INTO usuario (codigo, nome, email, senha) values (2, 'Maria Silva', 'maria@algamoney.com', '$2a$10$Zc3w6HyuPOPXamaMhh.PQOXvDnEsadztbfi6/RyZWJDzimE8WQjaq');
+    codigo_usuario BIGINT NOT NULL,
+    codigo_permissao BIGINT NOT NULL,
+    PRIMARY KEY (codigo_usuario, codigo_permissao),
+    FOREIGN KEY (codigo_usuario) REFERENCES usuario(codigo),
+    FOREIGN KEY (codigo_permissao) REFERENCES permissao(codigo)
+);
+
+-- Inserções iniciais de usuários
+INSERT INTO usuario (codigo, email, nome, password)
+VALUES (2, 'maria@algamoney.com', 'Maria Silva', '$2a$10$Zc3w6HyuPOPXamaMhh.PQOXvDnEsadztbfi6/RyZWJDzimE8WQjaq');
+
+-- Inserções iniciais de roles
+INSERT INTO role (role_id, name)
+VALUES (1, 'admin'),
+       (2, 'basic');
 
 
-INSERT IGNORE INTO role (role_id, name) VALUES (1, 'admin');
-INSERT IGNORE INTO role (role_id, name) VALUES (2, 'basic');
-INSERT INTO permissao (codigo, descricao) values (1, 'ROLE_CADASTRAR_CATEGORIA');
-INSERT INTO permissao (codigo, descricao) values (2, 'ROLE_PESQUISAR_CATEGORIA');
+-- Inserções iniciais de permissões
+INSERT INTO permissao (codigo, descricao) 
+VALUES (1, 'ROLE_CADASTRAR_CATEGORIA'),
+       (2, 'ROLE_PESQUISAR_CATEGORIA'),
+       (3, 'ROLE_CADASTRAR_PESSOA'),
+       (4, 'ROLE_REMOVER_PESSOA'),
+       (5, 'ROLE_PESQUISAR_PESSOA'),
+       (6, 'ROLE_CADASTRAR_LANCAMENTO'),
+       (7, 'ROLE_REMOVER_LANCAMENTO'),
+       (8, 'ROLE_PESQUISAR_LANCAMENTO');
 
-INSERT INTO permissao (codigo, descricao) values (3, 'ROLE_CADASTRAR_PESSOA');
-INSERT INTO permissao (codigo, descricao) values (4, 'ROLE_REMOVER_PESSOA');
-INSERT INTO permissao (codigo, descricao) values (5, 'ROLE_PESQUISAR_PESSOA');
+-- Permissões para Maria
+INSERT INTO usuario_permissao (codigo_usuario, codigo_permissao) 
+VALUES (2, 2), -- ROLE_PESQUISAR_CATEGORIA
+       (2, 5), -- ROLE_PESQUISAR_PESSOA
+       (2, 8); -- ROLE_PESQUISAR_LANCAMENTO
 
-INSERT INTO permissao (codigo, descricao) values (6, 'ROLE_CADASTRAR_LANCAMENTO');
-INSERT INTO permissao (codigo, descricao) values (7, 'ROLE_REMOVER_LANCAMENTO');
-INSERT INTO permissao (codigo, descricao) values (8, 'ROLE_PESQUISAR_LANCAMENTO');
-
-
--- maria
-INSERT INTO usuario_permissao (codigo_usuario, codigo_permissao) values (2, 2);
-INSERT INTO usuario_permissao (codigo_usuario, codigo_permissao) values (2, 5);
-INSERT INTO usuario_permissao (codigo_usuario, codigo_permissao) values (2, 8);
+-- Roles para Maria
+INSERT INTO user_role (user_id, role_id) 
+VALUES (2, 1); -- Maria tem a role de admin

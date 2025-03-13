@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^19.2.1",
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",
     "@angular/core": "^19.2.0",
@@ -21,6 +22,9 @@
     "@tailwindcss/postcss": "^4.0.11",
     "@tailwindcss/vite": "^4.0.11",
     "animate.css": "^4.1.1",
+    "ng-toasty": "^0.0.7",
+    "ng2-toasty": "^4.0.3",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

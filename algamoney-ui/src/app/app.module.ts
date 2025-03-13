@@ -10,6 +10,10 @@ import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CoreModule } from './core/core.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,9 +28,19 @@ import { CoreModule } from './core/core.module';
     ReactiveFormsModule,
     PessoasModule,
     LancamentosModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
+
   ],
-  providers: [],
+  providers: [
+    HttpClient
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

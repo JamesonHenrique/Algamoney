@@ -1,37 +1,381 @@
-
-
 <!-- Main Content -->
+
 <main class="container mx-auto px-4 py-8">
-    <!-- Page Title -->
-    <div class="animate__animated animate__fadeIn mb-8">
-        <h2 class="text-3xl font-display font-bold text-gray-800">Lançamentos</h2>
-        <p class="text-gray-600 mt-1">Gerencie suas receitas e despesas</p>
-    </div>
+  <!-- Page Title -->
+  <div class="animate__animated animate__fadeIn mb-8">
+    <h2 class="text-3xl font-display font-bold text-gray-800">Lançamentos</h2>
+    <p class="text-gray-600 mt-1">Gerencie suas receitas e despesas</p>
+  </div>
 
-    <!-- Search Panel -->
-    <div class="bg-white rounded-lg shadow-md p-6 mb-8 animate__animated animate__fadeInUp">
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Pesquisar Lançamentos</h3>
+  <div
+    class="bg-white rounded-lg shadow-md p-6 mb-8 animate__animated animate__fadeInUp"
+  >
+    <h3 class="text-xl font-semibold text-gray-800 mb-4">
+      Pesquisar Lançamentos
+    </h3>
+    <div
+      class="flex flex-col md:flex-row md:items-end space-y-4 md:space-y-0 md:space-x-4"
+    >
+      <!-- Descrição -->
+      <div class="flex-1">
+        <label
+          for="description"
+          class="block text-sm font-medium text-gray-700 mb-1"
+          >Descrição</label
+        >
+        <input
+          type="text"
+          id="description"
+          [(ngModel)]="descricao"
+          placeholder="Digite a descrição"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+        />
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div>
-                <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
-                <input type="text" id="description" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors" placeholder="Digite a descrição">
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Vencimento até</label>
-                <input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors">
-            </div>
-
-            <div class="flex items-end">
-                <button class="btn-money px-6 py-2 rounded-md font-medium flex items-center">
-                    <i class="fas fa-search mr-2"></i> Pesquisar
-                </button>
-            </div>
+      <!-- Grupo de Vencimento -->
+      <div class="w-full md:w-auto">
+        <label class="block text-sm font-medium text-gray-700 mb-1"
+          >Vencimento</label
+        >
+        <div class="flex items-center space-x-2">
+          <div class="date-input-wrapper">
+            <input
+              type="date"
+              id="start-date"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              [(ngModel)]="dataVencimento"
+            />
+          </div>
+          <span class="text-gray-500 whitespace-nowrap">até</span>
+          <div class="date-input-wrapper">
+            <input
+              type="date"
+              id="end-date"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              [(ngModel)]="dataPagamento"
+            />
+          </div>
         </div>
+      </div>
+
+      <!-- Botão Pesquisar -->
+      <div class="w-full md:w-auto md:self-end">
+        <button
+          (click)="findAllLancamentos()"
+          type="submit"
+          class="w-full h-10 btn-money hover:bg-indigo-700 text-white font-medium px-6 rounded-md shadow-sm transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+        >
+          <i class="fas fa-search mr-2"></i> Pesquisar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transactions Table -->
+  <div
+    class="bg-white rounded-lg shadow-md overflow-hidden animate__animated animate__fadeInUp animate__delay-1s"
+  >
+    <div class="flex justify-between items-center p-6 border-b border-gray-200">
+      <h3 class="text-xl font-semibold text-gray-800">Resultados</h3>
+      <button
+        class="btn-money px-4 py-2 rounded-md font-medium flex items-center"
+      >
+        <i class="fas fa-plus mr-2"></i> Novo Lançamento
+      </button>
     </div>
 
-   <app-lancamentos-resultados></app-lancamentos-resultados>
+    <!-- Tabela para desktop -->
+    <div class="hidden md:block">
+      <table class="w-full">
+        <thead class="bg-gray-50 text-left">
+          <tr>
+            <th
+              class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Pessoa
+            </th>
+            <th
+              class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Descrição
+            </th>
+            <th
+              class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Vencimento
+            </th>
+            <th
+              class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Pagamento
+            </th>
+            <th
+              class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Valor
+            </th>
+            <th
+              class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Ações
+            </th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <tr *ngIf="!hasResults()">
+            <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+              Nenhum lançamento encontrado.
+            </td>
+          </tr>
+          <tr
+            class="table-row"
+            *ngFor="
+              let lancamento of lancamentosResponse.content;
+              let i = index
+            "
+          >
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="flex items-center">
+                <div
+                  class="w-8 h-8 rounded-full flex items-center justify-center mr-3"
+                  [ngStyle]="{
+                    'background-color': colorService.getColorPair(i).bgColor
+                  }"
+                >
+                  <span
+                    class="font-medium"
+                    [ngStyle]="{
+                      color: colorService.getColorPair(i).textColor
+                    }"
+                    >{{ getInitials(lancamento.pessoa?.nome) }}</span
+                  >
+                </div>
+                <span class="font-medium text-gray-900">{{
+                  lancamento.pessoa?.nome
+                }}</span>
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-gray-700">
+              {{ lancamento.descricao }}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-gray-700">
+              {{ lancamento.dataVencimento }}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-gray-700">
+              {{ lancamento.dataPagamento }}
+            </td>
+            <td
+              class="px-6 py-4 whitespace-nowrap font-medium"
+              [ngClass]="getValorClass(lancamento.valor)"
+            >
+              {{ formatarValor(lancamento.valor) }}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <button
+                class="text-indigo-600 hover:text-indigo-900 mr-3 group relative"
+              >
+                <i class="fas fa-edit"></i>
+                <span
+                  class="invisible group-hover:visible absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap"
+                >
+                  Editar lançamento
+                </span>
+              </button>
+              <button class="text-red-600 hover:text-red-900 group relative">
+                <label
+                  for="modal-1"
+                  class="text-red-600 hover:text-red-900 cursor-pointer"
+                >
+                  <i
+                    (click)="openModal(lancamento, i)"
+                    class="fas fa-trash-alt"
+                  ></i>
+                </label>
+                <span
+                  class="invisible group-hover:visible absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap"
+                >
+                  Excluir lançamento
+                </span>
+
+                <!-- Modal para Linha 1 -->
+
+                <app-modal-delete
+                  [modalId]="'modal-1'"
+                  [title]="'Confirmar exclusão'"
+                  [message]="
+                    'Você está prestes a excluir o seguinte lançamento:'
+                  "
+                  [cancelLabel]="'Cancelar'"
+                  [confirmLabel]="'Excluir'"
+                  (confirm)="deleteById(lancamentoSelected.codigo)"
+                  (cancel)="onCancel()"
+                >
+                  <!-- Conteúdo específico para lançamentos -->
+                  <div
+                    class="bg-gray-50 p-4 rounded-md mb-4"
+                    *ngIf="lancamentoSelected"
+                  >
+                    <div class="flex items-center justify-center mb-2">
+                      <div
+                        class="w-8 h-8 rounded-full flex items-center justify-center mr-3"
+                        [ngStyle]="{
+                          'background-color':
+                            colorService.getColorPair(selectedIndex).bgColor
+                        }"
+                      >
+                        <span
+                          class="font-medium"
+                          [ngStyle]="{
+                            color:
+                              colorService.getColorPair(selectedIndex).textColor
+                          }"
+                        >
+                          {{ getInitials(lancamentoSelected.pessoa?.nome) }}
+                        </span>
+                      </div>
+                      <span class="font-medium text-gray-900">{{
+                        lancamentoSelected.pessoa?.nome
+                      }}</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-sm">
+                      <div>
+                        <p class="text-gray-500">Descrição:</p>
+                        <p class="font-medium">
+                          {{ lancamentoSelected.descricao }}
+                        </p>
+                      </div>
+                      <div>
+                        <p class="text-gray-500">Valor:</p>
+                        <p class="font-medium text-money-600">
+                          {{ lancamentoSelected.valor }}
+                        </p>
+                      </div>
+                      <div>
+                        <p class="text-gray-500">Vencimento:</p>
+                        <p class="font-medium">
+                          {{ lancamentoSelected.dataVencimento }}
+                        </p>
+                      </div>
+                      <div>
+                        <span
+                          *ngIf="lancamentoSelected.dataPagamento?.length"
+                          class="text-gray-500"
+                          >Data de Pagamento:</span
+                        >
+                        <p class="font-medium">
+                          {{ lancamentoSelected.dataPagamento }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </app-modal-delete>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cards para mobile -->
+    <div class="md:hidden">
+      <div class="divide-y divide-gray-200">
+        <div
+          *ngFor="let lancamento of lancamentosResponse.content; let i = index"
+          class="p-4 space-y-3"
+        >
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <span class="font-medium text-gray-900">{{
+                lancamento.pessoa?.nome
+              }}</span>
+            </div>
+
+            <div class="flex space-x-2">
+              <button class="text-indigo-600 hover:text-indigo-900">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="text-red-600 hover:text-red-900">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <div>
+              <span class="text-sm text-gray-500">Descrição:</span>
+              <p class="text-gray-700">{{ lancamento.descricao }}</p>
+            </div>
+            <div>
+              <span class="text-sm text-gray-500">Data de Vencimento:</span>
+              <p class="text-gray-700">{{ lancamento.dataVencimento }}</p>
+              <span
+                *ngIf="lancamento.dataPagamento?.length"
+                class="text-sm text-gray-500"
+                >Data de Pagamento:</span
+              >
+              <p class="text-gray-700">{{ lancamento.dataPagamento }}</p>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-sm text-gray-500">Valor:</span>
+                <span
+                  class="text-sm text-gray-500"
+                  [ngClass]="getValorClass(lancamento.valor)"
+                >
+                  {{ formatarValor(lancamento.valor) }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="px-6 py-4 border-t border-gray-200 flex items-center justify-center"
+    >
+      <div class="flex space-x-2">
+        <button
+          (click)="goToFirstPage()"
+          class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+          [disabled]="page === 0"
+        >
+          <i class="fa-solid fa-angle-double-left"></i>
+        </button>
+        <button
+          (click)="goToPreviousPage()"
+          class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+          [disabled]="page === 0"
+        >
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+
+        <button
+          *ngFor="let pageIndex of pages"
+          (click)="goToPage(pageIndex)"
+          class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+          [class.bg-money-500]="page === pageIndex"
+          [class.text-white]="page === pageIndex"
+          [class.border-money-500]="page === pageIndex"
+        >
+          {{ pageIndex + 1 }}
+        </button>
+
+        <button
+          (click)="goToNextPage()"
+          class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+          [disabled]="isLastPage"
+        >
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button
+          (click)="goToLastPage()"
+          class="px-3 py-1 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+          [disabled]="isLastPage"
+        >
+          <i class="fa-solid fa-angles-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 </main>
-
-

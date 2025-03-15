@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -8,10 +9,12 @@ import { Component } from '@angular/core';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  constructor(private title:Title) {
+    this.title.setTitle('Register');
+  }
   currentStep: number = 1;
   progressWidth: string = '33%';
 
-  // Método para navegar para o próximo passo
   nextStep(): void {
     if (this.currentStep < 3) {
       this.currentStep++;
@@ -19,7 +22,6 @@ export class RegisterComponent {
     }
   }
 
-  // Método para voltar ao passo anterior
   previousStep(): void {
     if (this.currentStep > 1) {
       this.currentStep--;
@@ -27,12 +29,10 @@ export class RegisterComponent {
     }
   }
 
-  // Atualiza a barra de progresso
   private updateProgressBar(): void {
     this.progressWidth = `${(this.currentStep / 3) * 100}%`;
   }
 
-  // Método para verificar se um passo está ativo
   isStepActive(step: number): boolean {
     return this.currentStep === step;
   }

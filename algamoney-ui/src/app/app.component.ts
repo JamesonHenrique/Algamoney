@@ -14,7 +14,7 @@ export class AppComponent {
   constructor(private router: Router) {}
   isAuthPage(): boolean {
     const currentRoute = this.router.url;
-    return currentRoute.includes('/login') || currentRoute.includes('/register');
+    return currentRoute.includes('/login') || currentRoute.includes('/register') || currentRoute.includes('/pagina-nao-encontrada');
   }
 
 

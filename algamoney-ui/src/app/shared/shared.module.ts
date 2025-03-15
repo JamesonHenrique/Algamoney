@@ -11,7 +11,7 @@ import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
 @NgModule({
   declarations: [
     MessagesComponent,
-    ModalDeleteComponent
+    ModalDeleteComponent,
   ],
   imports: [
     CommonModule,

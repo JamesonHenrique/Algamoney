@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { BrowserModule, Title } from '@angular/platform-browser';
+import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRouteModule } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,6 +14,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { PessoaRoutingModule } from './pessoas/pessoa.routing';
+import { LancamentoRoutingModule } from './lancamentos/lancamento.routing';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     RouterModule.forRoot([]),
     AppRouteModule,
+
     FormsModule,
     ReactiveFormsModule,
     PessoasModule,
@@ -35,11 +38,12 @@ import { ToastrModule } from 'ngx-toastr';
 
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
-    }),
+    })
 
   ],
   providers: [
-    HttpClient
+    HttpClient,
+    Title
   ],
   bootstrap: [AppComponent],
 })

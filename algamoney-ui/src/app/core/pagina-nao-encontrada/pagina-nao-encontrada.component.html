@@ -1,0 +1,74 @@
+<div class="error-container flex items-center justify-center p-4">
+  <div class="error-card w-full max-w-4xl p-8 md:p-12 animate__animated animate__fadeIn">
+
+      <div class="flex items-center mb-8">
+          <i class="fas fa-money-bill-wave text-money-600 text-3xl mr-3"></i>
+          <h1 class="text-2xl font-display font-bold text-gray-800">Algamoney</h1>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center">
+          <div class="w-full md:w-1/2 mb-8 md:mb-0 md:pr-8">
+              <div class="broken-coin mb-6">
+                  <div class="coin-left"></div>
+                  <div class="coin-right"></div>
+              </div>
+
+              <div class="text-center md:text-left">
+                  <h2 class="error-number mb-2">404</h2>
+                  <h3 class="text-2xl font-bold text-gray-800 mb-4">Página não encontrada</h3>
+                  <p class="text-gray-600 mb-6">
+                      Ops! Parece que a pagina que você procura não está disponível. A página que você tentou acessar não existe ou foi movida.
+                  </p>
+
+                  <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
+                      <a routerLink="/login"  class="btn-money px-6 py-3 rounded-lg font-medium text-center">
+                          <i class="fas fa-home mr-2"></i> Página de Login
+                      </a>
+                      <a (click)="back()" class="btn-outline px-6 py-3 rounded-lg font-medium text-center">
+                          <i class="fas fa-arrow-left mr-2"></i> Voltar
+                      </a>
+                  </div>
+              </div>
+          </div>
+
+          <div class="w-full md:w-1/2 bg-money-50 p-6 rounded-lg border border-money-100">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">Talvez você esteja procurando por:</h3>
+
+              <ul class="space-y-3 mb-6">
+                  <li>
+                      <a routerLink="/lancamentos"  class="flex items-center text-money-700 hover:text-money-500 transition-colors">
+                          <i class="fas fa-exchange-alt mr-3 text-money-500"></i>
+                          <span>Lançamentos Financeiros</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a  routerLink="/pessoas/cadastro" class="flex items-center text-money-700 hover:text-money-500 transition-colors">
+                          <i class="fas fa-users mr-3 text-money-500"></i>
+                          <span>Cadastro de Pessoas</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a  routerLink="/lancamentos/cadastro"class="flex items-center text-money-700 hover:text-money-500 transition-colors">
+                          <i class="fas fa-plus-circle mr-3 text-money-500"></i>
+                          <span>Novo Lançamento</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" class="flex items-center text-money-700 hover:text-money-500 transition-colors">
+                          <i class="fas fa-chart-line mr-3 text-money-500"></i>
+                          <span>Dashboard Financeiro</span>
+                      </a>
+                  </li>
+              </ul>
+
+
+          </div>
+      </div>
+
+      <div class="mt-12 pt-6 border-t border-gray-200 text-center">
+          <p class="text-gray-600 text-sm">
+              Precisa de ajuda? <a href="#" class="text-money-600 hover:text-money-700 transition-colors">Entre em contato com o suporte</a>
+          </p>
+      </div>
+  </div>
+</div>

@@ -4,6 +4,8 @@ import { ColorService } from '../../services/colors/color.service';
 import { LancamentoResourceService } from '../../services/services';
 import { PageResponseLancamentoResponseDto } from '../../services/models';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -28,10 +30,12 @@ export class LancamentosPesquisaComponent {
   constructor(
     private lancamentoService: LancamentoResourceService,
     public colorService: ColorService,
-
-    private toastr: ToastrService
+    private router: Router,
+    private toastr: ToastrService,
+    private title:Title
   ) {}
   ngOnInit(): void {
+    this.title.setTitle('Pesquisa de Lançamentos');
     this.findAllLancamentos();
   }
   getIndex(lancamento: any): number {
@@ -51,7 +55,6 @@ export class LancamentosPesquisaComponent {
     return iniciais.join('');
   }
 
-  // Função para calcular as cores com base no índice
   calculatePersonColors(): void {
     this.personColors = this.lancamentos.map((lancamento, index) => {
       const colorIndex = index % this.colors.length;
@@ -118,6 +121,9 @@ export class LancamentosPesquisaComponent {
     } else {
       return 'status-pending';
     }
+  }
+  goToCadastro() {
+    this.router.navigate(['/lancamentos/cadastro']);
   }
 
   getValorClass(valor: any): string {

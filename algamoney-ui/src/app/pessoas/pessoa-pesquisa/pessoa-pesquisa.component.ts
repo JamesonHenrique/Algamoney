@@ -4,6 +4,8 @@ import { PessoaResourceService } from '../../services/services';
 import { PageResponsePessoaResponseDto } from '../../services/models';
 import { ColorService } from '../../services/colors/color.service';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pessoa-pesquisa',
@@ -15,11 +17,12 @@ export class PessoaPesquisaComponent {
   constructor(
     private pessoaService: PessoaResourceService,
     public colorService: ColorService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router:Router,
+    private activatedRoute: ActivatedRoute,
+    private title:Title
   ) {}
-  ngOnInit(): void {
-    this.findAllPessoas();
-  }
+
   pessoaSelected: any = null;
   selectedIndex: any = null;
   pessoaResponse: PageResponsePessoaResponseDto = {};
@@ -28,6 +31,10 @@ export class PessoaPesquisaComponent {
   pageSize = 4;
 
   pages: any = [];
+  ngOnInit(): void {
+    this.title.setTitle('Pesquisa de Pessoas');
+    this.findAllPessoas();
+  }
   openModal(pessoa: any, index: number) {
     this.pessoaSelected = pessoa;
     this.selectedIndex = index;
@@ -41,6 +48,7 @@ export class PessoaPesquisaComponent {
     return iniciais.join('');
   }
   onCancel() {}
+
   changeStatusPessoa(id: any) {
     if (!this.pessoaResponse || !this.pessoaResponse.content) {
       this.toastr.error(

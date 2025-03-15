@@ -1,24 +1,31 @@
+import { PessoasModule } from './pessoas/pessoas.module';
+import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PessoaCadastroComponent } from './pessoas/pessoa-cadastro/pessoa-cadastro.component';
-import { LancamentosPesquisaComponent } from './lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component';
-import { LancamentosCadastroComponent } from './lancamentos/lancamentos-cadastro/lancamentos-cadastro.component';
-import { PessoaPesquisaComponent } from './pessoas/pessoa-pesquisa/pessoa-pesquisa.component';
+
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NgModule } from '@angular/core';
+import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 export const routes: Routes = [
-  { path: 'lancamentos', component: LancamentosPesquisaComponent },
-  { path: 'pessoas', component: PessoaPesquisaComponent },
-
   {
-    path: 'pessoa/nova',
-    component: PessoaCadastroComponent,
+    path: 'lancamentos',
+    loadChildren: () =>
+      import('./lancamentos/lancamentos.module').then(
+        (m) => m.LancamentosModule
+      ),
   },
   {
-    path: 'lancamento/novo',
-    component: LancamentosCadastroComponent,
+    path: 'pessoas',
+    loadChildren: () =>
+      import('./pessoas/pessoas.module').then(
+        (m) => m.PessoasModule
+      ),
+  },
+  {
+    path: 'pagina-nao-encontrada',
+    component: PaginaNaoEncontradaComponent,
   },
   {
     path: 'login',
@@ -30,13 +37,13 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'lancamentos',
+    redirectTo: 'pagina-nao-encontrada',
     pathMatch: 'full',
-  },
+  }
 
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRouteModule { }
+export class AppRouteModule {}

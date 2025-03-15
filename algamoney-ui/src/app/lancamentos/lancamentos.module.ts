@@ -4,6 +4,7 @@ import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { LancamentoRoutingModule } from './lancamento.routing';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { SharedModule } from '../shared/shared.module';
 
   ],
   imports: [
-    CommonModule, FormsModule, ReactiveFormsModule,SharedModule
+    CommonModule, FormsModule, ReactiveFormsModule,SharedModule, LancamentoRoutingModule
   ],
 
 })

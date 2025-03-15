@@ -71,16 +71,15 @@
     </div>
   </div>
 
-  <!-- Transactions Table -->
   <div
     class="bg-white rounded-lg shadow-md overflow-hidden animate__animated animate__fadeInUp animate__delay-1s"
   >
     <div class="flex justify-between items-center p-6 border-b border-gray-200">
       <h3 class="text-xl font-semibold text-gray-800">Resultados</h3>
-      <button
+      <button (click)="goToCadastro()"
         class="btn-money px-4 py-2 rounded-md font-medium flex items-center"
       >
-        <i class="fas fa-plus mr-2"></i> Novo Lançamento
+        <i  class="fas fa-plus mr-2"></i> Novo Lançamento
       </button>
     </div>
 
@@ -171,7 +170,7 @@
               {{ formatarValor(lancamento.valor) }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-              <button
+              <button  routerLink="/lancamentos/{{ lancamento.codigo }}"
                 class="text-indigo-600 hover:text-indigo-900 mr-3 group relative"
               >
                 <i class="fas fa-edit"></i>
@@ -181,7 +180,7 @@
                   Editar lançamento
                 </span>
               </button>
-              <button class="text-red-600 hover:text-red-900 group relative">
+              <button  class="text-red-600 hover:text-red-900 group relative">
                 <label
                   for="modal-1"
                   class="text-red-600 hover:text-red-900 cursor-pointer"
@@ -197,7 +196,6 @@
                   Excluir lançamento
                 </span>
 
-                <!-- Modal para Linha 1 -->
 
                 <app-modal-delete
                   [modalId]="'modal-1'"
@@ -210,7 +208,6 @@
                   (confirm)="deleteById(lancamentoSelected.codigo)"
                   (cancel)="onCancel()"
                 >
-                  <!-- Conteúdo específico para lançamentos -->
                   <div
                     class="bg-gray-50 p-4 rounded-md mb-4"
                     *ngIf="lancamentoSelected"

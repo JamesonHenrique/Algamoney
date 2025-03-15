@@ -40,7 +40,7 @@
   >
     <div class="flex justify-between items-center p-6 border-b border-gray-200">
       <h3 class="text-xl font-semibold text-gray-800">Resultados</h3>
-      <button
+      <button routerLink="/pessoas/cadastro"
         class="btn-money px-4 py-2 rounded-md font-medium flex items-center"
       >
         <i class="fas fa-plus mr-2"></i> Nova Pessoa
@@ -129,7 +129,7 @@
               </button>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-              <button
+              <button routerLink="/pessoas/{{ pessoa.codigo }}"
                 class="text-indigo-600 hover:text-indigo-900 mr-3 group relative"
               >
                 <i class="fas fa-edit"></i>

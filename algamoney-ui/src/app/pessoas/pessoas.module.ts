@@ -5,6 +5,7 @@ import { PessoaPesquisaComponent } from './pessoa-pesquisa/pessoa-pesquisa.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MessagesComponent } from '../shared/messages/messages.component';
 import { SharedModule } from '../shared/shared.module';
+import { PessoaRoutingModule } from './pessoa.routing';
 
 
 @NgModule({
@@ -13,6 +14,6 @@ import { SharedModule } from '../shared/shared.module';
     PessoaPesquisaComponent,
 
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, SharedModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, SharedModule, PessoaRoutingModule],
 })
 export class PessoasModule {}

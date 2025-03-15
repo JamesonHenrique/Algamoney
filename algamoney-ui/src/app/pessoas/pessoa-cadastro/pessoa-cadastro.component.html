@@ -1,9 +1,11 @@
 <main class="container mx-auto px-4 py-8">
-  <div class="animate__animated animate__fadeIn mb-8">
-    <h1 class="text-3xl font-display font-bold text-gray-800">Nova Pessoa</h1>
-    <p class="text-gray-600 mt-1">Cadastre uma nova pessoa e seus contatos</p>
-  </div>
 
+  <div  class="animate__animated animate__fadeIn mb-8">
+    <h1 class="text-3xl font-display font-bold text-gray-800">
+      {{editando ? 'Atualizar' : 'Cadastrar'}} Pessoa
+    </h1>
+    <p class="text-gray-600 mt-1"> {{editando ? 'Atualize uma pessoa existente e seus contatos' : 'Cadastre uma nova pessoa e seus contatos'}}</p>
+  </div>
   <div
     class="bg-white rounded-lg shadow-md p-6 mb-8 animate__animated animate__fadeInUp"
   >
@@ -15,6 +17,11 @@
             >Nome</label
           >
           <input
+          [ngClass]="{
+            'border-red-500':
+              getErrors['nome'].invalid &&
+              getErrors['nome'].touched
+          }"
             type="text"
             id="nome"
             formControlName="nome"
@@ -38,14 +45,20 @@
                 >Logradouro</label
               >
               <input
+              [ngClass]="{
+                'border-red-500':
+                  getErrors['endereco'].get('logradouro')?.invalid &&
+                  getErrors['endereco'].get('logradouro')?.touched
+              }"
                 type="text"
                 formControlName="logradouro"
                 id="logradouro"
+
                 class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
                 placeholder="Rua, Avenida, etc."
               />
               <app-messages
-                [control]="getErrors['logradouro']"
+                [control]="getErrors['endereco'].get('logradouro')!"
                 fieldName="Logradouro"
                 [customErrors]="{ required: 'Logradouro é obrigatório.' }"
               >
@@ -59,6 +72,11 @@
                 >Número</label
               >
               <input
+              [ngClass]="{
+                'border-red-500':
+                  getErrors['endereco'].get('numero')?.invalid &&
+                  getErrors['endereco'].get('numero')?.touched
+              }"
                 type="text"
                 id="numero"
                 formControlName="numero"
@@ -66,7 +84,7 @@
                 placeholder="Nº"
               />
               <app-messages
-                [control]="getErrors['numero']"
+              [control]="getErrors['endereco'].get('numero')!"
                 fieldName="Número"
                 [customErrors]="{ required: 'Número é obrigatório.' }"
               >
@@ -82,12 +100,26 @@
                 >Complemento</label
               >
               <input
+              [ngClass]="{
+                'border-red-500':
+                  getErrors['endereco'].get('complemento')?.invalid &&
+                  getErrors['endereco'].get('complemento')?.touched
+              }"
                 type="text"
                 formControlName="complemento"
                 id="complemento"
                 class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
                 placeholder="Apto, Bloco, etc."
               />
+              <app-messages
+              [control]="getErrors['endereco'].get('complemento')!"
+                fieldName="Complemento"
+                [customErrors]="{
+            'required': 'Complemento é obrigatório.',
+
+           }"
+              >
+              </app-messages>
             </div>
 
             <div>
@@ -97,6 +129,11 @@
                 >Bairro</label
               >
               <input
+              [ngClass]="{
+                'border-red-500':
+                  getErrors['endereco'].get('bairro')?.invalid &&
+                  getErrors['endereco'].get('bairro')?.touched
+              }"
                 type="text"
                 id="bairro"
                 formControlName="bairro"
@@ -104,7 +141,7 @@
                 placeholder="Bairro"
               />
               <app-messages
-                [control]="getErrors['bairro']"
+              [control]="getErrors['endereco'].get('bairro')!"
                 fieldName="Bairro"
                 [customErrors]="{ required: 'Bairro é obrigatório.' }"
               >
@@ -117,6 +154,11 @@
                 >CEP</label
               >
               <input
+              [ngClass]="{
+                'border-red-500':
+                  getErrors['endereco'].get('cep')?.invalid &&
+                  getErrors['endereco'].get('cep')?.touched
+              }"
                 name="CEP"
                 id="CEP"
                 required
@@ -130,7 +172,7 @@
                 placeholder="00000-000"
               />
               <app-messages
-                [control]="getErrors['cep']"
+              [control]="getErrors['endereco'].get('cep')!"
                 fieldName="CEP"
                 [customErrors]="{
                   required: 'CEP é obrigatório.',
@@ -149,6 +191,11 @@
                 >Cidade</label
               >
               <input
+              [ngClass]="{
+                'border-red-500':
+                  getErrors['endereco'].get('cidade')?.invalid &&
+                  getErrors['endereco'].get('cidade')?.touched
+              }"
                 type="text"
                 id="cidade"
                 formControlName="cidade"
@@ -156,7 +203,7 @@
                 placeholder="Cidade"
               />
               <app-messages
-                [control]="getErrors['cidade']"
+              [control]="getErrors['endereco'].get('cidade')!"
                 fieldName="cidade"
                 [customErrors]="{ required: 'Cidade é obrigatório.' }"
               >
@@ -170,6 +217,11 @@
                 >Estado</label
               >
               <select
+              [ngClass]="{
+                'border-red-500':
+                  getErrors['endereco'].get('estado')?.invalid &&
+                  getErrors['endereco'].get('estado')?.touched
+              }"
                 id="estado"
                 formControlName="estado"
                 class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
@@ -185,7 +237,7 @@
                 </option>
               </select>
               <app-messages
-                [control]="getErrors['estado']"
+              [control]="getErrors['endereco'].get('estado')!"
                 fieldName="Estado"
                 [customErrors]="{
             'required': 'Estado é obrigatório.',
@@ -358,7 +410,7 @@
 
       <div class="flex flex-col sm:flex-row justify-between items-center mt-8">
         <a
-          href="#"
+        routerLink="/pessoas"
           class="text-gray-600 hover:text-money-600 transition-colors mb-4 sm:mb-0"
         >
           <i class="fas fa-arrow-left mr-1"></i> Voltar para a pesquisa

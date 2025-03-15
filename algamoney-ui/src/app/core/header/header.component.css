@@ -1,0 +1,45 @@
+.header-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-money {
+  background-color: #22c55e;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-money:hover {
+  background-color: #16a34a;
+}
+
+.table-row:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.table-row:hover {
+  background-color: #f0fdf4;
+}
+
+.status-paid {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status-pending {
+  background-color: #fff7ed;
+  color: #9a3412;
+}
+
+.status-late {
+  background-color: #fef2f2;
+  color: #b91c1c;
+}

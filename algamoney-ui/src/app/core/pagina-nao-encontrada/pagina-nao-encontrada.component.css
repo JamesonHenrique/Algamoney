@@ -1,0 +1,75 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.error-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(22, 101, 52, 0.1) 100%);
+}
+
+.btn-money {
+  background-color: #22c55e;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-money:hover {
+  background-color: #16a34a;
+}
+
+.btn-outline {
+  border: 2px solid #22c55e;
+  color: #22c55e;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: #f0fdf4;
+}
+
+.error-card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  position: relative;
+}
+
+.error-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.25rem;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+
+.error-number {
+  font-size: 8rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-box input {
+  padding-left: 3rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}

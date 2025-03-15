@@ -9,10 +9,7 @@ standalone: false,
 })
 export class HeaderComponent {
   constructor(private router: Router) {}
-  isAuthPage(): boolean {
-    const currentRoute = this.router.url;
-    return currentRoute.includes('/login') || currentRoute.includes('/register');
-  }
+
 
   isMobileMenuOpen = false;
   toggleMobileMenu() {

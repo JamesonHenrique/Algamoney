@@ -15,8 +15,9 @@ import {
   LancamentoResourceService,
   PessoaResourceService,
 } from '../../services/services';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lancamentos-cadastro',
@@ -33,9 +34,12 @@ export class LancamentosCadastroComponent {
     private pessoaService: PessoaResourceService,
     private lancamentoService: LancamentoResourceService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private activatedRoute: ActivatedRoute,
+    private title:Title
   ) {}
   ngOnInit(): void {
+    this.title.setTitle('Cadastro de Lançamentos');
     this.lancamentoForm = this.fb.group({
       dataVencimento: ['', Validators.required],
       dataPagamento: ['', Validators.required],
@@ -43,32 +47,47 @@ export class LancamentosCadastroComponent {
       descricao: ['', [Validators.required, Validators.minLength(3)]],
       valor: ['', [Validators.required, Validators.min(0)]],
       categoria: this.fb.group({
-        codigo: [null, Validators.required],
+        codigo: ['', Validators.required],
         nome: [],
       }),
       pessoa: this.fb.group({
-        codigo: [null, Validators.required],
+        codigo: ['', Validators.required],
         nome: [],
       }),
       observacao: ['', Validators.required],
     });
-    this.formulario = this.fb.group({
-      codigo: [],
-      tipo: ['RECEITA', Validators.required],
-      vencimento: [null, Validators.required],
-      pagamento: [],
-      descricao: [null, [Validators.required, Validators.minLength(3)]],
-      valor: [null, Validators.required],
-      pessoa: this.fb.group({
-        codigo: [null, Validators.required],
-        nome: [],
-      }),
-      categoria: this.fb.group({
-        codigo: [null, Validators.required],
-        nome: [],
-      }),
-      observacao: [],
-    });
+    const lancamentoId = this.activatedRoute.snapshot.params['codigo'];
+    if (lancamentoId) {
+      this.lancamentoService
+        .buscarPeloCodigo1({
+          codigo: lancamentoId,
+        })
+        .subscribe({
+          next: (lancamento) => {
+            this.lancamentoForm.patchValue({
+              dataVencimento: lancamento.dataVencimento,
+              dataPagamento: lancamento.dataPagamento,
+              tipo: lancamento.tipo,
+              descricao: lancamento.descricao,
+              valor: lancamento.valor,
+              categoria: lancamento.categoria ? {
+                codigo: lancamento.categoria.codigo,
+                nome: lancamento.categoria.nome,
+              } : {},
+              pessoa: lancamento.pessoa ? {
+                codigo: lancamento.pessoa.codigo,
+                nome: lancamento.pessoa.nome,
+              } : {},
+              observacao: lancamento.observacao,
+            });
+          },
+          error: (err) => {
+            console.error('Erro ao buscar lançamento:', err);
+            this.toastr.error('Erro ao buscar lançamento!');
+          },
+        });
+    }
+
     this.findAllCategorias();
     this.findAllPessoas();
   }
@@ -83,6 +102,10 @@ export class LancamentosCadastroComponent {
   page = 0;
   pageSize = 4;
   pages: any = [];
+
+  get editando(): boolean {
+    return this.activatedRoute.snapshot.params['codigo'] !== undefined;
+  }
   saveLancamento() {
     const lancamento = this.lancamentoForm.value;
     this.lancamentoService.criar1({ body: lancamento }).subscribe({

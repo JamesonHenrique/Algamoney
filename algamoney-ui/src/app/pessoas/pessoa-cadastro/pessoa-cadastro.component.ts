@@ -10,7 +10,8 @@ import { CommonModule } from '@angular/common';
 import { MessagesComponent } from '../../shared/messages/messages.component';
 import { ToastrService } from 'ngx-toastr';
 import { PessoaResourceService } from '../../services/services';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pessoa-cadastro',
@@ -23,25 +24,60 @@ export class PessoaCadastroComponent {
 
   constructor(
     private fb: FormBuilder,
-     private toastr:ToastrService,
-      private pessoaService:PessoaResourceService,
-      private router:Router
+    private toastr: ToastrService,
+    private pessoaService: PessoaResourceService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private title:Title
   ) {}
 
   ngOnInit(): void {
+    this.title.setTitle('Cadastro de Pessoas');
     this.pessoaForm = this.fb.group({
       nome: ['', Validators.required],
       ativo: [true, Validators.required],
       endereco: this.fb.group({
         logradouro: ['', Validators.required],
-      numero: ['', Validators.required],
-      complemento: [''],
-      bairro: ['', Validators.required],
-      cep: ['', [Validators.required, Validators.pattern(/^\d{5}-\d{3}$/)]],
-      cidade: ['', Validators.required],
-      estado: ['', Validators.required],
+        numero: ['', Validators.required],
+        complemento: ['', Validators.required],
+        bairro: ['', Validators.required],
+        cep: ['', [Validators.required, Validators.pattern(/^\d{5}-\d{3}$/)]],
+        cidade: ['', Validators.required],
+        estado: ['', Validators.required],
       }),
     });
+
+    const pessoaId = this.activatedRoute.snapshot.params['codigo'];
+
+    if (pessoaId) {
+      this.pessoaService
+        .buscarPeloCodigo({
+          codigo: pessoaId,
+        })
+        .subscribe({
+          next: (pessoa) => {
+            this.pessoaForm.patchValue({
+              nome: pessoa.nome,
+              ativo: pessoa.ativo,
+              endereco: pessoa.endereco
+                ? {
+                    logradouro: pessoa.endereco.logradouro,
+                    numero: pessoa.endereco.numero,
+                    complemento: pessoa.endereco.complemento,
+                    bairro: pessoa.endereco.bairro,
+                    cep: pessoa.endereco.cep,
+                    cidade: pessoa.endereco.cidade,
+                    estado: pessoa.endereco.estado,
+                  }
+                : {},
+            });
+          },
+          error: (err) => {
+            console.error('Erro ao buscar pessoa:', err);
+            this.toastr.error('Erro ao buscar pessoa!');
+          },
+        });
+    }
   }
   estados = [
     { label: 'Acre', value: 'AC' },
@@ -72,8 +108,12 @@ export class PessoaCadastroComponent {
     { label: 'Sergipe', value: 'SE' },
     { label: 'Tocantins', value: 'TO' },
   ];
+  get editando(): boolean {
+    return this.activatedRoute.snapshot.params['codigo'] !== undefined;
+  }
   savePessoa() {
     const lancamento = this.pessoaForm.value;
+
     this.pessoaService.criar({ body: lancamento }).subscribe({
       next: (pessoaId) => {
         this.router.navigate(['/pessoas']);
@@ -82,6 +122,19 @@ export class PessoaCadastroComponent {
       error: (err) => {
         console.log(err.error);
         this.toastr.error('Erro ao salvar pessoa!');
+      },
+    });
+  }
+  updatePessoa(codigo: any) {
+    const pessoa = this.pessoaForm.value;
+    this.pessoaService.atualizar({ codigo, body: pessoa }).subscribe({
+      next: (pessoaId) => {
+        this.router.navigate(['/pessoas']);
+        this.toastr.success('Pessoa atualizado com sucesso!');
+      },
+      error: (err) => {
+        console.log(err.error);
+        this.toastr.error('Erro ao atualizar pessoa!');
       },
     });
   }
@@ -102,7 +155,12 @@ export class PessoaCadastroComponent {
   onSubmit(): void {
     if (this.pessoaForm.valid) {
       console.log(this.pessoaForm.value);
-      this.savePessoa();
+      const pessoaId = this.activatedRoute.snapshot.params['codigo'];
+      if (pessoaId) {
+        this.updatePessoa(pessoaId);
+      } else {
+        this.savePessoa();
+      }
     } else {
       this.pessoaForm.markAllAsTouched();
       this.toastr.error('Formulário inválido!');

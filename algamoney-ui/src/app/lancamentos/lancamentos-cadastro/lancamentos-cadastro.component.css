@@ -175,3 +175,24 @@ input[type="date"]::-webkit-datetime-edit-fields-wrapper {
 #modal-toggle:checked ~ .modal-overlay {
   overflow: hidden;
 }
+@keyframes btn-pisca {
+
+  0% { opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.alert-error {
+
+
+
+
+display: inline-block;
+text-decoration: none;
+border-radius: 4px;
+-webkit-animation: btn-pisca .9s linear infinite;
+-moz-animation: btn-pisca .9s linear infinite;
+-ms-animation: btn-pisca .9s linear infinite;
+-o-animation: btn-pisca .9s linear infinite;
+animation: btn-pisca .9s linear infinite;
+}

@@ -1,3 +1,6 @@
-.bg-gray-800 {
-    background-color: #2d4839;
+.content-wrapper {
+  display: flex;
+  overflow-y: auto;
+  height: 100vh;
 }
+

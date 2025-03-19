@@ -1,11 +1,14 @@
 package algamoneyapi.infrastructure.config;
 
-
-
 import algamoneyapi.infrastructure.security.JwtAuthFilter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -14,15 +17,58 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.filter.OncePerRequestFilter;
 
+import java.io.IOException;
+import java.time.Duration;
+
+
+import org.springframework.http.HttpStatus;
+import io.github.resilience4j.ratelimiter.RateLimiter;
+import io.github.resilience4j.ratelimiter.RateLimiterConfig;
+import io.github.resilience4j.ratelimiter.RateLimiterRegistry;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 @EnableMethodSecurity
+@Profile("prod")
 public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
     private final JwtAuthFilter jwtAuthFilter;
+
+
+
+
+    @Bean
+    public RateLimiter rateLimiter() {
+        RateLimiterConfig config = RateLimiterConfig.custom()
+                .limitRefreshPeriod(Duration.ofSeconds(1))
+                .limitForPeriod(100)
+                .timeoutDuration(Duration.ofMillis(0))
+                .build();
+
+        RateLimiterRegistry registry = RateLimiterRegistry.of(config);
+        return registry.rateLimiter("rateLimiter");
+    }
+
+    @Bean
+    public OncePerRequestFilter rateLimitFilter() {
+        return new OncePerRequestFilter() {
+            @Override
+            protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response , @NonNull FilterChain filterChain)
+                    throws IOException, jakarta.servlet.ServletException {
+                if (!rateLimiter().acquirePermission()) {
+                    response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
+                    response.getWriter().write("Too many requests");
+                    return;
+                }
+                filterChain.doFilter(request, response);
+            }
+        };
+    }
+
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
             throws
@@ -57,7 +103,9 @@ public class SecurityConfiguration {
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(
                         jwtAuthFilter, UsernamePasswordAuthenticationFilter.class
-                );
+                )
+                .addFilterBefore(rateLimitFilter(), JwtAuthFilter.class);;
+
         return http.build();
     }
 }

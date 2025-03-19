@@ -1,0 +1,46 @@
+<div
+  class="px-6 py-4 border-t border-gray-200 flex items-center justify-center"
+>
+  <div class="flex space-x-2">
+    <button
+      (click)="goToFirstPage()"
+      class="pagination-item text-gray-500 disabled:opacity-50 border border-gray-400/30"
+      [disabled]="currentPage === 0"
+    >
+      <i class="fa-solid fa-angle-double-left"></i>
+    </button>
+    <button
+      (click)="goToPreviousPage()"
+      class="pagination-item text-gray-500 disabled:opacity-50 border border-gray-400/30"
+      [disabled]="currentPage === 0"
+    >
+      <i class="fa-solid fa-angle-left"></i>
+    </button>
+
+    <button
+      *ngFor="let pageIndex of pages"
+      (click)="goToPage(pageIndex)"
+      class="pagination-item  text-gray-500 border border-gray-400/30"
+      [class.active]="currentPage === pageIndex"
+      [class.text-white]="currentPage === pageIndex"
+      [class.border-money-500]="currentPage === pageIndex"
+    >
+      {{ pageIndex + 1 }}
+    </button>
+
+    <button
+      (click)="goToNextPage()"
+      class="pagination-item text-gray-500 disabled:opacity-50 border border-gray-400/30"
+      [disabled]="isLastPage"
+    >
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    <button
+      (click)="goToLastPage()"
+      class="pagination-item text-gray-500 disabled:opacity-50 border border-gray-400/30"
+      [disabled]="isLastPage"
+    >
+      <i class="fa-solid fa-angles-right"></i>
+    </button>
+  </div>
+</div>

@@ -32,7 +32,6 @@ public class AuthenticationService {
 
 
     public AuthenticationResponse register(RegisterRequest request) {
-        System.out.println("Entrou no register");
 
         var userole = roleRepository.findByName("basic")
                 .orElseThrow(() -> new RuntimeException("Regra não encontrada")); var user = Usuario.builder()
@@ -55,9 +54,6 @@ public class AuthenticationService {
 
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        System.out.println("Entrou no authenticate");
-        System.out.println(request.email());
-        System.out.println(request.password());
         if (request.password() == null || request.password().isEmpty()) {
             throw new IllegalArgumentException("Password cannot be empty");
         }
@@ -74,5 +70,23 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(user);
 
         return AuthenticationResponse.builder().token(jwtToken).build();
+    }
+    public AuthenticationResponse refreshToken(String refreshToken) {
+        String username = jwtService.extractUsername(refreshToken);
+
+        if (username != null) {
+            var user = userRepository.findByEmail(username)
+                    .orElseThrow(() -> new RuntimeException("User not found"));
+
+            if (jwtService.isTokenValid(refreshToken, user)) {
+                var newAccessToken = jwtService.generateToken(user);
+                return AuthenticationResponse.builder()
+                        .token(newAccessToken)
+                        .refreshToken(refreshToken)
+                        .build();
+            }
+        }
+
+        throw new RuntimeException("Refresh token inválido ou expirado");
     }
 }

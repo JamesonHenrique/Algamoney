@@ -12,25 +12,30 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 50;
   transition: all 0.3s ease;
+
 }
 
-.status-paid {
-  background-color: #DEF7EC;
-  color: #03543E;
-}
+/* Adicione isso ao seu CSS */
+@media (max-width: 768px) {
+  .modal-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+    transition: all 0.3s ease;
+  }
 
-.status-pending {
-  background-color: #FEF3C7;
-  color: #92400E;
-}
-
-.status-late {
-  background-color: #FEE2E2;
-  color: #991B1B;
-}
-
-.text-money-600 {
-  color: #059669;
+  .modal-content {
+    width: 90%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
 }
 
 .btn-money {

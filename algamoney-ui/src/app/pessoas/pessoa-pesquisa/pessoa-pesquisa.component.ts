@@ -48,7 +48,10 @@ export class PessoaPesquisaComponent {
     return iniciais.join('');
   }
   onCancel() {}
-
+  onPageChange(newPage: number): void {
+    this.page = newPage;
+    this.findAllPessoas();
+  }
   changeStatusPessoa(id: any) {
     if (!this.pessoaResponse || !this.pessoaResponse.content) {
       this.toastr.error(
@@ -67,7 +70,6 @@ export class PessoaPesquisaComponent {
       })
       .subscribe({
         next: (response) => {
-          console.log(response);
           if (ativo) {
             this.toastr.success('Status Desativado com sucesso!');
           } else {
@@ -89,7 +91,6 @@ export class PessoaPesquisaComponent {
       })
       .subscribe({
         next: (response) => {
-          console.log(response);
           this.toastr.success('Pessoa removido com sucesso!');
           this.findAllPessoas();
         },
@@ -107,12 +108,10 @@ export class PessoaPesquisaComponent {
       })
       .subscribe({
         next: (response) => {
-          console.log(response);
           this.pessoaResponse = response;
           this.pages = Array(this.pessoaResponse.totalPages)
             .fill(0)
             .map((x, i) => i);
-          console.log(this.pages);
         },
         error: (error) => {
           console.error(error);

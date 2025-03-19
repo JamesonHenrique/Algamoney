@@ -6,10 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import {
-
-  PageResponsePessoaResponseDto,
-} from '../../services/models';
+import { PageResponsePessoaResponseDto } from '../../services/models';
 import {
   CategoriaResourceService,
   LancamentoResourceService,
@@ -27,7 +24,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class LancamentosCadastroComponent {
   lancamentoForm!: FormGroup;
-  formulario!: FormGroup;
+
   constructor(
     private fb: FormBuilder,
     private categoriaService: CategoriaResourceService,
@@ -36,13 +33,13 @@ export class LancamentosCadastroComponent {
     private router: Router,
     private toastr: ToastrService,
     private activatedRoute: ActivatedRoute,
-    private title:Title
+    private title: Title
   ) {}
   ngOnInit(): void {
     this.title.setTitle('Cadastro de Lançamentos');
     this.lancamentoForm = this.fb.group({
       dataVencimento: ['', Validators.required],
-      dataPagamento: ['', Validators.required],
+      dataPagamento: [''],
       tipo: [this.onTipoChange('RECEITA'), Validators.required],
       descricao: ['', [Validators.required, Validators.minLength(3)]],
       valor: ['', [Validators.required, Validators.min(0)]],
@@ -70,14 +67,18 @@ export class LancamentosCadastroComponent {
               tipo: lancamento.tipo,
               descricao: lancamento.descricao,
               valor: lancamento.valor,
-              categoria: lancamento.categoria ? {
-                codigo: lancamento.categoria.codigo,
-                nome: lancamento.categoria.nome,
-              } : {},
-              pessoa: lancamento.pessoa ? {
-                codigo: lancamento.pessoa.codigo,
-                nome: lancamento.pessoa.nome,
-              } : {},
+              categoria: lancamento.categoria
+                ? {
+                    codigo: lancamento.categoria.codigo,
+                    nome: lancamento.categoria.nome,
+                  }
+                : {},
+              pessoa: lancamento.pessoa
+                ? {
+                    codigo: lancamento.pessoa.codigo,
+                    nome: lancamento.pessoa.nome,
+                  }
+                : {},
               observacao: lancamento.observacao,
             });
           },
@@ -127,12 +128,10 @@ export class LancamentosCadastroComponent {
       })
       .subscribe({
         next: (response) => {
-          console.log(response);
           this.pessoaResponse = response;
           this.pages = Array(this.pessoaResponse.totalPages)
             .fill(0)
             .map((x, i) => i);
-          console.log(this.pages);
         },
         error: (error) => {
           console.error(error);
@@ -163,6 +162,9 @@ export class LancamentosCadastroComponent {
       this.lancamentoForm.markAllAsTouched();
       this.toastr.error('Formulário inválido!');
     }
+  }
+  limparCadastro() {
+    this.lancamentoForm.reset();
   }
   get getErrors() {
     return this.lancamentoForm.controls;

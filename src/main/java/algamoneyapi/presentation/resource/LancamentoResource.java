@@ -1,14 +1,19 @@
 package algamoneyapi.presentation.resource;
 
-import algamoneyapi.application.dto.LancamentoRequestDTO;
-import algamoneyapi.application.dto.LancamentoResponseDTO;
-import algamoneyapi.application.dto.PageResponse;
+import algamoneyapi.application.dto.*;
 import algamoneyapi.application.service.LancamentoService;
 import algamoneyapi.core.repository.LancamentoRepository;
 import algamoneyapi.core.repository.projection.ResumoLancamento;
 import algamoneyapi.presentation.event.RecursoCriadoEvent;
 import algamoneyapi.presentation.exceptionHandler.AlgamoneyExceptionHandler;
 import algamoneyapi.application.service.exception.PessoaInexistenteOuInativaException;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
@@ -32,6 +37,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/lancamentos")
+@Tag(name = "Lançamentos", description = "API para gerenciamento de lançamentos financeiros")
 public class LancamentoResource {
 
     @Autowired
@@ -46,47 +52,98 @@ public class LancamentoResource {
     @Autowired
     private MessageSource messageSource;
 
+    @Operation(summary = "Filtrar lançamentos", description = "Retorna uma lista paginada de lançamentos com base nos filtros fornecidos")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Lançamentos encontrados com sucesso"),
+        @ApiResponse(responseCode = "400", description = "Parâmetros de paginação inválidos")
+    })
     @GetMapping
     public ResponseEntity<PageResponse<LancamentoResponseDTO>> filtrar(
+            @Parameter(description = "Descrição do lançamento para filtrar") 
             @RequestParam(required = false) String descricao,
-            @RequestParam(required = false)  LocalDate dataPagamento,
+            @Parameter(description = "Data de pagamento para filtrar") 
+            @RequestParam(required = false) LocalDate dataPagamento,
+            @Parameter(description = "Data de vencimento para filtrar") 
             @RequestParam(required = false) LocalDate dataVencimento,
+            @Parameter(description = "Número da página (começa em 0)") 
             @RequestParam(defaultValue = "0", name = "page", required = false) @PositiveOrZero int page,
+            @Parameter(description = "Quantidade de registros por página (máximo 100)") 
             @RequestParam(defaultValue = "10", name = "size", required = false) @Positive @Max(100) int size) {
         return ResponseEntity.ok(lancamentoService.filtrar(descricao, dataPagamento, dataVencimento, size, page));
     }
 
+    @Operation(summary = "Resumo de lançamentos", description = "Retorna uma lista paginada com o resumo dos lançamentos")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Resumo dos lançamentos retornado com sucesso")
+    })
     @GetMapping("/resumir")
     public Page<ResumoLancamento> resumir(
+            @Parameter(description = "Descrição do lançamento para filtrar")
             @RequestParam(required = false) String descricao,
+            @Parameter(description = "Data de vencimento inicial")
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataVencimentoDe,
+            @Parameter(description = "Data de vencimento final")
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataVencimentoAte,
             Pageable pageable) {
         return lancamentoRepository.resumir(descricao, dataVencimentoDe, dataVencimentoAte, pageable);
     }
 
+    @Operation(summary = "Buscar lançamento por código", description = "Retorna um lançamento específico pelo seu código")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Lançamento encontrado"),
+        @ApiResponse(responseCode = "404", description = "Lançamento não encontrado")
+    })
     @GetMapping("/{codigo}")
-    public ResponseEntity<LancamentoResponseDTO> buscarPeloCodigo(@PathVariable Long codigo) {
+    public ResponseEntity<LancamentoResponseDTO> buscarPeloCodigo(
+            @Parameter(description = "Código do lançamento", required = true)
+            @PathVariable Long codigo) {
         return lancamentoRepository.findById(codigo)
                 .map(lancamento -> ResponseEntity.ok(new LancamentoResponseDTO(lancamento.getCodigo(), lancamento.getDescricao(), lancamento.getDataVencimento(), lancamento.getDataPagamento(), lancamento.getValor(), lancamento.getObservacao(), lancamento.getTipo(), lancamento.getCategoria(), lancamento.getPessoa())))
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @Operation(summary = "Criar novo lançamento", description = "Cria um novo lançamento financeiro")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Lançamento criado com sucesso"),
+        @ApiResponse(responseCode = "400", description = "Dados inválidos fornecidos"),
+        @ApiResponse(responseCode = "422", description = "Pessoa inexistente ou inativa")
+    })
     @PostMapping
-    public ResponseEntity<LancamentoResponseDTO> criar(@Valid @RequestBody LancamentoRequestDTO lancamentoRequestDTO, HttpServletResponse response) {
+    public ResponseEntity<LancamentoResponseDTO> criar(
+            @Parameter(description = "Dados do lançamento", required = true)
+            @Valid @RequestBody LancamentoRequestDTO lancamentoRequestDTO, 
+            HttpServletResponse response) {
         LancamentoResponseDTO lancamentoSalvo = lancamentoService.salvar(lancamentoRequestDTO);
         publisher.publishEvent(new RecursoCriadoEvent(this, response, lancamentoSalvo.codigo()));
         return ResponseEntity.status(HttpStatus.CREATED).body(lancamentoSalvo);
     }
 
+    @Operation(summary = "Remover lançamento", description = "Remove um lançamento existente")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "204", description = "Lançamento removido com sucesso"),
+        @ApiResponse(responseCode = "404", description = "Lançamento não encontrado")
+    })
     @DeleteMapping("/{codigo}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void remover(@PathVariable Long codigo) {
+    public void remover(
+            @Parameter(description = "Código do lançamento", required = true)
+            @PathVariable Long codigo) {
         lancamentoRepository.deleteById(codigo);
     }
 
+    @Operation(summary = "Atualizar lançamento", description = "Atualiza um lançamento existente")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Lançamento atualizado com sucesso"),
+        @ApiResponse(responseCode = "404", description = "Lançamento não encontrado"),
+        @ApiResponse(responseCode = "400", description = "Dados inválidos fornecidos"),
+        @ApiResponse(responseCode = "422", description = "Pessoa inexistente ou inativa")
+    })
     @PutMapping("/{codigo}")
-    public ResponseEntity<LancamentoResponseDTO> atualizar(@PathVariable Long codigo, @Valid @RequestBody LancamentoRequestDTO lancamentoRequestDTO) {
+    public ResponseEntity<LancamentoResponseDTO> atualizar(
+            @Parameter(description = "Código do lançamento", required = true)
+            @PathVariable Long codigo,
+            @Parameter(description = "Novos dados do lançamento", required = true)
+            @Valid @RequestBody LancamentoRequestDTO lancamentoRequestDTO) {
         try {
             LancamentoResponseDTO lancamentoAtualizado = lancamentoService.atualizar(codigo, lancamentoRequestDTO);
             return ResponseEntity.ok(lancamentoAtualizado);
@@ -94,12 +151,16 @@ public class LancamentoResource {
             return ResponseEntity.notFound().build();
         }
     }
+    @GetMapping("/estatisticas/por-categoria")
+    public ResponseEntity<List<LancamentoEstatisticaCategoriaDto>> getEstatisticasPorCategoria() {
+        List<LancamentoEstatisticaCategoriaDto> estatisticas = lancamentoService.porCategoria(LocalDate.now());
+        return ResponseEntity.ok(estatisticas);
+    }
 
-    @ExceptionHandler({ PessoaInexistenteOuInativaException.class })
-    public ResponseEntity<Object> handlePessoaInexistenteOuInativaException(PessoaInexistenteOuInativaException ex) {
-        String mensagemUsuario = messageSource.getMessage("pessoa.inexistente-ou-inativa", null, LocaleContextHolder.getLocale());
-        String mensagemDesenvolvedor = ex.toString();
-        List<AlgamoneyExceptionHandler.ApiError> erros = Arrays.asList(new AlgamoneyExceptionHandler.ApiError(mensagemUsuario, mensagemDesenvolvedor));
-        return ResponseEntity.badRequest().body(erros);
+    @GetMapping("/estatisticas/por-dia")
+    public ResponseEntity<List<LancamentoEstatisticaDiaDto>> getEstatisticasPorDia(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate mesReferencia) {
+        List<LancamentoEstatisticaDiaDto> estatisticas = lancamentoService.porDia(mesReferencia);
+        return ResponseEntity.ok(estatisticas);
     }
 }

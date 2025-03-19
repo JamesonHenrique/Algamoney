@@ -8,6 +8,8 @@ import algamoneyapi.core.model.Pessoa;
 import algamoneyapi.core.repository.PessoaRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +25,7 @@ public class PessoaService {
 
     @Autowired
     private PessoaRepository pessoaRepository;
-
+    @CachePut(value = "pessoas", key = "#codigo")
     public PessoaResponseDTO atualizar(Long codigo, PessoaRequestDTO pessoaRequestDTO) {
         Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
         BeanUtils.copyProperties(pessoaRequestDTO, pessoaSalva, "codigo");
@@ -36,11 +38,12 @@ public class PessoaService {
         pessoaSalva.setAtivo(ativo);
         pessoaRepository.save(pessoaSalva);
     }
+    @Cacheable(value = "pessoas", key = "#codigo")
     public Pessoa buscarPessoaPeloCodigo(Long codigo) {
         return pessoaRepository.findById(codigo)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
     }
-
+    @Cacheable(value = "pessoas")
     public PageResponse<PessoaResponseDTO> pesquisar(String nome, int size, int page) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("nome").ascending());
         Page<Pessoa> pessoas = pessoaRepository.findByNomeContaining(nome, pageable);

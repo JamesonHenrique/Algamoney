@@ -1,11 +1,12 @@
 package algamoneyapi.application.dto;
 
-
 import algamoneyapi.core.model.Categoria;
 import algamoneyapi.core.model.Pessoa;
 import algamoneyapi.core.model.TipoLancamento;
-import jakarta.validation.constraints.NotNull;
-
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

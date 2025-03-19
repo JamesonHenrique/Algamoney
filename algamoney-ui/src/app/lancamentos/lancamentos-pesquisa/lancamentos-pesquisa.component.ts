@@ -18,9 +18,7 @@ export class LancamentosPesquisaComponent {
   pagesBack: any = [];
   lancamentos: any[] = [];
   page = 0;
-  pageSize = 4;
-  colors = ['red', 'indigo', 'purple', 'teal', 'rose', 'purple'];
-  personColors: { bgColor: string; textColor: string }[] = [];
+  pageSize = 5;
   pages: any = [];
   descricao: string = '';
   dataVencimento: string = '';
@@ -32,7 +30,7 @@ export class LancamentosPesquisaComponent {
     public colorService: ColorService,
     private router: Router,
     private toastr: ToastrService,
-    private title:Title
+    private title: Title
   ) {}
   ngOnInit(): void {
     this.title.setTitle('Pesquisa de Lançamentos');
@@ -55,16 +53,6 @@ export class LancamentosPesquisaComponent {
     return iniciais.join('');
   }
 
-  calculatePersonColors(): void {
-    this.personColors = this.lancamentos.map((lancamento, index) => {
-      const colorIndex = index % this.colors.length;
-      return {
-        bgColor: `bg-${this.colors[colorIndex]}-100`,
-        textColor: `text-${this.colors[colorIndex]}-600`,
-      };
-    });
-  }
-
   hasResults(): boolean {
     return this.lancamentos && this.lancamentos.length > 0;
   }
@@ -82,7 +70,7 @@ export class LancamentosPesquisaComponent {
         next: (response) => {
           this.lancamentosResponse = response;
           this.lancamentos = response.content || [];
-          this.calculatePersonColors();
+
           this.pages = Array(this.lancamentosResponse.totalPages)
             .fill(0)
             .map((x, i) => i);
@@ -102,7 +90,6 @@ export class LancamentosPesquisaComponent {
       })
       .subscribe({
         next: (response) => {
-          console.log(response);
           this.toastr.success('Lançamento removido com sucesso!');
           this.findAllLancamentos();
         },
@@ -135,35 +122,9 @@ export class LancamentosPesquisaComponent {
       ? `R$ ${Math.abs(valor).toFixed(2).replace('.', ',')}`
       : `- R$ ${Math.abs(valor).toFixed(2).replace('.', ',')}`;
   }
-  goToPage(page: number) {
-    this.page = page;
-    this.findAllLancamentos();
-  }
 
-  goToFirstPage() {
-    this.page = 0;
+  onPageChange(newPage: number): void {
+    this.page = newPage;
     this.findAllLancamentos();
-  }
-
-  goToPreviousPage() {
-    if (this.page > 0) {
-      this.page--;
-    }
-    this.findAllLancamentos();
-  }
-
-  goToLastPage() {
-    this.page = (this.lancamentosResponse.totalPages as number) - 1;
-    this.findAllLancamentos();
-  }
-  goToNextPage() {
-    if (this.page < (this.lancamentosResponse.totalPages ?? 0) - 1) {
-      this.page++;
-    }
-    this.findAllLancamentos();
-  }
-
-  get isLastPage() {
-    return this.page === (this.lancamentosResponse.totalPages as number) - 1;
   }
 }

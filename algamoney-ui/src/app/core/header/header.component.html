@@ -1,56 +1,47 @@
-<header  class="bg-white header-shadow">
-  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="flex items-center">
-          <i class="fas fa-money-bill-wave text-money-600 text-3xl mr-3"></i>
-          <h1 class="text-2xl font-display font-bold text-gray-800">Algamoney</h1>
-      </div>
+<header class="bg-white header-shadow z-10">
+  <div class="flex items-center justify-between p-4">
+    <label for="sidebar-toggle" class="lg:hidden text-gray-600 cursor-pointer">
+      <i class="fas fa-bars text-xl"></i>
+    </label>
 
-      <!-- Menu para desktop -->
-      <nav class="hidden lg:block">
+    <div class="hidden md:block flex-1 max-w-md mx-4">
 
-          <ul class="flex space-x-6">
-              <li><a  routerLink="/Dashboard" routerLinkActive="border-money-500 border-b-2 text-money-700 " class="text-money-700 font-medium hover:text-money-500 transition-colors"><i class="fas fa-chart-line mr-1"></i> Dashboard</a></li>
-              <li><a  routerLink="/lancamentos" routerLinkActive="border-b-2 text-money-700"  class=" font-medium  pb-1 hover:text-money-500 transition-colors"><i class="fas fa-exchange-alt mr-1"></i> Lançamentos</a></li>
-              <li><a  routerLink="/pessoas" routerLinkActive="border-money-500 border-b-2 text-money-700" class="text-gray-600 font-medium hover:text-money-500 transition-colors"><i class="fas fa-users mr-1"></i> Pessoas</a></li>
-              <li><a  routerLink="/config" routerLinkActive="border-money-500 border-b-2 text-money-700 "  class="text-gray-600 font-medium hover:text-money-500 transition-colors"><i class="fas fa-cog mr-1"></i> Configurações</a></li>
-          </ul>
+    </div>
 
-      </nav>
-
-      <!-- Informações do usuário -->
-      <div class="hidden lg:flex  items-center">
-          <span class="text-gray-600 mr-3">Olá, Usuário</span>
-          <div class="w-10 h-10 rounded-full bg-money-100 flex items-center justify-center">
-              <i class="fas fa-user text-money-600"></i>
-          </div>
-      </div>
-
-      <!-- Menu hamburguer para mobile -->
-      <button (click)="toggleMobileMenu()" class="lg:hidden text-gray-600 hover:text-money-500">
-          <i class="fa-solid fa-bars text-2xl"></i>
+    <div class="flex items-center space-x-4">
+      <button
+        class="relative text-gray-600 hover:text-money-600 transition-colors"
+      >
+        <i class="fas fa-bell text-xl"></i>
+        <span
+          class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center"
+          >3</span
+        >
       </button>
-  </div>
 
-  <!-- Menu mobile -->
-  <div [class.hidden]="!isMobileMenuOpen" class="lg:hidden bg-white border-t border-gray-200">
-      <div class="container mx-auto px-4 py-4">
-          <!-- Informações do usuário para mobile -->
-          <div class="flex items-center mb-4 pb-4 border-b border-gray-200">
-              <div class="w-10 h-10 rounded-full bg-money-100 flex items-center justify-center mr-3">
+      <div class="relative">
+        <div class=" items-center">
+          <div class="flex justify-end">
+            <div class="dropdown">
+              <button class="flex items-center space-x-2">
+                <div class=" text-left">
+                  <p class="text-sm font-medium text-gray-700">
+                    Olá, {{ username }}
+                  </p>
+                </div>
+                <div
+                  class="w-10 h-10 rounded-full bg-money-100 flex items-center justify-center"
+                >
                   <i class="fas fa-user text-money-600"></i>
-              </div>
-              <span class="text-gray-600">Olá, Usuário</span>
+                </div>
+              </button>
+            </div>
           </div>
-
-          <!-- Links do menu mobile -->
-          <nav>
-              <ul class="space-y-4">
-                  <li><a routerLink="/dashboard" routerLinkActive="border-l-4 border-money-500" class="text-money-700 font-medium hover:text-money-500 transition-colors block"><i class="fas fa-chart-line mr-2"></i> Dashboard</a></li>
-                  <li><a routerLink="/lancamentos" routerLinkActive="border-l-4 border-money-500" class="text-money-700 font-medium hover:text-money-500 transition-colors block"><i class="fas fa-exchange-alt mr-2"></i> Lançamentos</a></li>
-                  <li><a routerLink="/pessoa/nova" routerLinkActive="border-l-4 border-money-500" class="text-gray-600 font-medium hover:text-money-500 transition-colors block"><i class="fas fa-users mr-2"></i> Pessoas</a></li>
-                  <li><a routerLink="/configuracoes" routerLinkActive="border-l-4 border-money-500" class="text-gray-600 font-medium hover:text-money-500 transition-colors block"><i class="fas fa-cog mr-2"></i> Configurações</a></li>
-              </ul>
-          </nav>
+        </div>
+    
       </div>
+    </div>
   </div>
+
+
 </header>

@@ -5,10 +5,10 @@ import { ColorService } from '../../services/colors/color.service';
   selector: 'app-modal-delete',
   standalone: false,
   templateUrl: './modal-delete.component.html',
-  styleUrls: ['./modal-delete.component.css']
+  styleUrls: ['./modal-delete.component.css'],
 })
 export class ModalDeleteComponent {
-  constructor(public colorService:ColorService) { }
+  constructor(public colorService: ColorService) {}
 
   @Input() index: number = 1;
   @Input() lancamentoSelected: any;
@@ -25,11 +25,13 @@ export class ModalDeleteComponent {
   getInitials(nome: string): string {
     if (!nome) return '';
     const nomes = nome.split(' ');
-    const iniciais = nomes.slice(0, 2).map((n: string) => n.charAt(0).toUpperCase());
+    const iniciais = nomes
+      .slice(0, 2)
+      .map((n: string) => n.charAt(0).toUpperCase());
     return iniciais.join('');
   }
   getIndex(item: any): number {
-      if (!item || !this.lancamentos) return -1; // Verifica se lancamento ou lancamentos são nulos
-      return this.lancamentos.findIndex(l => l.codigo === item.codigo);
+    if (!item || !this.lancamentos) return -1; // Verifica se lancamento ou lancamentos são nulos
+    return this.lancamentos.findIndex((l) => l.codigo === item.codigo);
   }
 }

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ColorService {
 
- private colors = ['green', 'indigo', 'purple', 'teal', 'rose', 'purple'];
+ private colors = ['indigo', 'purple', 'amber', 'green', 'red', 'bluerose'];
 
   getColorPair(index: number): { bgColor: string; textColor: string } {
     const colorIndex = index % this.colors.length;

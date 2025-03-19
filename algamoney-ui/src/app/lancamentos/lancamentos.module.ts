@@ -5,16 +5,17 @@ import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { LancamentoRoutingModule } from './lancamento.routing';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
-  declarations: [
-    LancamentosCadastroComponent,
-    LancamentosPesquisaComponent
-
-  ],
+  declarations: [LancamentosCadastroComponent, LancamentosPesquisaComponent],
   imports: [
-    CommonModule, FormsModule, ReactiveFormsModule,SharedModule, LancamentoRoutingModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
+    CoreModule,
+    LancamentoRoutingModule,
   ],
-
 })
-export class LancamentosModule { }
+export class LancamentosModule {}

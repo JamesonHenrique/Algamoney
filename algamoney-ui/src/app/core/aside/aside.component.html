@@ -1,0 +1,88 @@
+<input type="checkbox" id="sidebar-toggle" />
+
+<label for="sidebar-toggle" class="sidebar-overlay"></label>
+
+<div class="main-container flex min-h-screen bg-gray-50">
+  <aside
+    class="sidebar flex flex-col w-64 glass-effect border-r border-gray-200 p-5"
+  >
+    <div class="flex items-center mb-8">
+      <div
+        class="w-10 h-10 money-icon rounded-lg flex items-center justify-center text-white mr-3"
+      >
+        <i class="fas fa-money-bill-wave text-xl"></i>
+      </div>
+      <h1 class="text-xl font-display font-bold text-gray-800">Algamoney</h1>
+    </div>
+
+    <nav class="flex-1">
+      <ul class="space-y-1">
+        <li>
+          <a
+            routerLink="/Dashboard"
+            routerLinkActive="border-money-500 border-b-2 text-money-700 "
+            class="sidebar-item flex items-center px-4 py-3 text-gray-700"
+          >
+            <i class="fas fa-chart-line w-5 h-5 text-gray-500 mr-3"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/lancamentos"
+            routerLinkActive="border-b-2 text-money-700"
+            class="sidebar-item flex items-center px-4 py-3 text-gray-700"
+          >
+            <i class="fas fa-exchange-alt w-5 h-5 mr-3"></i>
+            <span>Lançamentos</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/pessoas"
+            routerLinkActive="border-b-2 text-money-700"
+            class="sidebar-item flex items-center px-4 py-3 text-gray-700"
+          >
+            <i class="fas fa-users w-5 h-5 text-gray-500 mr-3"></i>
+            <span>Pessoas</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/relatorios"
+            routerLinkActive="border-b-2 text-money-700"
+            class="sidebar-item flex items-center px-4 py-3 text-gray-700"
+          >
+            <i class="fas fa-chart-pie w-5 h-5 text-gray-500 mr-3"></i>
+            <span>Relatórios</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/config"
+            routerLinkActive="border-b-2 text-money-700"
+            class="sidebar-item flex items-center px-4 py-3 text-gray-700"
+          >
+            <i class="fas fa-cog w-5 h-5 text-gray-500 mr-3"></i>
+            <span>Configurações</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="mt-auto">
+
+
+
+      <div class="mt-6 border-t border-gray-200 pt-4">
+        <a
+          (click)="logout()"
+          class="dropdown-item text-red-600 hover:text-money-600 cursor-pointer"
+        >
+          <i class="fas fa-sign-out-alt mr-3"></i>
+          Sair
+        </a>
+      </div>
+    </div>
+  </aside>
+</div>

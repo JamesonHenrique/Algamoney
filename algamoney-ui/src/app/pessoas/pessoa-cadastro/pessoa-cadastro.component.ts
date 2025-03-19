@@ -28,7 +28,7 @@ export class PessoaCadastroComponent {
     private pessoaService: PessoaResourceService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private title:Title
+    private title: Title
   ) {}
 
   ngOnInit(): void {
@@ -142,7 +142,9 @@ export class PessoaCadastroComponent {
     const input = event.target as HTMLInputElement;
     input.value = this.zipCodeMask(input.value);
   }
-
+  limparCadastro() {
+    this.pessoaForm.reset();
+  }
   zipCodeMask(value: string): string {
     if (!value) return '';
     value = value.replace(/\D/g, '');

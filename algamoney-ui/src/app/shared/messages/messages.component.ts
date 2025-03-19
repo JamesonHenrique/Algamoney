@@ -6,11 +6,11 @@ import { AbstractControl } from '@angular/forms';
   selector: 'app-messages',
   standalone: false,
   template: `
-  <div *ngIf="errorMessage" class="text-red-600 text-sm mt-1">
-    {{ errorMessage }}
-  </div>
-`,
-styleUrls: ['./messages.component.css'],
+    <div *ngIf="errorMessage" class="text-red-600 text-sm mt-1">
+      {{ errorMessage }}
+    </div>
+  `,
+  styleUrls: ['./messages.component.css'],
 })
 export class MessagesComponent {
   @Input() control!: AbstractControl;
@@ -23,7 +23,6 @@ export class MessagesComponent {
         if (this.customErrors[errorName]) {
           return this.customErrors[errorName];
         }
-        // Default error messages if a custom one isn't provided.
         switch (errorName) {
           case 'required':
             return `${this.fieldName} é obrigatório.`;

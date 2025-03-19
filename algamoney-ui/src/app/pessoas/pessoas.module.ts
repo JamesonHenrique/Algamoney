@@ -7,13 +7,14 @@ import { MessagesComponent } from '../shared/messages/messages.component';
 import { SharedModule } from '../shared/shared.module';
 import { PessoaRoutingModule } from './pessoa.routing';
 
-
 @NgModule({
-  declarations: [
-    PessoaCadastroComponent,
-    PessoaPesquisaComponent,
-
+  declarations: [PessoaCadastroComponent, PessoaPesquisaComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
+    PessoaRoutingModule,
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, SharedModule, PessoaRoutingModule],
 })
 export class PessoasModule {}

@@ -1,3 +1,12 @@
-<app-header *ngIf="!isAuthPage()"></app-header>
-<router-outlet></router-outlet>
-<app-footer *ngIf="!isAuthPage()"></app-footer>
+<div class="flex  bg-gray-50  ">
+  <app-aside  *ngIf="!isAuthPage()" class="content-wrapper"></app-aside>
+
+
+  <div class="flex-1 flex h-screen flex-col overflow-hidden">
+    <app-header  *ngIf="!isAuthPage()"></app-header>
+    <div >
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer  *ngIf="!isAuthPage()"></app-footer>
+  </div>
+</div>

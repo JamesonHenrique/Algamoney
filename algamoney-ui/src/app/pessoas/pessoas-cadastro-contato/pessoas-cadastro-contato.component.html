@@ -1,0 +1,163 @@
+<div id="contatos" class="tab-content" data-tab="contatos">
+  <form #frmContato="ngForm" (ngSubmit)="confirmarContato(frmContato)">
+  <div *ngIf="exbindoFormularioContato" class="mb-6 p-4 border border-gray-200 rounded-lg bg-gray-50">
+    <h3 class="text-lg font-semibold text-gray-800 mb-4">
+      {{ editando ? 'Editar' : 'Adicionar' }} Contato
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+      <div>
+        <label for="nome-contato" class="form-label">
+          Nome <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          id="nome-contato"
+          name="nome-contato"
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+          placeholder="Nome do contato"
+          [(ngModel)]="contato.nome"
+          #nomeContato="ngModel"
+          [ngClass]="{
+            'border-gray-300 focus:ring-money-500 focus:border-money-500': nomeContato.valid || nomeContato.pristine,
+            'border-red-500 focus:ring-red-500 focus:border-red-500': nomeContato.invalid && nomeContato.touched
+          }"
+        /> 
+        <div *ngIf="nomeContato.invalid && (nomeContato.dirty || nomeContato.touched)" class="text-red-500 text-xs mt-1">
+          Nome é obrigatório
+        </div>
+      </div>
+      <div>
+        <label for="email-contato" class="form-label">
+          E-mail <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="email"
+          id="email-contato"
+          name="email-contato"
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+          placeholder="email@exemplo.com"
+          [(ngModel)]="contato.email"
+          #emailContato="ngModel"
+          [ngClass]="{
+            'border-gray-300 focus:ring-money-500 focus:border-money-500': emailContato.valid || emailContato.pristine,
+            'border-red-500 focus:ring-red-500 focus:border-red-500': emailContato.invalid && emailContato.touched
+          }"
+        />
+        <div *ngIf="emailContato.invalid && (emailContato.dirty || emailContato.touched)" class="text-red-500 text-xs mt-1">
+          E-mail é obrigatório
+        </div>
+      </div>
+      <div>
+        <label for="telefone-contato" class="form-label">
+          Telefone <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          id="telefone-contato"
+          name="telefone-contato"
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
+          placeholder="(00) 00000-0000"
+          onkeypress="if (!/[0-9]/.test(event.key)) { event.preventDefault(); }"
+          oninput="let digits = this.value.replace(/[^0-9]/g, ''); if(digits.length > 11){ digits = digits.slice(0,11); } this.value = digits.replace(/(\d{2})(\d{5})(\d{4})/, '$1 $2-$3');"
+          [(ngModel)]="contato.telefone"
+          #telefoneContato="ngModel"
+          [ngClass]="{
+            'border-gray-300 focus:ring-money-500 focus:border-money-500': telefoneContato.valid || telefoneContato.pristine,
+            'border-red-500 focus:ring-red-500 focus:border-red-500': telefoneContato.invalid && telefoneContato.touched
+          }"
+        />
+        <div *ngIf="telefoneContato.invalid && (telefoneContato.dirty || telefoneContato.touched)" class="text-red-500 text-xs mt-1">
+          Telefone é obrigatório
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-end space-x-3">
+      <button
+        type="button"
+        class="px-4 py-2 border border-gray-300 rounded-lg font-medium"
+        (click)="exbindoFormularioContato = false; contato = {}"
+      >
+        Cancelar
+      </button>
+      <button
+        type="button"
+        class="btn-money px-4 py-2 rounded-lg font-medium inline-flex items-center"
+        (click)="confirmarContato(frmContato)"
+        [disabled]="!contato.nome || !contato.email || !contato.telefone"
+      >
+        <i class="fas fa-check mr-2"></i> {{ editando ? 'Atualizar' : 'Adicionar' }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="!exbindoFormularioContato" class="mb-6">
+    <button
+      type="button"
+      class="btn-money px-4 py-2 rounded-lg font-medium inline-flex items-center"
+      (click)="prepararNovoContato()"
+    >
+      <i class="fas fa-plus mr-2"></i> Adicionar Contato
+    </button>
+  </div>
+</form>
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+    <div class="p-4 border-b border-gray-200">
+      <h3 class="text-lg font-semibold text-gray-800">
+        Lista de Contatos
+      </h3>
+    </div>
+
+    <div *ngIf="!contatos.length" class="p-4 text-center text-gray-500">
+      Nenhum contato cadastrado
+    </div>
+
+    <div class="divide-y divide-gray-200" *ngIf="contatos">
+      <div
+        *ngFor="let contato of contatos; let i = index"
+        class="contact-item p-4 flex items-center justify-between hover:bg-gray-50"
+      >
+        <div class="flex-grow">
+          <h4 class="text-sm font-medium text-gray-800">
+            {{ contato.nome || 'Sem nome' }}
+          </h4>
+          <div class="mt-1 text-xs text-gray-500">
+            <div class="flex items-center">
+              <i class="fas fa-envelope w-4 text-gray-400 mr-2"></i>
+              <span>{{ contato.email || 'Sem e-mail' }}</span>
+            </div>
+            <div class="flex items-center mt-1">
+              <i class="fas fa-phone w-4 text-gray-400 mr-2"></i>
+              <span>{{ contato.telefone || 'Sem telefone' }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex space-x-2">
+          <button
+            type="button"
+            class="p-1 text-indigo-600 hover:text-indigo-900 rounded-full hover:bg-indigo-50"
+            (click)="prepararEdicaoContato(contato, i)"
+            title="Editar"
+          >
+            <i class="fas fa-edit"></i>
+          </button>
+          <button
+            type="button"
+            class="p-1 text-red-600 hover:text-red-900 rounded-full hover:bg-red-50"
+            (click)="removerContato(i)"
+            title="Remover"
+          >
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="p-4 bg-gray-50 text-center text-sm text-gray-500">
+      Você pode adicionar quantos contatos forem necessários
+  </div>
+  </div>
+</div>

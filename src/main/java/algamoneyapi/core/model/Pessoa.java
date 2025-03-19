@@ -1,11 +1,15 @@
 package algamoneyapi.core.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 
 @Entity
@@ -25,6 +29,10 @@ public class Pessoa {
     private Endereco endereco;
     @NotNull
     private Boolean ativo;
+    @JsonIgnoreProperties("pessoa")
+    @Valid
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Contato> contatos;
     @JsonIgnore
     @Transient
     public boolean isInativo() {

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
 import {
+  FormArray,
   FormBuilder,
+  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
@@ -12,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 import { PessoaResourceService } from '../../services/services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { Contato, PageResponsePessoaResponseDto, Pessoa, PessoaRequestDto } from '../../services/models';
 
 @Component({
   selector: 'app-pessoa-cadastro',
@@ -20,7 +23,13 @@ import { Title } from '@angular/platform-browser';
   styleUrl: './pessoa-cadastro.component.css',
 })
 export class PessoaCadastroComponent {
-  pessoaForm!: FormGroup;
+
+  pessoa: PessoaRequestDto = {
+    ativo: true, 
+    endereco: {  },
+    nome: '',
+    contatos: []
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -33,52 +42,61 @@ export class PessoaCadastroComponent {
 
   ngOnInit(): void {
     this.title.setTitle('Cadastro de Pessoas');
-    this.pessoaForm = this.fb.group({
-      nome: ['', Validators.required],
-      ativo: [true, Validators.required],
-      endereco: this.fb.group({
-        logradouro: ['', Validators.required],
-        numero: ['', Validators.required],
-        complemento: ['', Validators.required],
-        bairro: ['', Validators.required],
-        cep: ['', [Validators.required, Validators.pattern(/^\d{5}-\d{3}$/)]],
-        cidade: ['', Validators.required],
-        estado: ['', Validators.required],
-      }),
-    });
+    this.findAllPessoas();
+    this.loadPessoaIfEditing();
+  }
 
+
+
+
+  loadPessoaIfEditing(): void {
     const pessoaId = this.activatedRoute.snapshot.params['codigo'];
-
     if (pessoaId) {
-      this.pessoaService
-        .buscarPeloCodigo({
-          codigo: pessoaId,
-        })
-        .subscribe({
-          next: (pessoa) => {
-            this.pessoaForm.patchValue({
-              nome: pessoa.nome,
-              ativo: pessoa.ativo,
-              endereco: pessoa.endereco
-                ? {
-                    logradouro: pessoa.endereco.logradouro,
-                    numero: pessoa.endereco.numero,
-                    complemento: pessoa.endereco.complemento,
-                    bairro: pessoa.endereco.bairro,
-                    cep: pessoa.endereco.cep,
-                    cidade: pessoa.endereco.cidade,
-                    estado: pessoa.endereco.estado,
-                  }
-                : {},
-            });
-          },
-          error: (err) => {
-            console.error('Erro ao buscar pessoa:', err);
-            this.toastr.error('Erro ao buscar pessoa!');
-          },
-        });
+      this.pessoaService.buscarPeloCodigo({ codigo: pessoaId }).subscribe({
+        next: (pessoa) => {
+          this.pessoa = pessoa as PessoaRequestDto;
+        },
+        error: (err) => {
+          console.error('Erro ao buscar pessoa:', err);
+          this.toastr.error('Erro ao buscar pessoa!');
+        },
+      });
     }
   }
+
+
+
+  pessoas: any[] = [];
+  pessoaSelected: any = null;
+  selectedIndex: any = null;
+  pessoaResponse: PageResponsePessoaResponseDto = {};
+  pagesBack: any = [];
+  page = 0;
+  pageSize = 5;
+
+  pages: any = [];
+
+  findAllPessoas() {
+    this.pessoaService
+      .pesquisar({
+        page: this.page,
+        size: this.pageSize,
+      })
+      .subscribe({
+        next: (response) => {
+          this.pessoas = response.content || [];
+          this.pessoaResponse = response;
+
+          this.pages = Array(this.pessoaResponse.totalPages)
+            .fill(0)
+            .map((x, i) => i);
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
+  }
+
   estados = [
     { label: 'Acre', value: 'AC' },
     { label: 'Alagoas', value: 'AL' },
@@ -108,16 +126,18 @@ export class PessoaCadastroComponent {
     { label: 'Sergipe', value: 'SE' },
     { label: 'Tocantins', value: 'TO' },
   ];
+
+
   get editando(): boolean {
     return this.activatedRoute.snapshot.params['codigo'] !== undefined;
   }
-  savePessoa() {
-    const lancamento = this.pessoaForm.value;
 
-    this.pessoaService.criar({ body: lancamento }).subscribe({
+  savePessoa() {
+    console.log(this.pessoa);
+    this.pessoaService.criar({ body: this.pessoa }).subscribe({
       next: (pessoaId) => {
         this.router.navigate(['/pessoas']);
-        this.toastr.success('Pessoa salvo com sucesso!');
+        this.toastr.success('Pessoa salva com sucesso!');
       },
       error: (err) => {
         console.log(err.error);
@@ -125,12 +145,12 @@ export class PessoaCadastroComponent {
       },
     });
   }
+
   updatePessoa(codigo: any) {
-    const pessoa = this.pessoaForm.value;
-    this.pessoaService.atualizar({ codigo, body: pessoa }).subscribe({
+    this.pessoaService.atualizar({ codigo, body: this.pessoa }).subscribe({
       next: (pessoaId) => {
         this.router.navigate(['/pessoas']);
-        this.toastr.success('Pessoa atualizado com sucesso!');
+        this.toastr.success('Pessoa atualizada com sucesso!');
       },
       error: (err) => {
         console.log(err.error);
@@ -142,30 +162,40 @@ export class PessoaCadastroComponent {
     const input = event.target as HTMLInputElement;
     input.value = this.zipCodeMask(input.value);
   }
-  limparCadastro() {
-    this.pessoaForm.reset();
-  }
+
   zipCodeMask(value: string): string {
     if (!value) return '';
     value = value.replace(/\D/g, '');
     value = value.replace(/(\d{5})(\d)/, '$1-$2');
     return value;
   }
-  get getErrors() {
-    return this.pessoaForm.controls;
-  }
+
   onSubmit(): void {
-    if (this.pessoaForm.valid) {
-      console.log(this.pessoaForm.value);
-      const pessoaId = this.activatedRoute.snapshot.params['codigo'];
-      if (pessoaId) {
-        this.updatePessoa(pessoaId);
-      } else {
-        this.savePessoa();
-      }
+
+    const pessoaId = this.activatedRoute.snapshot.params['codigo'];
+    if (pessoaId) {
+      this.updatePessoa(pessoaId);
     } else {
-      this.pessoaForm.markAllAsTouched();
-      this.toastr.error('Formulário inválido!');
+      this.savePessoa();
+    }
+  }
+  tabChange(event: Event) {
+    const button = event.currentTarget as HTMLButtonElement;
+    const tab = button.dataset['tab'];
+
+    document.querySelectorAll('.tab-item, .tab-content').forEach((element) => {
+      element.classList.remove('active');
+    });
+
+    button.classList.add('active');
+
+    const activeTabContent = document.querySelector(
+      `.tab-content[data-tab="${tab}"]`
+    );
+    if (activeTabContent) {
+      activeTabContent.classList.add('active');
+    } else {
+      console.error(`Tab content with data-tab="${tab}" not found.`);
     }
   }
 }

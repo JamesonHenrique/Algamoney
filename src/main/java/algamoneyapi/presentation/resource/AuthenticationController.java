@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("auth")
 @RequiredArgsConstructor
 @Tag(name = "Autenticação", description = "API para autenticação e gerenciamento de tokens")
-@SecurityRequirements // Remove security requirements for authentication endpoints
+@SecurityRequirements
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
 

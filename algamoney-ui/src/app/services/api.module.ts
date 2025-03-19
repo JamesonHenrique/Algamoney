@@ -10,6 +10,8 @@ import { PessoaResourceService } from './services/pessoa-resource.service';
 import { LancamentoResourceService } from './services/lancamento-resource.service';
 import { CategoriaResourceService } from './services/categoria-resource.service';
 import { AuthenticationControllerService } from './services/authentication-controller.service';
+import { DashboardService } from './dashboard/dashboard.service';
+import { RelatoriosService } from './relatorios/relatorios.service';
 
 /**
  * Module that provides all services and configuration.
@@ -23,7 +25,9 @@ import { AuthenticationControllerService } from './services/authentication-contr
     LancamentoResourceService,
     CategoriaResourceService,
     AuthenticationControllerService,
-    ApiConfiguration
+    ApiConfiguration,
+    DashboardService,
+    RelatoriosService
   ],
 })
 export class ApiModule {

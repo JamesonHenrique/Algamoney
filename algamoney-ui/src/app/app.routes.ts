@@ -22,6 +22,18 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./pessoas/pessoas.module').then((m) => m.PessoasModule),
   },
+  {
+    path: 'dashboard',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+  },
+  {
+    path: 'relatorios',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./relatorios/relatorios.module').then((m) => m.RelatoriosModule),
+  },
 
   {
     path: '**',

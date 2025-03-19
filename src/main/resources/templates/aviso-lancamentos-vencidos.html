@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #334155;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin-top: 0;
+    color: #0f172a;
+    }
+
+    p {
+    margin-top: 0;
+    margin-bottom: 16px;
+    }
+
+    a {
+    color: #16a34a;
+    text-decoration: none;
+    }
+
+    a:hover {
+    text-decoration: underline;
+    }
+
+    img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border: 0;
+    }
+
+    /* Tabela principal */
+    .container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Cabeçalho */
+    .header {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    }
+
+    .header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.6;
+    }
+
+    .logo-container {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    }
+
+    .logo {
+    color: #ffffff;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo-icon {
+    margin-right: 8px;
+    vertical-align: middle;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    }
+
+    .header-subtitle {
+    color: #ffffff;
+    font-size: 16px;
+    margin-top: 8px;
+    opacity: 0.9;
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Conteúdo */
+    .content {
+    padding: 35px 30px;
+    }
+
+    /* Seções */
+    .section {
+    margin-bottom: 35px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 30px;
+    }
+
+    .section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    }
+
+    .section-title {
+    color: #16a34a;
+    font-size: 20px;
+    margin-bottom: 18px;
+    font-weight: 600;
+    position: relative;
+    padding-left: 15px;
+    line-height: 1.4;
+    }
+
+    .section-title:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: #16a34a;
+    border-radius: 4px;
+    }
+
+    /* Alerta */
+    .alert {
+    background-color: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    }
+
+    .alert-icon {
+    margin-right: 15px;
+    font-size: 24px;
+    }
+
+    .alert-content {
+    flex: 1;
+    }
+
+    .alert-title {
+    font-weight: 600;
+    color: #92400e;
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    }
+
+    .alert-message {
+    color: #92400e;
+    margin: 0;
+    font-size: 14px;
+    }
+
+    /* Tabela de transações */
+    .transactions-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    margin: 25px 0;
+    }
+
+    .transactions-table th {
+    background: linear-gradient(to right, #f0fdf4, #dcfce7);
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    color: #166534;
+    border-bottom: 1px solid #dcfce7;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    }
+
+    .transactions-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 14px;
+    vertical-align: middle;
+    }
+
+    .transactions-table tr:last-child td {
+    border-bottom: none;
+    }
+
+    .transactions-table tr:nth-child(even) {
+    background-color: #f8fafc;
+    }
+
+    .transactions-table tr:hover {
+    background-color: #f0fdf4;
+    }
+
+    .transactions-table .receita {
+    color: #16a34a;
+    font-weight: 600;
+    }
+
+    .transactions-table .despesa {
+    color: #dc2626;
+    font-weight: 600;
+    }
+
+    /* Badges */
+    .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    }
+
+    .badge-receita {
+    background-color: #dcfce7;
+    color: #166534;
+    }
+
+    .badge-despesa {
+    background-color: #fee2e2;
+    color: #991b1b;
+    }
+
+    .badge-vencido {
+    background-color: #fecaca;
+    color: #b91c1c;
+    }
+
+    .badge-hoje {
+    background-color: #fef3c7;
+    color: #92400e;
+    }
+
+    /* Status de vencimento */
+    .status-vencido {
+    color: #dc2626;
+    font-weight: 500;
+    }
+
+    .status-hoje {
+    color: #f59e0b;
+    font-weight: 500;
+    }
+
+    /* Botões */
+    .button {
+    display: inline-block;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #ffffff;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.2), 0 2px 4px -1px rgba(22, 163, 74, 0.1);
+    transition: transform 0.2s;
+    }
+
+    .button:hover {
+    text-decoration: none;
+    }
+
+    /* Cards */
+    .card {
+    background-color: #f8fafc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #16a34a;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .card-title {
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #0f172a;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    }
+
+    .card-title-icon {
+    margin-right: 10px;
+    font-size: 18px;
+    }
+
+    .card-content {
+    color: #475569;
+    }
+
+    .card-tip {
+    background-color: #f0f9ff;
+    border-left: 4px solid #0ea5e9;
+    }
+
+    /* Rodapé */
+    .footer {
+    background-color: #f0fdf4;
+    padding: 30px 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+    border-top: 1px solid #dcfce7;
+    }
+
+    .social-links {
+    margin: 20px 0;
+    }
+
+    .social-link {
+    display: inline-block;
+    margin: 0 10px;
+    color: #16a34a;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+    }
+
+    .social-link:hover {
+    color: #166534;
+    }
+
+    .footer-logo {
+    margin-bottom: 20px;
+    color: #16a34a;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    }
+
+    .footer-links {
+    margin: 15px 0;
+    }
+
+    .footer-link {
+    color: #16a34a;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 500;
+    }
+
+    .footer-link:hover {
+    text-decoration: underline;
+    }
+
+    .copyright {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #dcfce7;
+    font-size: 12px;
+    color: #94a3b8;
+    }
+
+    /* Responsividade */
+    @media screen and (max-width: 600px) {
+    .content {
+    padding: 25px 20px;
+    }
+
+    .section-title {
+    font-size: 18px;
+    }
+
+    .transactions-table th,
+    .transactions-table td {
+    padding: 12px 10px;
+    font-size: 12px;
+    }
+
+    .button {
+    display: block;
+    padding: 12px 20px;
+    }
+
+    .badge {
+    padding: 3px 6px;
+    font-size: 10px;
+    }
+    }
+
+    /* Animações e efeitos */
+    @keyframes pulse {
+    0% {
+    transform: scale(1);
+    }
+    50% {
+    transform: scale(1.05);
+    }
+    100% {
+    transform: scale(1);
+    }
+    }
+
+    .pulse {
+    animation: pulse 2s infinite;
+    }
+
+    /* Elementos decorativos */
+    .coin {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle at center, #fcd34d 0%, #f59e0b 60%, #d97706 100%);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    opacity: 0.8;
+    }
+
+    .coin-1 {
+    top: 20%;
+    left: 10%;
+    animation: float 6s ease-in-out infinite;
+    }
+
+    .coin-2 {
+    top: 60%;
+    right: 15%;
+    animation: float 8s ease-in-out infinite;
+    }
+
+    .coin-3 {
+    bottom: 15%;
+    left: 20%;
+    animation: float 7s ease-in-out infinite;
+    }
+
+    @keyframes float {
+    0% {
+    transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+    transform: translateY(-15px) rotate(5deg);
+    }
+    100% {
+    transform: translateY(0px) rotate(0deg);
+    }
+    }
+</style>
+<body style="margin: 0; padding: 0; font-family: 'Inter', Arial, sans-serif; background-color: #f8fafc; color: #334155; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
+<div style="width: 100%; max-width: 100%; margin: 0 auto; padding: 20px;">
+    <table class="" cellpadding="0" cellspacing="0" border="0" style="width: 100%; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+        <tr>
+            <td>
+
+
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td class="content" style="padding: 35px 30px;">
+                            <div class="section" style="margin-bottom: 35px; border-bottom: 1px solid #e2e8f0; padding-bottom: 30px;">
+                                <h2 style="font-family: 'Montserrat', Arial, sans-serif; margin-top: 0; color: #0f172a; font-size: 24px; font-weight: 700; margin-bottom: 15px;">Olá, nós do Algamoney precisamos de você</h2>
+
+                                <div class="alert" style="background-color: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 16px 20px; margin-bottom: 25px; display: flex; align-items: center;">
+                                    <div class="alert-icon" style="margin-right: 15px; font-size: 24px;">⚠️</div>
+                                    <div class="alert-content" style="flex: 1;">
+                                        <h4 class="alert-title" style="font-weight: 600; color: #92400e; margin: 0 0 5px 0; font-size: 16px;">Atenção!</h4>
+                                        <p class="alert-message" style="color: #92400e; margin: 0; font-size: 14px;">Existem receitas ou despesas vencidas ou vencendo hoje. Veja abaixo os detalhes.</p>
+                                    </div>
+                                </div>
+
+                                <p style="margin-top: 0; margin-bottom: 16px; color: #475569; line-height: 1.6;">Identificamos lançamentos que requerem sua atenção imediata. Acompanhe de perto seus compromissos financeiros para evitar juros e manter seu planejamento em dia.</p>
+                            </div>
+
+                            <!-- Lançamentos -->
+                            <div class="section" style="margin-bottom: 35px; border-bottom: 1px solid #e2e8f0; padding-bottom: 30px;">
+                                <h3 class="section-title" style="color: #16a34a; font-size: 20px; margin-bottom: 18px; font-weight: 600; position: relative; padding-left: 15px; line-height: 1.4; font-family: 'Montserrat', Arial, sans-serif;">
+                                    <span style="position: relative; z-index: 1;">Lançamentos Pendentes</span>
+                                    <span style="content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background-color: #16a34a; border-radius: 4px; display: block;"></span>
+                                </h3>
+
+                                <table class="transactions-table" cellpadding="0" cellspacing="0" border="0" style="width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); margin: 25px 0;">
+                                    <thead>
+                                    <tr>
+                                        <th style="background: linear-gradient(to right, #f0fdf4, #dcfce7); padding: 14px 16px; text-align: left; font-weight: 600; color: #166534; border-bottom: 1px solid #dcfce7; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Tipo</th>
+                                        <th style="background: linear-gradient(to right, #f0fdf4, #dcfce7); padding: 14px 16px; text-align: left; font-weight: 600; color: #166534; border-bottom: 1px solid #dcfce7; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Pessoa</th>
+                                        <th style="background: linear-gradient(to right, #f0fdf4, #dcfce7); padding: 14px 16px; text-align: left; font-weight: 600; color: #166534; border-bottom: 1px solid #dcfce7; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Descrição</th>
+                                        <th style="background: linear-gradient(to right, #f0fdf4, #dcfce7); padding: 14px 16px; text-align: left; font-weight: 600; color: #166534; border-bottom: 1px solid #dcfce7; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Vencimento</th>
+                                        <th style="background: linear-gradient(to right, #f0fdf4, #dcfce7); padding: 14px 16px; text-align: left; font-weight: 600; color: #166534; border-bottom: 1px solid #dcfce7; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Valor</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <!-- Exemplo de lançamento vencido -->
+                                    <tr style="background-color: #ffffff;" th:each="lancamento: ${lancamentos}">
+                                        <td style="padding: 14px 16px; border-bottom: 1px solid #e2e8f0; font-size: 14px; vertical-align: middle;">
+                                <span th:if="${lancamento.tipo.descricao == 'Receita'}" class="badge badge-receita"
+                                      style="display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500; text-align: center; background-color: #dcfce7; color: #166534;"
+                                      th:text="${lancamento.tipo.descricao}">Receita</span>
+                                            <span th:if="${lancamento.tipo.descricao == 'Despesa'}" class="badge badge-despesa"
+                                                  style="display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500; text-align: center; background-color: #fee2e2; color: #991b1b;"
+                                                  th:text="${lancamento.tipo.descricao}">Despesa</span>
+                                        </td>
+                                        <td style="padding: 14px 16px; border-bottom: 1px solid #e2e8f0; font-size: 14px; vertical-align: middle;"
+                                            th:text="${lancamento.pessoa.nome}">João Silva
+                                        </td>
+                                        <td style="padding: 14px 16px; border-bottom: 1px solid #e2e8f0; font-size: 14px; vertical-align: middle;"
+                                            th:text="${lancamento.descricao}">Salário mensal
+                                        </td>
+                                        <td style="padding: 14px 16px; border-bottom: 1px solid #e2e8f0; font-size: 14px; vertical-align: middle;">
+                                <span th:text="${#temporals.format(lancamento.dataVencimento, 'dd/MM/yyyy')}"
+                                      style="margin-left: 5px;">10/06/2025</span>
+                                        </td>
+                                        <td th:text="${#numbers.formatDecimal(lancamento.valor, 0, 'POINT', 2, 'COMMA')}"
+                                            style="padding: 14px 16px; border-bottom: 1px solid #e2e8f0; font-size: 14px; vertical-align: middle; font-weight: 600;"
+                                            th:class="${lancamento.tipo.descricao == 'RECEITA'} ? 'receita' : 'despesa'">R$
+                                            10.000,00
+                                        </td>
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Dicas e Recomendações -->
+                            <div class="section" style="margin-bottom: 35px; border-bottom: 1px solid #e2e8f0; padding-bottom: 30px;">
+                                <h3 class="section-title" style="color: #16a34a; font-size: 20px; margin-bottom: 18px; font-weight: 600; position: relative; padding-left: 15px; line-height: 1.4; font-family: 'Montserrat', Arial, sans-serif;">
+                                    <span style="position: relative; z-index: 1;">Dicas e Recomendações</span>
+                                    <span style="content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background-color: #16a34a; border-radius: 4px; display: block;"></span>
+                                </h3>
+
+                                <div class="card card-tip" style="background-color: #f0f9ff; border-radius: 10px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #0ea5e9; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);">
+                                    <h4 class="card-title" style="font-weight: 600; margin-top: 0; margin-bottom: 10px; color: #0f172a; font-size: 16px; display: flex; align-items: center; font-family: 'Montserrat', Arial, sans-serif;">
+                                        <span class="card-title-icon" style="margin-right: 10px; font-size: 18px;">💡</span> Evite juros e multas
+                                    </h4>
+                                    <div class="card-content" style="color: #475569;">
+                                        <p style="margin-top: 0; margin-bottom: 10px;">Priorize o pagamento de contas vencidas para evitar juros e multas que podem comprometer seu orçamento. Considere configurar lembretes automáticos para evitar atrasos futuros.</p>
+                                    </div>
+                                </div>
+
+                                <div class="card" style="background-color: #f8fafc; border-radius: 10px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #16a34a; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);">
+                                    <h4 class="card-title" style="font-weight: 600; margin-top: 0; margin-bottom: 10px; color: #0f172a; font-size: 16px; display: flex; align-items: center; font-family: 'Montserrat', Arial, sans-serif;">
+                                        <span class="card-title-icon" style="margin-right: 10px; font-size: 18px;">📊</span> Planejamento financeiro
+                                    </h4>
+                                    <div class="card-content" style="color: #475569;">
+                                        <p style="margin-top: 0; margin-bottom: 10px;">Utilize o Algamoney para planejar seus gastos futuros. Estabeleça metas de economia e categorize suas despesas para identificar oportunidades de redução de custos.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Call to Action -->
+                            <div class="section" style="margin-bottom: 0; padding-bottom: 0; text-align: center;">
+                                <p style="margin-top: 0; margin-bottom: 16px; color: #475569; line-height: 1.6;">Para gerenciar seus lançamentos e manter suas finanças em dia, acesse agora mesmo sua conta:</p>
+                                <a href="https://algamoney.com/lancamentos" class="button pulse" style="display: inline-block; background: linear-gradient(135deg, #22c55e, #16a34a); color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; margin-top: 15px; text-align: center; box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.2), 0 2px 4px -1px rgba(22, 163, 74, 0.1); transition: transform 0.2s; animation: pulse 2s infinite;">GERENCIAR LANÇAMENTOS</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Rodapé -->
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td class="footer" style="background-color: #f0fdf4; padding: 30px 20px; text-align: center; color: #64748b; font-size: 13px; border-top: 1px solid #dcfce7;">
+                            <div class="footer-logo" style="margin-bottom: 20px; color: #16a34a; font-family: 'Montserrat', Arial, sans-serif; font-size: 18px; font-weight: 700;">
+                                <span style="margin-right: 5px;">💰</span>ALGAMONEY
+                            </div>
+
+                            <div class="social-links" style="margin: 20px 0;">
+                                <a href="#" class="social-link" style="display: inline-block; margin: 0 10px; color: #16a34a; text-decoration: none; font-weight: 600; transition: color 0.2s;">Facebook</a>
+                                <a href="#" class="social-link" style="display: inline-block; margin: 0 10px; color: #16a34a; text-decoration: none; font-weight: 600; transition: color 0.2s;">Instagram</a>
+                                <a href="#" class="social-link" style="display: inline-block; margin: 0 10px; color: #16a34a; text-decoration: none; font-weight: 600; transition: color 0.2s;">Twitter</a>
+                            </div>
+
+                            <div class="footer-links" style="margin: 15px 0;">
+                                <a href="#" class="footer-link" style="color: #16a34a; text-decoration: none; margin: 0 10px; font-weight: 500;">Termos de Uso</a>
+                                <a href="#" class="footer-link" style="color: #16a34a; text-decoration: none; margin: 0 10px; font-weight: 500;">Política de Privacidade</a>
+                                <a href="#" class="footer-link" style="color: #16a34a; text-decoration: none; margin: 0 10px; font-weight: 500;">Ajuda</a>
+                            </div>
+
+                            <p style="margin-top: 0; margin-bottom: 10px;">Você está recebendo este e-mail porque se cadastrou no Algamoney.</p>
+                            <p style="margin-top: 0; margin-bottom: 10px;">Para deixar de receber estes e-mails, <a href="#" style="color: #16a34a;">clique aqui</a>.</p>
+
+                            <div class="copyright" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #dcfce7; font-size: 12px; color: #94a3b8;">
+                                © 2025 Algamoney. Todos os direitos reservados.<br>
+                                Algamoney Tecnologia Ltda. | Av. Paulista, 1000 - São Paulo, SP
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

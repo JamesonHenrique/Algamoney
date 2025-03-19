@@ -4,6 +4,7 @@ import algamoneyapi.application.dto.PageResponse;
 import algamoneyapi.application.dto.PessoaRequestDTO;
 import algamoneyapi.application.dto.PessoaResponseDTO;
 import algamoneyapi.application.service.PessoaService;
+import algamoneyapi.core.model.Contato;
 import algamoneyapi.core.model.Pessoa;
 import algamoneyapi.core.repository.PessoaRepository;
 import algamoneyapi.presentation.event.RecursoCriadoEvent;
@@ -24,6 +25,9 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/pessoas")
@@ -48,12 +52,40 @@ public class PessoaResource {
     @PostMapping
     public ResponseEntity<PessoaResponseDTO> criar(
             @Parameter(description = "Dados da pessoa", required = true)
-            @Valid @RequestBody PessoaRequestDTO pessoaRequestDTO, 
+            @Valid @RequestBody PessoaRequestDTO pessoaRequestDTO,
             HttpServletResponse response) {
-        Pessoa pessoa = new Pessoa(null, pessoaRequestDTO.nome(), pessoaRequestDTO.endereco(), pessoaRequestDTO.ativo());
+
+        Pessoa pessoa = new Pessoa();
+        pessoa.setNome(pessoaRequestDTO.nome());
+        pessoa.setEndereco(pessoaRequestDTO.endereco());
+        pessoa.setAtivo(pessoaRequestDTO.ativo());
+
+        if (pessoaRequestDTO.contatos() != null) {
+            List<Contato> contatos = pessoaRequestDTO.contatos().stream()
+                    .map(contatoDTO -> {
+                        Contato contato = new Contato();
+                        contato.setNome(contatoDTO.getNome());
+                        contato.setEmail(contatoDTO.getEmail());
+                        contato.setTelefone(contatoDTO.getTelefone());
+                        contato.setPessoa(pessoa);
+                        return contato;
+                    })
+                    .collect(Collectors.toList());
+
+            pessoa.setContatos(contatos);
+        }
+
         Pessoa pessoaSalva = pessoaRepository.save(pessoa);
         publisher.publishEvent(new RecursoCriadoEvent(this, response, pessoaSalva.getCodigo()));
-        PessoaResponseDTO pessoaResponseDTO = new PessoaResponseDTO(pessoaSalva.getCodigo(), pessoaSalva.getNome(), pessoaSalva.getEndereco(), pessoaSalva.getAtivo());
+
+        PessoaResponseDTO pessoaResponseDTO = new PessoaResponseDTO(
+                pessoaSalva.getCodigo(),
+                pessoaSalva.getNome(),
+                pessoaSalva.getEndereco(),
+                pessoaSalva.getAtivo(),
+                pessoaSalva.getContatos()
+        );
+
         return ResponseEntity.status(HttpStatus.CREATED).body(pessoaResponseDTO);
     }
 
@@ -71,7 +103,7 @@ public class PessoaResource {
         if (pessoa == null) {
             return ResponseEntity.notFound().build();
         }
-        PessoaResponseDTO pessoaResponseDTO = new PessoaResponseDTO(pessoa.getCodigo(), pessoa.getNome(), pessoa.getEndereco(), pessoa.getAtivo());
+        PessoaResponseDTO pessoaResponseDTO = new PessoaResponseDTO(pessoa.getCodigo(), pessoa.getNome(), pessoa.getEndereco(), pessoa.getAtivo(), pessoa.getContatos());
         return ResponseEntity.ok(pessoaResponseDTO);
     }
 
@@ -128,10 +160,11 @@ public class PessoaResource {
     })
     @GetMapping
     public ResponseEntity<PageResponse<PessoaResponseDTO>> pesquisar(
+            @RequestParam(required = false, defaultValue = "")  String nome,
             @Parameter(description = "Número da página (começa em 0)")
             @RequestParam(defaultValue = "0", name = "page", required = false) @PositiveOrZero int page,
             @Parameter(description = "Quantidade de registros por página (máximo 100)")
             @RequestParam(defaultValue = "10", name = "size", required = false) @Positive @Max(100) int size) {
-        return ResponseEntity.ok(pessoaService.pesquisar("", size, page));
+        return ResponseEntity.ok(pessoaService.pesquisar(nome, size, page));
     }
 }

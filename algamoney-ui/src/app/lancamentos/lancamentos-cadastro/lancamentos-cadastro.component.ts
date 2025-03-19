@@ -120,6 +120,19 @@ export class LancamentosCadastroComponent {
       },
     });
   }
+  updateLancamento(codigo: any) {
+    const lancamento = this.lancamentoForm.value;
+    this.lancamentoService.atualizar1({ codigo, body: lancamento }).subscribe({
+      next: (lancamentoId) => {
+        this.router.navigate(['/lancamentos']);
+        this.toastr.success('Lançamento atualizado com sucesso!');
+      },
+      error: (err) => {
+        console.log(err.error);
+        this.toastr.error('Erro ao atualizar lançamento!');
+      },
+    });
+  }
   findAllPessoas() {
     this.pessoaService
       .pesquisar({
@@ -157,7 +170,12 @@ export class LancamentosCadastroComponent {
 
   onSubmit(): void {
     if (this.lancamentoForm.valid) {
-      this.saveLancamento();
+      const pessoaId = this.activatedRoute.snapshot.params['codigo'];
+      if (pessoaId) {
+        this.updateLancamento(pessoaId);
+      } else {
+        this.saveLancamento();
+      }
     } else {
       this.lancamentoForm.markAllAsTouched();
       this.toastr.error('Formulário inválido!');

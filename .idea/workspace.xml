@@ -4,110 +4,67 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="feat(core): implementar melhorias no front end do Algamoney&#10;&#10;Implementa diversas melhorias e novos recursos no sistema de gestão financeira Algamoney:&#10;&#10;&#10;&#10;feat(routing):&#10;- Modularizar rotas utilizando PessoaRouting e LancamentoRouting&#10;- Criar roteamento completo para todas as funcionalidades até o momento&#10;- Adicionar componente de página não encontrada&#10;&#10;feat(ui):&#10;- Adicionar recursos para melhorar o design do site&#10;- Implementar títulos dinâmicos para cada parte do projeto&#10;&#10;feat(auth):&#10;- Adicionar Token Service junto com Interceptor">
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/postcss.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/server.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.config.server.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/auth/auth-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/auth/auth.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/auth/pagina-nao-encontrada/pagina-nao-encontrada.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/auth/pagina-nao-encontrada/pagina-nao-encontrada.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/auth/pagina-nao-encontrada/pagina-nao-encontrada.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/auth/pagina-nao-encontrada/pagina-nao-encontrada.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/auth/register/validator/password.validator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/core/aside/aside.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/core/aside/aside.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/core/aside/aside.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/core/aside/aside.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/guard/guard.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/pagination/pagination.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/pagination/pagination.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/pagination/pagination.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/pagination/pagination.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/main.server.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/LancamentoEstatisticaCategoriaDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/LancamentoEstatisticaDiaDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/config/CacheConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/exceptionHandler/BusinessErrorCodes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/exceptionHandler/ExceptionResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/exceptionHandler/exception/ActivationTokenException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/exceptionHandler/exception/OperationNotPermittedException.java" afterDir="false" />
+    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="feat(backend): adicionar JasperReports para geração de relatórios&#10;&#10;- Adicionar dependências do JasperReports no `pom.xml`&#10;- Criar DTO `LancamentoEstatisticaPessoaDto` para estatísticas de lançamentos por pessoa&#10;- Implementar método `relatorioPorPessoa` no `LancamentoService` para geração de relatórios&#10;- Adicionar query `porPessoa` no `LancamentoRepository` para buscar dados de lançamentos por pessoa&#10;- Criar endpoint `/relatorios/por-pessoa` no `LancamentoResource` para gerar relatórios em PDF&#10;- Adicionar arquivo `lancamentos_por_pessoa.jrxml` para definição do layout do relatório">
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/dashboard/dashboard.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/dashboard/dashboard.routing.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/dashboard/dashboard/dashboard.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/dashboard/dashboard/dashboard.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/dashboard/dashboard/dashboard.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/dashboard/dashboard/dashboard.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/relatorios/relatorio-lancamentos/relatorio-lancamentos.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/relatorios/relatorio-lancamentos/relatorio-lancamentos.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/relatorios/relatorio-lancamentos/relatorio-lancamentos.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/relatorios/relatorio-lancamentos/relatorio-lancamentos.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/relatorios/relatorios.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/relatorios/relatorios.routing.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/dashboard/dashboard.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/contato.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/model/Contato.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/mail/MailConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/mail/MailProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/mail/Mailer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V05__criar_tabela_contato.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mail.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/aviso-lancamentos-vencidos.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/angular.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/auth/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/auth/login/login.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/auth/login/login.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/auth/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/auth/register/register.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/auth/register/register.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/auth/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/auth/register/register.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/auth/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/auth/register/register.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/core/core.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/core/core.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/core/footer/footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/core/footer/footer.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/core/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/core/footer/footer.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/core/footer/footer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/core/footer/footer.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/core/header/header.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/core/header/header.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/core/aside/aside.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/core/aside/aside.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/core/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/core/header/header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/core/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/core/header/header.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/core/pagina-nao-encontrada/pagina-nao-encontrada.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/core/pagina-nao-encontrada/pagina-nao-encontrada.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/core/pagina-nao-encontrada/pagina-nao-encontrada.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/core/pagina-nao-encontrada/pagina-nao-encontrada.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamento.routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamento.routing.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-cadastro/lancamentos-cadastro.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/lancamentos/lancamentos.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-pesquisa/pessoa-pesquisa.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-pesquisa/pessoa-pesquisa.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-pesquisa/pessoa-pesquisa.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-pesquisa/pessoa-pesquisa.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-pesquisa/pessoa-pesquisa.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-pesquisa/pessoa-pesquisa.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa.routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa.routing.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoas.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoas.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/services/colors/color.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/colors/color.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/services/interceptor/http-token.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/interceptor/http-token.interceptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/services/token/token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/token/token.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/shared/messages/messages.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/messages/messages.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/shared/modal-delete/modal-delete.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/modal-delete/modal-delete.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/shared/modal-delete/modal-delete.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/modal-delete/modal-delete.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/shared/modal-delete/modal-delete.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/modal-delete/modal-delete.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/shared/shared.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/shared/shared.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/services/api.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/api.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/services/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/pessoa-request-dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/pessoa-request-dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/pessoa-response-dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/pessoa-response-dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/pessoa.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/services/models/pessoa.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algamoney-ui/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/AuthenticationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/AuthenticationRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/AuthenticationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/AuthenticationResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/LancamentoRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/LancamentoRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/LancamentoResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/LancamentoResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/PageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/PageResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/PessoaRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/PessoaRequestDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/PessoaResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/PessoaResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/RegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/dto/RegisterRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/service/AuthenticationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/service/LancamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/service/LancamentoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/service/PessoaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/service/PessoaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/model/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/model/Pessoa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/LancamentoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/LancamentoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/config/OpenApiConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/config/OpenApiConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/security/JwtAuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/security/JwtAuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/security/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/security/JwtService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/exceptionHandler/AlgamoneyExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/exceptionHandler/AlgamoneyExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/config/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/config/ApplicationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/config/CacheConfig.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/CategoriaResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/CategoriaResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/LancamentoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/LancamentoResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/PessoaResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/PessoaResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V03__criar_tabela_e_registrar_lancamentos.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V03__criar_tabela_e_registrar_lancamentos.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,6 +115,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///JetClient Request Console" root0="SKIP_INSPECTION" />
     <setting file="mock:///JetClient Request Console" root0="SKIP_INSPECTION" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/IdeaIC2024.3/tmp/jetclient/scripts/467480b0/Draft_(1)_post-response_f945030c.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/IdeaIC2024.3/tmp/jetclient/scripts/467480b0/Draft_(1)_pre-request_f945030c.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -187,25 +146,33 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;Application.AlgamoneyApiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MailConfig.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AlgamoneyApiApplicationTests.executor&quot;: &quot;Run&quot;,
     &quot;Maven.algamoney-api [clean,compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.algamoney-api [clean,package].executor&quot;: &quot;Run&quot;,
     &quot;Maven.algamoney-api [clean,validate,compile...].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.algamoney-api [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.algamoney-api [package].executor&quot;: &quot;Run&quot;,
     &quot;Maven.algamoney-api [validate,compile,package].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/James/Documents/GitHub/Algamoney&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/James/Documents&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\James\Documents\GitHub\Algamoney\src\main\resources\relatorios" />
+      <recent name="C:\Users\James\Documents\GitHub\Algamoney\docs\relatorios" />
       <recent name="C:\Users\James\Documents\GitHub\Algamoney\src\main\java\algamoneyapi\security" />
       <recent name="C:\Users\James\Documents\GitHub\Algamoney\src\main\java\algamoneyapi\auth" />
       <recent name="C:\Users\Pichau\Documents\GitHub\algamoney-api\src\main\java\algamoneyapi\model" />
-      <recent name="C:\Users\Pichau\Documents\GitHub\algamoney-api\src\main\java\algamoneyapi\resource\dto" />
-      <recent name="C:\Users\Pichau\Documents\GitHub\algamoney-api\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\James\Documents\GitHub\Algamoney\src\main\resources\db\migration" />
@@ -215,13 +182,53 @@
       <recent name="algamoneyapi.application.dto" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.AlgamoneyApiApplication">
+    <configuration name="AlgamoneyApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="EMAIL_USERNAME" value="extcops@gmail.com" />
+        <env name="EMAIL_PASSWORD" value="snvx iomq rnis nuvh" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="algamoneyapi.AlgamoneyApiApplication" />
+      <module name="algamoney-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="algamoneyapi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MailConfig" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="algamoneyapi.infrastructure.mail.MailConfig" />
+      <module name="algamoney-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="algamoneyapi.infrastructure.mail.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Algamoney" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.MailConfig" />
+      <item itemvalue="Application.AlgamoneyApiApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AlgamoneyApiApplication" />
+        <item itemvalue="Application.MailConfig" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -408,7 +415,23 @@
       <option name="project" value="LOCAL" />
       <updated>1742003868766</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="feat(frontend): refatorar e melhorar interface do Algamoney&#10;&#10;refactor(frontend):&#10;- Refatorar design completo do frontend&#10;- Implementar nova interface de login e register&#10;- Criar página de erro 404&#10;- Redesenhar componentes de pesquisa e lançamentos&#10;- Atualizar header e footer&#10;&#10;feat(frontend):&#10;- Implementar roteamento com lazy loading&#10;- Criar módulos auth e core&#10;- Adicionar authguard para proteção de rotas&#10;- Implementar verificação de força de senha no register&#10;- Criar componente de paginação reutilizável&#10;- Adicionar aside&#10;&#10;feat(ui):&#10;- Melhorar responsividade do layout&#10;- Atualizar componentes reutilizáveis&#10;- Otimizar experiência de usuário&#10;&#10;feat(backend): reestruturar e melhorar arquitetura&#10;- Implementar novo sistema de exceptions&#10;- Adicionar cache com Spring Cache&#10;- Criar estrutura para estatísticas&#10;- Implementar lógica de lançamentos e categorias&#10;- Desenvolver controllers e repositories para estatísticas diárias">
+      <option name="closed" value="true" />
+      <created>1742392734004</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1742392734004</updated>
+    </task>
+    <task id="LOCAL-00024" summary="feat(backend): adicionar JasperReports para geração de relatórios&#10;&#10;- Adicionar dependências do JasperReports no `pom.xml`&#10;- Criar DTO `LancamentoEstatisticaPessoaDto` para estatísticas de lançamentos por pessoa&#10;- Implementar método `relatorioPorPessoa` no `LancamentoService` para geração de relatórios&#10;- Adicionar query `porPessoa` no `LancamentoRepository` para buscar dados de lançamentos por pessoa&#10;- Criar endpoint `/relatorios/por-pessoa` no `LancamentoResource` para gerar relatórios em PDF&#10;- Adicionar arquivo `lancamentos_por_pessoa.jrxml` para definição do layout do relatório">
+      <option name="closed" value="true" />
+      <created>1742417286463</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1742417286463</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -427,7 +450,9 @@
     <MESSAGE value="feat(core): reestruturação completa para estrutura modular e melhorias na UI com novas funcionalidaes&#10;&#10;- Migrar a aplicação para estrutura modular, utilizando módulos para encapsular funcionalidades.&#10;- Criar o SharedModule e o componente Messages para reutilização de mensagens de validação e feedback.&#10;- Refatorar Header e Footer, agora implementados como componentes independentes.&#10;- Criar as telas de Login e Register, aprimorando a experiência de autenticação.&#10;- Dividir a exibição dos resultados de pessoas e lançamentos em componentes específicos:&#10;  - PessoasResultadosComponent para a listagem de resultados de pessoas&#10;  - PessoasPesquisaComponent para a pesquisa de pessoas&#10;  - LancamentosResultadosComponent para a listagem dos lançamentos&#10;- Ajustado o roteamento e os formulários reativos com validação para melhor organização e manutenção do código" />
     <MESSAGE value="feat(core): adicionar novos recursos e melhorias na aplicação Algamoney&#10;&#10;Implementa diversas melhorias e novos recursos na aplicação Algamoney, incluindo integração com backend, novos componentes e melhorias na interface.&#10;&#10;Back-End:&#10;&#10;feat(security):&#10;- Remover toda a segurança antiga e implementar nova segurança&#10;- Adicionar AuthenticationController, JwtAuthFilter, JwtService, SecurityConfiguration, BasicSecurityConfiguration, ApplicationConfig, AuthenticationService, AuthenticationRequest, AuthenticationResponse e RegisterRequest&#10;- Remover classes desnecessárias&#10;- Organizar o projeto em Clean Architecture&#10;- Remover o uso de Criteria e utilizar Spring Data JPA com queries&#10;- Criar diversos DTOs&#10;- Implementar paginação diferente, criando PageResponse&#10;- Fazer alterações nos services, resources e entities&#10;- Alterar o ExceptionHandler e remover o uso de MessageSource&#10;&#10;Front-End:&#10;feat(pessoas):&#10;- Implementa o uso do backend para criar pessoas no componente de cadastro&#10;- Configura o método `savePessoa` e ajusta o HTML para funcionar com o formulário&#10;- Adiciona o método `findAllPessoas` no componente de pesquisa de pessoas&#10;- Remove o componente `PessoasResultadosComponent` e transfere suas funcionalidades para `PessoasPesquisaComponent`&#10;&#10;feat(lancamentos):&#10;- Implementa o uso do backend para criar lançamentos no componente de cadastro&#10;- Configura o método `saveLancamento` e ajusta o HTML para funcionar com o formulário&#10;- Adiciona os métodos `findAllPessoas` e `findAllCategorias` no componente de cadastro de lançamentos&#10;- Adiciona os métodos `findAllLancamentos` e `deleteById` no componente de pesquisa de lançamentos&#10;- Remove o componente `LancamentosResultadosComponent` e transfere suas funcionalidades para `LancamentosPesquisaComponent`&#10;&#10;feat(ui):&#10;- Adiciona o uso do `ColorService` com o método `getColorPair` para obter cores&#10;- Integra o uso do `ToastrService` para notificações&#10;- Cria o componente `ModalDeleteComponent` para ser reutilizado em qualquer componente&#10;- Melhora o HTML do componente de pesquisa de lançamentos e pessoas para melhor usabilidade&#10;- Adiciona o uso do `ColorService` no componente de pesquisa de lançamentos" />
     <MESSAGE value="feat(core): implementar melhorias no front end do Algamoney&#10;&#10;Implementa diversas melhorias e novos recursos no sistema de gestão financeira Algamoney:&#10;&#10;&#10;&#10;feat(routing):&#10;- Modularizar rotas utilizando PessoaRouting e LancamentoRouting&#10;- Criar roteamento completo para todas as funcionalidades até o momento&#10;- Adicionar componente de página não encontrada&#10;&#10;feat(ui):&#10;- Adicionar recursos para melhorar o design do site&#10;- Implementar títulos dinâmicos para cada parte do projeto&#10;&#10;feat(auth):&#10;- Adicionar Token Service junto com Interceptor" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(core): implementar melhorias no front end do Algamoney&#10;&#10;Implementa diversas melhorias e novos recursos no sistema de gestão financeira Algamoney:&#10;&#10;&#10;&#10;feat(routing):&#10;- Modularizar rotas utilizando PessoaRouting e LancamentoRouting&#10;- Criar roteamento completo para todas as funcionalidades até o momento&#10;- Adicionar componente de página não encontrada&#10;&#10;feat(ui):&#10;- Adicionar recursos para melhorar o design do site&#10;- Implementar títulos dinâmicos para cada parte do projeto&#10;&#10;feat(auth):&#10;- Adicionar Token Service junto com Interceptor" />
+    <MESSAGE value="feat(frontend): refatorar e melhorar interface do Algamoney&#10;&#10;refactor(frontend):&#10;- Refatorar design completo do frontend&#10;- Implementar nova interface de login e register&#10;- Criar página de erro 404&#10;- Redesenhar componentes de pesquisa e lançamentos&#10;- Atualizar header e footer&#10;&#10;feat(frontend):&#10;- Implementar roteamento com lazy loading&#10;- Criar módulos auth e core&#10;- Adicionar authguard para proteção de rotas&#10;- Implementar verificação de força de senha no register&#10;- Criar componente de paginação reutilizável&#10;- Adicionar aside&#10;&#10;feat(ui):&#10;- Melhorar responsividade do layout&#10;- Atualizar componentes reutilizáveis&#10;- Otimizar experiência de usuário&#10;&#10;feat(backend): reestruturar e melhorar arquitetura&#10;- Implementar novo sistema de exceptions&#10;- Adicionar cache com Spring Cache&#10;- Criar estrutura para estatísticas&#10;- Implementar lógica de lançamentos e categorias&#10;- Desenvolver controllers e repositories para estatísticas diárias" />
+    <MESSAGE value="feat(backend): adicionar JasperReports para geração de relatórios&#10;&#10;- Adicionar dependências do JasperReports no `pom.xml`&#10;- Criar DTO `LancamentoEstatisticaPessoaDto` para estatísticas de lançamentos por pessoa&#10;- Implementar método `relatorioPorPessoa` no `LancamentoService` para geração de relatórios&#10;- Adicionar query `porPessoa` no `LancamentoRepository` para buscar dados de lançamentos por pessoa&#10;- Criar endpoint `/relatorios/por-pessoa` no `LancamentoResource` para gerar relatórios em PDF&#10;- Adicionar arquivo `lancamentos_por_pessoa.jrxml` para definição do layout do relatório" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): adicionar JasperReports para geração de relatórios&#10;&#10;- Adicionar dependências do JasperReports no `pom.xml`&#10;- Criar DTO `LancamentoEstatisticaPessoaDto` para estatísticas de lançamentos por pessoa&#10;- Implementar método `relatorioPorPessoa` no `LancamentoService` para geração de relatórios&#10;- Adicionar query `porPessoa` no `LancamentoRepository` para buscar dados de lançamentos por pessoa&#10;- Criar endpoint `/relatorios/por-pessoa` no `LancamentoResource` para gerar relatórios em PDF&#10;- Adicionar arquivo `lancamentos_por_pessoa.jrxml` para definição do layout do relatório" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -438,5 +463,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Algamoney$AlgamoneyApiApplication.ic" NAME="AlgamoneyApiApplication Coverage Results" MODIFIED="1742404524753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>algamoneyapi.*</FILTER>
+    </SUITE>
   </component>
 </project>

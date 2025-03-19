@@ -22,13 +22,13 @@ export class PessoaPesquisaComponent {
     private activatedRoute: ActivatedRoute,
     private title:Title
   ) {}
-
+  pessoas: any[] = [];
   pessoaSelected: any = null;
   selectedIndex: any = null;
   pessoaResponse: PageResponsePessoaResponseDto = {};
   pagesBack: any = [];
   page = 0;
-  pageSize = 4;
+  pageSize = 5;
 
   pages: any = [];
   ngOnInit(): void {
@@ -38,6 +38,9 @@ export class PessoaPesquisaComponent {
   openModal(pessoa: any, index: number) {
     this.pessoaSelected = pessoa;
     this.selectedIndex = index;
+  }
+  hasResults(): boolean {
+    return this.pessoas && this.pessoas.length > 0;
   }
   getInitials(nome: any): string {
     if (!nome) return '';
@@ -108,6 +111,7 @@ export class PessoaPesquisaComponent {
       })
       .subscribe({
         next: (response) => {
+          this.pessoas = response.content || [];
           this.pessoaResponse = response;
           this.pages = Array(this.pessoaResponse.totalPages)
             .fill(0)

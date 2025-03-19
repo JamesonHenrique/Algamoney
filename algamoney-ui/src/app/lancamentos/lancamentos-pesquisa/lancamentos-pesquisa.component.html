@@ -301,6 +301,11 @@
 
     <div class="md:hidden mb-48">
       <div class="mobile-table-card space-y-4 mb-6 mt-5">
+        <tr *ngIf="!hasResults()">
+          <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+            Nenhum lançamento encontrado.
+          </td>
+        </tr>
         <div
           class="bg-white rounded-xl shadow-md overflow-hidden"
           *ngFor="
@@ -380,7 +385,7 @@
             class="text-red-600 hover:text-red-900 group relative"
           >
             <label
-              for="modal-1"
+            [for]="'modal-' + i"
               class="text-red-600 hover:text-red-900 cursor-pointer"
             >
               <i
@@ -394,80 +399,80 @@
               Excluir lançamento
             </span>
 
-            <app-modal-delete
-              [modalId]="'modal-1'"
-              [title]="'Confirmar exclusão'"
-              [message]="
-                'Você está prestes a excluir o seguinte lançamento:'
-              "
-              [cancelLabel]="'Cancelar'"
-              [confirmLabel]="'Excluir'"
-              (confirm)="deleteById(lancamentoSelected.codigo)"
-              (cancel)="onCancel()"
-            >
-              <div
-                class="bg-gray-50 p-4 rounded-md mb-4"
-                *ngIf="lancamentoSelected"
-              >
-                <div class="flex items-center justify-center mb-2">
-                  <div
-                    class="w-8 h-8 rounded-full flex items-center justify-center mr-3"
-                    [ngStyle]="{
-                      'background-color':
-                        colorService.getColorPair(selectedIndex).bgColor
-                    }"
-                  >
-                    <span
-                      class="font-medium"
-                      [ngStyle]="{
-                        color:
-                          colorService.getColorPair(selectedIndex)
-                            .textColor
-                      }"
-                    >
-                      {{ getInitials(lancamentoSelected.pessoa?.nome) }}
-                    </span>
-                  </div>
-                  <span class="font-medium text-gray-900">{{
-                    lancamentoSelected.pessoa?.nome
-                  }}</span>
-                </div>
-                <div class="grid grid-cols-2 gap-2 text-sm">
-                  <div>
-                    <p class="text-gray-500">Descrição:</p>
-                    <p class="font-medium">
-                      {{ lancamentoSelected.descricao }}
-                    </p>
-                  </div>
-                  <div>
-                    <p class="text-gray-500">Valor:</p>
-                    <p class="font-medium text-money-600">
-                      {{ lancamentoSelected.valor }}
-                    </p>
-                  </div>
-                  <div>
-                    <p class="text-gray-500">Vencimento:</p>
-                    <p class="font-medium">
-                      {{ lancamentoSelected.dataVencimento }}
-                    </p>
-                  </div>
-                  <div>
-                    <span
-                      *ngIf="lancamentoSelected.dataPagamento?.length"
-                      class="text-gray-500"
-                      >Data de Pagamento:</span
-                    >
-                    <p class="font-medium">
-                      {{ lancamentoSelected.dataPagamento }}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </app-modal-delete>
           </button>
             </div>
           </div>
 
+          <app-modal-delete
+          [modalId]="'modal-' + i"
+            [title]="'Confirmar exclusão'"
+            [message]="
+              'Você está prestes a excluir o seguinte lançamento:'
+            "
+            [cancelLabel]="'Cancelar'"
+            [confirmLabel]="'Excluir'"
+            (confirm)="deleteById(lancamento.codigo)"
+            (cancel)="onCancel()"
+          >
+            <div
+              class="bg-gray-50 p-4 rounded-md mb-4"
+              *ngIf="lancamento"
+            >
+              <div class="flex items-center justify-center mb-2">
+                <div
+                  class="w-8 h-8 rounded-full flex items-center justify-center mr-3"
+                  [ngStyle]="{
+                    'background-color':
+                      colorService.getColorPair(selectedIndex).bgColor
+                  }"
+                >
+                  <span
+                    class="font-medium"
+                    [ngStyle]="{
+                      color:
+                        colorService.getColorPair(selectedIndex)
+                          .textColor
+                    }"
+                  >
+                    {{ getInitials(lancamento.pessoa?.nome) }}
+                  </span>
+                </div>
+                <span class="font-medium text-gray-900">{{
+                  lancamento.pessoa?.nome
+                }}</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-sm">
+                <div>
+                  <p class="text-gray-500">Descrição:</p>
+                  <p class="font-medium">
+                    {{ lancamento.descricao }}
+                  </p>
+                </div>
+                <div>
+                  <p class="text-gray-500">Valor:</p>
+                  <p class="font-medium text-money-600">
+                    {{ lancamento.valor }}
+                  </p>
+                </div>
+                <div>
+                  <p class="text-gray-500">Vencimento:</p>
+                  <p class="font-medium text-red-600">
+                    {{ lancamento.dataVencimento }}
+                  </p>
+                </div>
+                <div>
+                  <span
+                    *ngIf="lancamento.dataPagamento?.length"
+                    class="text-gray-500 "
+                    >Data de Pagamento:</span
+                  >
+                  <p class="font-medium text-red-600" >
+                    {{ lancamento.dataPagamento }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </app-modal-delete>
         </div>
         <app-pagination
         [currentPage]="page"

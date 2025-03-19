@@ -5,6 +5,7 @@ export type { AuthenticationRequest } from './models/authentication-request';
 export type { AuthenticationResponse } from './models/authentication-response';
 export type { Categoria } from './models/categoria';
 export type { Endereco } from './models/endereco';
+export type { Contato } from './models/contato';
 export type { LancamentoRequestDto } from './models/lancamento-request-dto';
 export type { LancamentoResponseDto } from './models/lancamento-response-dto';
 export type { Pageable } from './models/pageable';

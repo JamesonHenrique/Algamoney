@@ -55,7 +55,7 @@ export class LoginComponent {
       next: (response) => {
         this.tokenService.token = response.token as string;
         this.toastr.success('Login realizado com sucesso!', 'Bem-vindo');
-        this.router.navigate(['lancamentos']);
+        this.router.navigate(['dashboard']);
       },
       error: (error) => {
         if (error.status === 401) {
@@ -75,7 +75,7 @@ export class LoginComponent {
         });
       },
     });
-  
+
   }
 
   onSubmit() {

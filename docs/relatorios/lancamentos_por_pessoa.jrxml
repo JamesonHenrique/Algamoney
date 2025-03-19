@@ -1,0 +1,114 @@
+<!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 7.0.2-31532122640f516c6d17238ae0e41a08113d5ac0  -->
+<jasperReport name="lancamentos_por_pessoa" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="74fe13a1-027e-449b-9e73-ab0f51dbe5ed">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="DT_INICIO" class="java.util.Date"/>
+	<parameter name="DT_FIM" class="java.util.Date"/>
+	<query language="sql"><![CDATA[]]></query>
+	<field name="total" class="java.math.BigDecimal"/>
+	<field name="tipo" class="algamoneyapi.core.model.TipoLancamento"/>
+	<field name="pessoa" class="algamoneyapi.core.model.Pessoa"/>
+	<title height="39" splitType="Stretch">
+		<element kind="textField" uuid="cbf8be6b-b43c-4071-8337-753f3528831a" x="0" y="4" width="554" height="30" fontSize="22.0" hTextAlign="Center" vTextAlign="Middle">
+			<expression><![CDATA["Lançamento por pessoa de " + DATEFORMAT($P{DT_INICIO},"dd/MM/yyyy")  +  " até " + DATEFORMAT($P{DT_FIM},"dd/MM/yyyy")]]></expression>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</title>
+	<columnHeader height="25" splitType="Stretch">
+		<element kind="rectangle" uuid="8d54ea88-cecd-4088-a5e6-a8521241e6a4" x="0" y="0" width="555" height="25" backcolor="#E6E6E6">
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+		</element>
+		<element kind="line" uuid="089b7b33-a7aa-4955-b28c-82570bd2ac42" x="80" y="0" width="1" height="25">
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="line" uuid="b04bebc9-3bfd-4fa7-ba46-f46f2a3ea2a2" x="480" y="0" width="1" height="25">
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<element kind="staticText" uuid="2dcf930d-4f88-41a7-b525-9103d84fc126" x="1" y="1" width="79" height="23" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Tipo]]></text>
+			<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+		</element>
+		<element kind="staticText" uuid="903b3b14-be52-4c46-a9ae-27a89c6d720b" x="81" y="1" width="400" height="23" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Pessoa]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+		</element>
+		<element kind="staticText" uuid="580104f6-c500-46fa-a7a4-3a777f0d36e3" x="481" y="1" width="74" height="23" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Total]]></text>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<element kind="line" uuid="4b450642-ea8a-44a0-88a0-313442368996" x="0" y="0" width="1" height="25">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			</element>
+			<element kind="line" uuid="242f67a2-3a90-4a01-b400-3ade97520702" x="80" y="0" width="1" height="25">
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			</element>
+			<element kind="line" uuid="2e485f49-12f5-4ac3-b262-357a40d4ced0" x="480" y="0" width="1" height="25">
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="line" uuid="0343d352-6d4d-47f0-8bb7-528885f2cb87" x="555" y="0" width="1" height="25">
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			</element>
+			<element kind="line" uuid="332d87b9-0dca-4bb4-bfe1-32148e62003b" x="0" y="24" width="555" height="1">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="0f5e035b-5d24-4d9d-a74b-73441f471a0e" x="5" y="1" width="69" height="23" hTextAlign="Left" vTextAlign="Middle">
+				<expression><![CDATA[$F{tipo}.getDescricao()]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="64d07340-1b70-46e7-b18c-7aa8f0b8066e" x="90" y="1" width="379" height="22" hTextAlign="Left" vTextAlign="Middle">
+				<expression><![CDATA[$F{pessoa}.getNome()]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="textField" uuid="6b135079-704e-48c7-9735-c60cdc575ec3" x="495" y="1" width="54" height="24" pattern="¤#,##0.00;¤-#,##0.00" hTextAlign="Right" vTextAlign="Middle">
+				<expression><![CDATA[$F{total}]]></expression>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</detail>
+	<pageFooter height="40" splitType="Stretch">
+		<element kind="textField" uuid="e2d871f6-3eb5-4746-a0bb-d1615216d3c4" x="1" y="0" width="129" height="40" vTextAlign="Middle">
+			<expression><![CDATA["Data " + DATEFORMAT(TODAY(),"dd/MM/yyyy")]]></expression>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+		</element>
+		<element kind="textField" uuid="0cf6a20d-2e6b-40d7-9b83-ae380f3792da" x="450" y="-1" width="100" height="30" hTextAlign="Right" vTextAlign="Middle">
+			<expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<property name="com.jaspersoft.studio.unit.x" value="px"/>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+	</pageFooter>
+</jasperReport>

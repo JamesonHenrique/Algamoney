@@ -1,4 +1,4 @@
-# <img src="algamoney-ui/public/favicon.ico" alt="Logo" width="25" height="25">  Algamoney
+# <img src="algamoney-ui/public/favicon.ico" alt="Logo" width="35" height="35">  Algamoney
 
 <div align="center">
 

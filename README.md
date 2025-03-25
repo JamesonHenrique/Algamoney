@@ -1,4 +1,4 @@
-# Algamoney
+# <img src="wavechat-ui/public/favicon.ico" alt="Logo" width="60" height="60">  Algamoney
 
 <div align="center">
 

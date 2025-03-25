@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="feat(core): implementar melhorias no front end do Algamoney&#10;&#10;Implementa diversas melhorias e novos recursos no sistema de gestão financeira Algamoney:&#10;&#10;&#10;&#10;feat(routing):&#10;- Modularizar rotas utilizando PessoaRouting e LancamentoRouting&#10;- Criar roteamento completo para todas as funcionalidades até o momento&#10;- Adicionar componente de página não encontrada&#10;&#10;feat(ui):&#10;- Adicionar recursos para melhorar o design do site&#10;- Implementar títulos dinâmicos para cada parte do projeto&#10;&#10;feat(auth):&#10;- Adicionar Token Service junto com Interceptor">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mail.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mail.properties" afterDir="false" />
+    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="fix: adicionar novamente a dependência do Thymeleaf para corrigir erros&#10;&#10;Re-adicionar a dependência do Thymeleaf no `pom.xml` para corrigir os problemas causados pela sua ausência. I">
+      <change afterPath="$PROJECT_DIR$/algamoney-ui/public/diagrama.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742003868766</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="fix: adicionar novamente a dependência do Thymeleaf para corrigir erros&#10;&#10;Re-adicionar a dependência do Thymeleaf no `pom.xml` para corrigir os problemas causados pela sua ausência. I">
+      <option name="closed" value="true" />
+      <created>1742869914812</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1742869914812</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -328,7 +334,8 @@
     <MESSAGE value="feat(core): reestruturação completa para estrutura modular e melhorias na UI com novas funcionalidaes&#10;&#10;- Migrar a aplicação para estrutura modular, utilizando módulos para encapsular funcionalidades.&#10;- Criar o SharedModule e o componente Messages para reutilização de mensagens de validação e feedback.&#10;- Refatorar Header e Footer, agora implementados como componentes independentes.&#10;- Criar as telas de Login e Register, aprimorando a experiência de autenticação.&#10;- Dividir a exibição dos resultados de pessoas e lançamentos em componentes específicos:&#10;  - PessoasResultadosComponent para a listagem de resultados de pessoas&#10;  - PessoasPesquisaComponent para a pesquisa de pessoas&#10;  - LancamentosResultadosComponent para a listagem dos lançamentos&#10;- Ajustado o roteamento e os formulários reativos com validação para melhor organização e manutenção do código" />
     <MESSAGE value="feat(core): adicionar novos recursos e melhorias na aplicação Algamoney&#10;&#10;Implementa diversas melhorias e novos recursos na aplicação Algamoney, incluindo integração com backend, novos componentes e melhorias na interface.&#10;&#10;Back-End:&#10;&#10;feat(security):&#10;- Remover toda a segurança antiga e implementar nova segurança&#10;- Adicionar AuthenticationController, JwtAuthFilter, JwtService, SecurityConfiguration, BasicSecurityConfiguration, ApplicationConfig, AuthenticationService, AuthenticationRequest, AuthenticationResponse e RegisterRequest&#10;- Remover classes desnecessárias&#10;- Organizar o projeto em Clean Architecture&#10;- Remover o uso de Criteria e utilizar Spring Data JPA com queries&#10;- Criar diversos DTOs&#10;- Implementar paginação diferente, criando PageResponse&#10;- Fazer alterações nos services, resources e entities&#10;- Alterar o ExceptionHandler e remover o uso de MessageSource&#10;&#10;Front-End:&#10;feat(pessoas):&#10;- Implementa o uso do backend para criar pessoas no componente de cadastro&#10;- Configura o método `savePessoa` e ajusta o HTML para funcionar com o formulário&#10;- Adiciona o método `findAllPessoas` no componente de pesquisa de pessoas&#10;- Remove o componente `PessoasResultadosComponent` e transfere suas funcionalidades para `PessoasPesquisaComponent`&#10;&#10;feat(lancamentos):&#10;- Implementa o uso do backend para criar lançamentos no componente de cadastro&#10;- Configura o método `saveLancamento` e ajusta o HTML para funcionar com o formulário&#10;- Adiciona os métodos `findAllPessoas` e `findAllCategorias` no componente de cadastro de lançamentos&#10;- Adiciona os métodos `findAllLancamentos` e `deleteById` no componente de pesquisa de lançamentos&#10;- Remove o componente `LancamentosResultadosComponent` e transfere suas funcionalidades para `LancamentosPesquisaComponent`&#10;&#10;feat(ui):&#10;- Adiciona o uso do `ColorService` com o método `getColorPair` para obter cores&#10;- Integra o uso do `ToastrService` para notificações&#10;- Cria o componente `ModalDeleteComponent` para ser reutilizado em qualquer componente&#10;- Melhora o HTML do componente de pesquisa de lançamentos e pessoas para melhor usabilidade&#10;- Adiciona o uso do `ColorService` no componente de pesquisa de lançamentos" />
     <MESSAGE value="feat(core): implementar melhorias no front end do Algamoney&#10;&#10;Implementa diversas melhorias e novos recursos no sistema de gestão financeira Algamoney:&#10;&#10;&#10;&#10;feat(routing):&#10;- Modularizar rotas utilizando PessoaRouting e LancamentoRouting&#10;- Criar roteamento completo para todas as funcionalidades até o momento&#10;- Adicionar componente de página não encontrada&#10;&#10;feat(ui):&#10;- Adicionar recursos para melhorar o design do site&#10;- Implementar títulos dinâmicos para cada parte do projeto&#10;&#10;feat(auth):&#10;- Adicionar Token Service junto com Interceptor" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(core): implementar melhorias no front end do Algamoney&#10;&#10;Implementa diversas melhorias e novos recursos no sistema de gestão financeira Algamoney:&#10;&#10;&#10;&#10;feat(routing):&#10;- Modularizar rotas utilizando PessoaRouting e LancamentoRouting&#10;- Criar roteamento completo para todas as funcionalidades até o momento&#10;- Adicionar componente de página não encontrada&#10;&#10;feat(ui):&#10;- Adicionar recursos para melhorar o design do site&#10;- Implementar títulos dinâmicos para cada parte do projeto&#10;&#10;feat(auth):&#10;- Adicionar Token Service junto com Interceptor" />
+    <MESSAGE value="fix: adicionar novamente a dependência do Thymeleaf para corrigir erros&#10;&#10;Re-adicionar a dependência do Thymeleaf no `pom.xml` para corrigir os problemas causados pela sua ausência. I" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: adicionar novamente a dependência do Thymeleaf para corrigir erros&#10;&#10;Re-adicionar a dependência do Thymeleaf no `pom.xml` para corrigir os problemas causados pela sua ausência. I" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

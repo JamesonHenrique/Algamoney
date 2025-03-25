@@ -31,6 +31,9 @@ Algamoney é uma aplicação web de gerenciamento financeiro pessoal que permite
 - Fornecer relatórios e estatísticas
 - Fornecer notificações
 
+#### Diagrama de classes
+![Diagrama de classes](algamoney-ui/public/diagrama.png)
+
 ### Diferenciais
 
 - Interface moderna e responsiva com TailwindCSS
@@ -56,6 +59,8 @@ Algamoney é uma aplicação web de gerenciamento financeiro pessoal que permite
 - JWT
 - JasperReports
 - Thymeleaf
+
+
 
 ### Frontend
 

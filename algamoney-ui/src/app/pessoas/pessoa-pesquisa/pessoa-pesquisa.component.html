@@ -29,11 +29,13 @@
             id="nome"
             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-money-500 focus:border-money-500 transition-colors"
             placeholder="Digite o nome"
+            [(ngModel)]="nome"
           />
         </div>
 
         <div class="flex items-end">
           <button
+            (click)="findAllPessoas()"
             class="btn-money px-6 py-2 rounded-md font-medium flex items-center"
           >
             <i class="fas fa-search mr-2"></i> Pesquisar

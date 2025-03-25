@@ -11,6 +11,7 @@ import { RequestBuilder } from '../../request-builder';
 import { PageResponsePessoaResponseDto } from '../../models/page-response-pessoa-response-dto';
 
 export interface Pesquisar$Params {
+  nome?: string;
   page?: number;
   size?: number;
 }
@@ -18,6 +19,7 @@ export interface Pesquisar$Params {
 export function pesquisar(http: HttpClient, rootUrl: string, params?: Pesquisar$Params, context?: HttpContext): Observable<StrictHttpResponse<PageResponsePessoaResponseDto>> {
   const rb = new RequestBuilder(rootUrl, pesquisar.PATH, 'get');
   if (params) {
+    rb.query('nome', params.nome, {});
     rb.query('page', params.page, {});
     rb.query('size', params.size, {});
   }

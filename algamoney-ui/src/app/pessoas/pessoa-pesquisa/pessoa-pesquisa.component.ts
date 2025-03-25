@@ -29,7 +29,7 @@ export class PessoaPesquisaComponent {
   pagesBack: any = [];
   page = 0;
   pageSize = 5;
-
+  nome: string = '';
   pages: any = [];
   ngOnInit(): void {
     this.title.setTitle('Pesquisa de Pessoas');
@@ -106,6 +106,7 @@ export class PessoaPesquisaComponent {
   findAllPessoas() {
     this.pessoaService
       .pesquisar({
+        nome: this.nome,
         page: this.page,
         size: this.pageSize,
       })

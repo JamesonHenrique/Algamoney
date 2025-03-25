@@ -120,7 +120,7 @@ git clone https://github.com/JamesonHenrique/Algamoney.git
 cd algamoney
 ```
 
-2. Configure o banco de dados PostgreSQL no arquivo `src/main/resources/application.properties`
+2. Configure o banco de dados PostgreSQL no arquivo `src/main/resources/application.yml`
 
 3. Execute o backend:
 

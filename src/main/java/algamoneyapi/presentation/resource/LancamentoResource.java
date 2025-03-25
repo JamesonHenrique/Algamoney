@@ -27,7 +27,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -151,16 +153,42 @@ public class LancamentoResource {
             return ResponseEntity.notFound().build();
         }
     }
+    @Operation(summary = "Obter estatísticas por categoria", description = "Retorna estatísticas de lançamentos financeiros agrupados por categoria")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Estatísticas retornadas com sucesso",
+                    content = @Content(schema = @Schema(implementation = LancamentoEstatisticaCategoriaDto.class)))
+    })
     @GetMapping("/estatisticas/por-categoria")
     public ResponseEntity<List<LancamentoEstatisticaCategoriaDto>> getEstatisticasPorCategoria() {
         List<LancamentoEstatisticaCategoriaDto> estatisticas = lancamentoService.porCategoria(LocalDate.now());
         return ResponseEntity.ok(estatisticas);
     }
 
+    @Operation(summary = "Obter estatísticas por dia", description = "Retorna estatísticas de lançamentos financeiros agrupados por dia")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Estatísticas retornadas com sucesso",
+                    content = @Content(schema = @Schema(implementation = LancamentoEstatisticaDiaDto.class)))
+    })
     @GetMapping("/estatisticas/por-dia")
-    public ResponseEntity<List<LancamentoEstatisticaDiaDto>> getEstatisticasPorDia(
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate mesReferencia) {
-        List<LancamentoEstatisticaDiaDto> estatisticas = lancamentoService.porDia(mesReferencia);
+    public ResponseEntity<List<LancamentoEstatisticaDiaDto>> getEstatisticasPorDia() {
+        List<LancamentoEstatisticaDiaDto> estatisticas = lancamentoService.porDia(LocalDate.now());
         return ResponseEntity.ok(estatisticas);
+    }
+    @Operation(summary = "Gerar relatório por pessoa", description = "Gera um relatório em PDF de lançamentos financeiros por pessoa em um intervalo de datas")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Relatório gerado com sucesso",
+                    content = @Content(mediaType = MediaType.APPLICATION_PDF_VALUE))
+    })
+    @GetMapping("/relatorios/por-pessoa")
+    public ResponseEntity<byte[]> relatorioPorPessoa(
+            @Parameter(description = "Data de início do relatório", required = true)
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate inicio,
+            @Parameter(description = "Data de fim do relatório", required = true)
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fim) throws Exception {
+        byte[] relatorio = lancamentoService.relatorioPorPessoa(inicio, fim);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_PDF_VALUE)
+                .body(relatorio);
     }
 }

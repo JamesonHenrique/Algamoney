@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: basic
+    active: prod
   datasource:
     url: jdbc:postgresql://localhost:5432/algamoney
     username: postgres

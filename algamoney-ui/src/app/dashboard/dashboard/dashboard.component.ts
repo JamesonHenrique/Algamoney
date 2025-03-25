@@ -3,6 +3,7 @@ import { Chart, registerables } from 'chart.js';
 import { DateTime } from 'luxon';
 import { DashboardService } from '../../services/dashboard/dashboard.service';
 import { DecimalPipe } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +23,8 @@ export class DashboardComponent implements AfterViewInit {
   tendencia = { percentual: 0, texto: '', tipo: '' };
   constructor(
     private dashboardService: DashboardService,
-    private decimalPipe: DecimalPipe
+    private decimalPipe: DecimalPipe,
+    private title: Title
   ) {
     Chart.register(...registerables);
   }
@@ -42,6 +44,7 @@ export class DashboardComponent implements AfterViewInit {
   };
 
   ngOnInit() {
+    this.title.setTitle('Dashboard');
     this.configurarGraficoPizza();
     this.configurarGraficoLinha();
     this.carregarTopCategorias();

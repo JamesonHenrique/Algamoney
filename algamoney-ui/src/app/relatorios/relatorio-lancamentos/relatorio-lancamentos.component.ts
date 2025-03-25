@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { RelatoriosService } from '../../services/relatorios/relatorios.service';
 
@@ -11,9 +12,11 @@ export class RelatorioLancamentosComponent {
   periodoInicio?: Date;
   periodoFim?: Date;
 
-  constructor(private relatoriosService: RelatoriosService) {}
+  constructor(private relatoriosService: RelatoriosService, private title:Title) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title.setTitle('Relatório de Lançamentos');
+  }
 
   gerar() {
     this.relatoriosService

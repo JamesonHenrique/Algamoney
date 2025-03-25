@@ -73,7 +73,6 @@ Algamoney é uma aplicação web de gerenciamento financeiro pessoal que permite
 
 - Login de usuários
 - Autenticação JWT
-- Controle de permissões
 
 ### Lançamentos
 

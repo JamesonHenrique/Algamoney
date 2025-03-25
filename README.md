@@ -162,7 +162,7 @@ http://localhost:8080/swagger-ui.html
 ```
 
 ### Principais Endpoints
-
+- `/auth` - Autentificação geral
 - `/login` - Logar no sistema
 - `/register` - Registrar um novo usuário
 - `/pagina-nao-encontrada` - Página de erro 404

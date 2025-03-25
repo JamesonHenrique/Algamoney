@@ -2,7 +2,6 @@ package algamoneyapi.core.repository;
 
 import algamoneyapi.application.dto.LancamentoEstatisticaCategoriaDto;
 import algamoneyapi.application.dto.LancamentoEstatisticaDiaDto;
-import algamoneyapi.application.dto.LancamentoEstatisticaPessoaDto;
 import algamoneyapi.core.model.Lancamento;
 
 import algamoneyapi.core.repository.projection.ResumoLancamento;
@@ -59,15 +58,7 @@ public interface LancamentoRepository extends JpaRepository<Lancamento, Long> {
     List<LancamentoEstatisticaDiaDto> porDia(
                 @Param("primeiroDia") LocalDate primeiroDia,
                 @Param("ultimoDia") LocalDate ultimoDia);
-    @Query("SELECT NEW algamoneyapi.application.dto.LancamentoEstatisticaPessoaDto(" +
-            "l.tipo, l.pessoa, SUM(l.valor)) " +
-            "FROM Lancamento l " +
-            "WHERE l.dataVencimento BETWEEN :inicio AND :fim " +
-            "GROUP BY l.tipo, l.pessoa")
-    List<LancamentoEstatisticaPessoaDto> porPessoa(
-            @Param("inicio") LocalDate inicio,
-            @Param("fim") LocalDate fim);
-    List<Lancamento> findByDataVencimentoLessThanEqualAndDataPagamentoIsNull(LocalDate data);
+
 }
 
 

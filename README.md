@@ -1,4 +1,4 @@
-# <img src="algamoney-ui/public/favicon.ico" alt="Logo" width="35" height="35">  Algamoney
+# <img src="algamoney-ui/public/favicon.ico" alt="Logo" width="35" height="35"> # Algamoney
 
 
 ## 📑 Índice

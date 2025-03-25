@@ -25,7 +25,7 @@ import { Contato, PageResponsePessoaResponseDto, Pessoa, PessoaRequestDto } from
 export class PessoaCadastroComponent {
 
   pessoa: PessoaRequestDto = {
-    ativo: true, 
+    ativo: true,
     endereco: {  },
     nome: '',
     contatos: []

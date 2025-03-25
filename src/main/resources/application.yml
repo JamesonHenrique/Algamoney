@@ -19,7 +19,11 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
-
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
 management:
   endpoints:
     web:

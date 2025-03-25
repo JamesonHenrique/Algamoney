@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="docs: adicionar diagrama de classe no README&#10;&#10;Adicionar um diagrama de classe no arquivo README para fornecer uma representação visual da estrutura da aplicação.">
+    <list default="true" id="631d46a6-dbc2-4141-a525-2aacc10643c0" name="Changes" comment="fix: corrigir erros no código removidos durante o merge&#10;&#10;- Restaurar segmentos de código que foram removidos inadvertidamente durante o processo de merge.&#10;- Garantir que todas as funcionalidades estejam funcionando conforme esperado.&#10;- Adicionar títulos dinâmicos em dashboard e relatórios.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/service/LancamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/application/service/LancamentoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/LancamentoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/core/repository/LancamentoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/LancamentoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/presentation/resource/LancamentoResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/algamoney-ui/src/app/pessoas/pessoa-cadastro/pessoa-cadastro.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/mail/MailConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/mail/MailConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/algamoneyapi/infrastructure/mail/MailProperties.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mail.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,16 +118,39 @@
       <recent name="C:\Users\James\Documents\GitHub\Algamoney\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="algamoneyapi.core.repository" />
       <recent name="algamoneyapi.application.dto" />
     </key>
   </component>
   <component name="RunManager">
+    <configuration name="AlgamoneyApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="EMAIL_USERNAME" value="extcops@gmail.com" />
+        <env name="EMAIL_PASSWORD" value="vdjt yqka qwxf vybs" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="algamoneyapi.AlgamoneyApiApplication" />
+      <module name="algamoney-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="algamoneyapi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Algamoney" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AlgamoneyApiApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -330,7 +353,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742870295429</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="fix: corrigir erros no código removidos durante o merge&#10;&#10;- Restaurar segmentos de código que foram removidos inadvertidamente durante o processo de merge.&#10;- Garantir que todas as funcionalidades estejam funcionando conforme esperado.&#10;- Adicionar títulos dinâmicos em dashboard e relatórios.">
+      <option name="closed" value="true" />
+      <created>1742911801364</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1742911801364</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -351,7 +382,8 @@
     <MESSAGE value="feat(core): implementar melhorias no front end do Algamoney&#10;&#10;Implementa diversas melhorias e novos recursos no sistema de gestão financeira Algamoney:&#10;&#10;&#10;&#10;feat(routing):&#10;- Modularizar rotas utilizando PessoaRouting e LancamentoRouting&#10;- Criar roteamento completo para todas as funcionalidades até o momento&#10;- Adicionar componente de página não encontrada&#10;&#10;feat(ui):&#10;- Adicionar recursos para melhorar o design do site&#10;- Implementar títulos dinâmicos para cada parte do projeto&#10;&#10;feat(auth):&#10;- Adicionar Token Service junto com Interceptor" />
     <MESSAGE value="fix: adicionar novamente a dependência do Thymeleaf para corrigir erros&#10;&#10;Re-adicionar a dependência do Thymeleaf no `pom.xml` para corrigir os problemas causados pela sua ausência. I" />
     <MESSAGE value="docs: adicionar diagrama de classe no README&#10;&#10;Adicionar um diagrama de classe no arquivo README para fornecer uma representação visual da estrutura da aplicação." />
-    <option name="LAST_COMMIT_MESSAGE" value="docs: adicionar diagrama de classe no README&#10;&#10;Adicionar um diagrama de classe no arquivo README para fornecer uma representação visual da estrutura da aplicação." />
+    <MESSAGE value="fix: corrigir erros no código removidos durante o merge&#10;&#10;- Restaurar segmentos de código que foram removidos inadvertidamente durante o processo de merge.&#10;- Garantir que todas as funcionalidades estejam funcionando conforme esperado.&#10;- Adicionar títulos dinâmicos em dashboard e relatórios." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: corrigir erros no código removidos durante o merge&#10;&#10;- Restaurar segmentos de código que foram removidos inadvertidamente durante o processo de merge.&#10;- Garantir que todas as funcionalidades estejam funcionando conforme esperado.&#10;- Adicionar títulos dinâmicos em dashboard e relatórios." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

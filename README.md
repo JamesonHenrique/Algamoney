@@ -1,7 +1,7 @@
 # ✨ Newgram - Uma Plataforma Moderna de Compartilhamento e Conexão
 
 <div align="center">
-  <img src=public/images/logo.png" height="80px" alt="Logo Newgram">
+  <img src="public/images/logo.png" height="80px" alt="Logo Newgram">
   <p>Conectando pessoas através de conteúdos significativos</p>
   
   ![GitHub stars](https://img.shields.io/github/stars/JamesonHenrique/Newgram?style=social)

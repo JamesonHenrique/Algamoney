@@ -1,113 +1,100 @@
- # <img src="algamoney-ui/public/favicon.ico" alt="Logo" width="35" height="35"> Algamoney
-
-
-## 📑 Índice
+# ✨ Newgram - Uma Plataforma Moderna de Compartilhamento e Conexão
 
 <div align="center">
+  <img src="newgram-ui/public/images/logo.png" height="80px" alt="Logo Newgram">
+  <p>Conectando pessoas através de conteúdos significativos</p>
+  
+  ![GitHub stars](https://img.shields.io/github/stars/JamesonHenrique/Newgram?style=social)
+  ![GitHub last commit](https://img.shields.io/github/last-commit/JamesonHenrique/Newgram)
+  ![License](https://img.shields.io/badge/license-MIT-blue)
+</div>
 
-| 🌟 Essenciais                          | 🛠️ Desenvolvimento             | 📚 Documentação                  |
-| -------------------------------------- | ------------------------------ | -------------------------------- |
-| [📋 Sobre](#sobre)                     | [💻 Tecnologias](#tecnologias) | [📖 API](#api)                   |
-| [⚙️ Funcionalidades](#funcionalidades) | [📦 Requisitos](#requisitos)   | [🤝 Contribuição](#contribuindo) |
-| [🎯 Objetivos](#objetivos)             | [🔧 Instalação](#instalação)   | [📄 Licença](#licença)           |
+## 🌟 Destaques do Projeto
+
+<div align="center">
+  
+| 🚀 Tecnologias Avançadas | 💡 Recursos Inovadores | 🛡️ Segurança |
+|-------------------------|-----------------------|--------------|
+| Angular 16 com Signals | Feed Inteligente | JWT Authentication |
+| Spring Boot 3.x | Recomendações Personalizadas | Spring Security |
+| Tailwind CSS | Interações em Tempo Real | Data Protection |
+| PostgreSQL | Favoritos Inteligentes | Rate Limiting |
 
 </div>
 
-## Sobre
+## 📑 Índice Rápido
+- [✨ Visão Geral](#-visão-geral)
+- [🛠️ Tecnologias](#️-tecnologias)
+- [🎯 Funcionalidades](#-funcionalidades)
+- [🚀 Começando](#-começando)
+  - [📋 Pré-requisitos](#-pré-requisitos)
+  - [⚙️ Configuração](#️-configuração)
+- [🌐 API](#-api)
+- [🤝 Como Contribuir](#-como-contribuir)
+- [📜 Licença](#-licença)
+- [📬 Contato](#-contato)
 
-Algamoney é uma aplicação web de gerenciamento financeiro pessoal que permite aos usuários controlar suas finanças de forma eficiente e segura. O sistema oferece funcionalidades para cadastro de receitas, despesas, gerenciamento de pessoas, relatórios e dashboard.
+## ✨ Visão Geral
 
-### Objetivos
+O Newgram redefine a experiência de compartilhamento de conteúdo, oferecendo:
 
-- Fornecer uma interface intuitiva para gestão financeira
-- Facilitar o controle de receitas e despesas
-- Permitir o gerenciamento de pessoas e categorias
-- Fornecer relatórios e estatísticas
-- Fornecer notificações
+- **Conexões autênticas** baseadas em interesses compartilhados
+- **Descoberta inteligente** com algoritmos de recomendação
+- **Performance excepcional** graças à arquitetura moderna
+- **Experiência fluida** em qualquer dispositivo
 
-#### Diagrama de classes
-![Diagrama de classes](algamoney-ui/public/diagrama.png)
+### 🎯 Objetivos Estratégicos
 
-### Diferenciais
+```mermaid
+graph TD
+  A[Engajamento] --> B[Interface Intuitiva]
+  A --> C[Conteúdo Relevante]
+  D[Performance] --> E[Tempo de Carregamento]
+  D --> F[Resiliência]
+  G[Segurança] --> H[Proteção de Dados]
+  G --> I[Autenticação Forte]
+```
 
-- Interface moderna e responsiva com TailwindCSS
-- Autenticação segura com OAuth2 e JWT
-- API RESTful documentada com Swagger
-- Sistema de notificações com Toastr
-- Utilização de JasperReports para relatórios
-- Utilização de Thymeleaf para templates
-- Visualização de dashboard com estatísticas usando Chart.js
+## 🛠️ Tecnologias
 
-## Tecnologias
+### Backend (Poder e Robustez)
+- **Java 17** - Tipagem forte e performance
+- **Spring Boot 3** - Produtividade acelerada
+- **PostgreSQL** - Confiabilidade em dados
+- **Flyway** - Migrações de banco versionadas
+- **WebSocket** - Comunicação em tempo real
 
-### Backend
+### Frontend (Elegância e Interação)
+- **Angular 16** - Componentes reativos
+- **Tailwind CSS** - Design utilitário
+- **Angular Material** - UI consistente
+- **RxJS** - Programação reativa
+- **Chart.js** - Visualização de dados
 
-- Java 17
-- Spring Boot 3.2.5
-- Spring Security
-- Spring Data JPA
-- PostgreSQL
-- Flyway para migração
-- Lombok
-- Swagger
-- JWT
-- JasperReports
-- Thymeleaf
+## 🎯 Funcionalidades
 
+### 🔑 Autenticação Avançada
+- Fluxo OAuth2 integrado
+- Autenticação multifator
+- Gerenciamento de sessões
 
+### 🌍 Exploração de Conteúdo
+- **Feed algorítmico** - Aprende com suas interações
+- **Busca semântica** - Encontre o que realmente importa
+- **Coleções temáticas** - Conteúdo organizado por tópicos
 
-### Frontend
+### ❤️ Sistema de Favoritos
+- Tags inteligentes
+- Organização visual
+- Sincronização cross-device
 
-- Angular
-- TailwindCSS
-- NGX-Toastr
-- Font Awesome
-- Angular JWT
-- Animate.css
-- Chart.js
-- Luxon
+## 🚀 Começando
 
-## Funcionalidades
-
-### Autenticação
-
-- Login de usuários
-- Autenticação JWT
-
-### Lançamentos
-
-- Cadastro de receitas e despesas
-- Categorização
-- Pesquisa de lançamentos
-- Status de pagamento
-
-### Pessoas
-
-- Cadastro de pessoas
-- Endereçamento
-- Cadastro e listagem de contatos
-- Status ativo/inativo
-
-### Relatórios
-
-- Relatórios de lançamentos
-- Exportação para PDF
-
-### Dashboard
-
-- Dashboard com estatísticas
-- Visualização de relatórios
-
-### Notificações
-
-- Envio de agendamentos para o email do usuário do sistema de lançamentos
-
-## Requisitos
-
+### 📋 Pré-requisitos
+- Docker (recomendado)
 - Java 17+
-- Node.js 18+
-- PostgreSQL 12+
-- Maven 3.6+
+- Node 18+
+- PostgreSQL 15+
 
 ## Instalação
 
@@ -116,11 +103,11 @@ Algamoney é uma aplicação web de gerenciamento financeiro pessoal que permite
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/JamesonHenrique/Algamoney.git
-cd algamoney
+git clone https://github.com/JamesonHenrique/Newgram.git
+cd newgram
 ```
 
-2. Configure o banco de dados PostgreSQL no arquivo `src/main/resources/application.yml`
+2. Configure o banco de dados PostgreSQL no arquivo `src/main/resources/application.properties`
 
 3. Execute o backend:
 
@@ -135,7 +122,7 @@ O servidor estará disponível em `http://localhost:8080`
 1. Navegue até a pasta do frontend:
 
 ```bash
-cd algamoney-ui
+cd newgram-ui
 ```
 
 2. Instale as dependências:
@@ -147,12 +134,12 @@ npm install
 3. Execute o frontend:
 
 ```bash
-npm start
+ng serve
 ```
 
 A aplicação estará disponível em `http://localhost:4200`
 
-## API
+## 🌐 API
 
 A documentação da API está disponível através do Swagger UI:
 
@@ -160,35 +147,39 @@ A documentação da API está disponível através do Swagger UI:
 http://localhost:8080/swagger-ui.html
 ```
 
-### Principais Endpoints
-- `/auth` - Autentificação geral
-- `/login` - Logar no sistema
-- `/register` - Registrar um novo usuário
-- `/pagina-nao-encontrada` - Página de erro 404
-- `/lancamentos` - Gerenciamento de lançamentos
-- `/pessoas` - Gerenciamento de pessoas
-- `/categorias` - Gerenciamento de categorias
-- `/dashboard` - Dashboard
-- `/relatorios` - Relatórios
+Principais endpoints:
 
-## Contribuindo
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| POST | `/auth/login` | Autenticação |
+| GET | `/content?tags=` | Busca filtrada |
+| PUT | `/favorites/{id}` | Gerencia favoritos |
 
-1. Faça o fork do projeto
-2. Crie sua feature branch (`git checkout -b feature/NovaFeature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/NovaFeature`)
-5. Abra um Pull Request
+## 🤝 Como Contribuir
 
-## Licença
+Siga nosso fluxo de colaboração:
 
-Este projeto está sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+1. Crie uma issue descrevendo sua proposta
+2. Faça fork do projeto
+3. Crie um branch descritivo (`feat/new-auth-flow`)
+4. Envie seu PR com:
+   - Descrição clara
+   - Screenshots (se aplicável)
+   - Testes atualizados
+
+## 📜 Licença
+
+MIT License - Veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+## 📬 Contato
+
+**Jameson Henrique**  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin)](https://linkedin.com/in/JamesonHenrique)  
+[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail)](mailto:jamesonhenrique14@email.com)
 
 ---
 
 <div align="center">
-
-Se este projeto te ajudou, considere dar uma estrela!
-
-[ Voltar ao topo](#sobre)
-
+  <p>Gostou do projeto? Deixe uma ⭐ no repositório!</p>
+  <a href="#✨-newgram---uma-plataforma-moderna-de-compartilhamento-e-conexão">↑ Voltar ao topo ↑</a>
 </div>
